@@ -24,24 +24,14 @@ public class Pessoa implements Serializable {
     private Long id;
     @Column(name="nome",nullable = false)
     private String nome;
-    @OneToMany (mappedBy = "pessoa")
-    private List<Contato> contatos = new ArrayList<>();
+    
     
     public Pessoa(){}
     
     public Pessoa(String nome){
         this.nome=nome;
     }
-    
-    public void addContato(Contato contato) {
-        getContatos().add(contato);
-        contato.setPessoa(this);
-    }
- 
-    public void removeContato(Contato contato) {
-        getContatos().remove(contato);
-        contato.setPessoa(null);
-    }
+   
    
     @Override
     public int hashCode() {
@@ -94,14 +84,6 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-    public List<Contato> getContatos() {
-        return contatos;
-    }
-
-    public void setContatos(List<Contato> contatos) {
-        this.contatos = contatos;
-    }
-    
-    
+   
     
 }

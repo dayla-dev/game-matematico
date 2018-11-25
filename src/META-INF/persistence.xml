@@ -6,7 +6,6 @@
     <class>br.com.locadoraPBD.model.beans.Endereco</class>
     <class>br.com.locadoraPBD.model.beans.Cidade</class>
     <class>br.com.locadoraPBD.model.beans.Estado</class>
-    <class>br.com.locadoraPBD.model.beans.Contato</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/LocadoraPBD"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
