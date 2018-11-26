@@ -1,17 +1,22 @@
 package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 /**
  * @author Dayla
  */
 @Entity
+@Table (name ="endereco")
 public class Endereco implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,6 +31,8 @@ public class Endereco implements Serializable {
     private String bairro;
     @Column (name="cep")
     private String cep;
+    @ManyToMany (mappedBy = "enderecos")
+    private List<Pessoa> pessoas = new ArrayList<>();
     
     public Endereco(){
         
@@ -122,6 +129,14 @@ public class Endereco implements Serializable {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public List<Pessoa> getPessoas() {
+        return pessoas;
+    }
+
+    public void setPessoas(List<Pessoa> pessoas) {
+        this.pessoas = pessoas;
     }
     
     

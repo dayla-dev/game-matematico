@@ -4,18 +4,28 @@ package br.com.locadoraPBD.model.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 
 /**
  * @author Dayla
  */
 
 @Entity
+@Table (name ="pessoa")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa implements Serializable {
 
     private static long serialVersionUID = 1L;
@@ -24,6 +34,12 @@ public class Pessoa implements Serializable {
     private Long id;
     @Column(name="nome",nullable = false)
     private String nome;
+    @OneToMany(mappedBy = "pessoa")
+    private List<Contato> contatos = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name="pessoa_endereco", joinColumns = @JoinColumn(name="id_pessoa"), inverseJoinColumns = @JoinColumn(name="id_endereco"))
+    private List<Endereco> enderecos = new ArrayList<>();
+    
     
     
     public Pessoa(){}
@@ -31,8 +47,25 @@ public class Pessoa implements Serializable {
     public Pessoa(String nome){
         this.nome=nome;
     }
-   
-   
+    
+    public void addEndereco(Endereco endereco){
+        enderecos.add(endereco);
+        endereco.getPessoas().add(this);
+    }
+   public void removerEndereco(Endereco endereco){
+       enderecos.remove(endereco);
+       endereco.getPessoas().remove(this);
+   }
+  public void addContato(Contato contato) {
+        contatos.add(contato);
+        contato.setPessoa(this);
+    }
+ 
+    public void removeContato(Contato contato) {
+        contatos.remove(contato);
+        contato.setPessoa(null);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -84,6 +117,11 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-   
-    
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }    
 }
