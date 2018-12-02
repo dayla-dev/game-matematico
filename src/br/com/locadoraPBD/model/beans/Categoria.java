@@ -28,48 +28,25 @@ public class Categoria implements Serializable {
     private String nome;
     @Column(name="tipo_categoria", nullable=false, length=50)
     private String tipoCategoria;
-    @Column(nullable=false)
-    private int numeroPassageiros;
-    private boolean arCondicionado;
-    private boolean radio;
-    private boolean dvd;
-    private boolean mp3;
-    @OneToMany ( cascade = {CascadeType.ALL})
-    private List<Veiculo> veiculos = new ArrayList<>();
+    @Column(name="preco_cat")
+    private Double precoCat;
     
-
     public Categoria() {
     }
 
-    public Categoria(String nome, String tipoCategoria, int numeroPassageiros, boolean arCondicionado, boolean radio, boolean dvd, boolean mp3) {
+    public Categoria(String nome, String tipoCategoria, Double precoCat) {
         this.nome = nome;
         this.tipoCategoria = tipoCategoria;
-        this.numeroPassageiros = numeroPassageiros;
-        this.arCondicionado = arCondicionado;
-        this.radio = radio;
-        this.dvd = dvd;
-        this.mp3 = mp3;
-    }
-    
-    public  void addVeiculo(Veiculo veiculo){
-        veiculos.add(veiculo);
-    }
-    
-    public void removerVeiculo(Veiculo veiculo){
-        veiculos.remove(veiculo);
+        this.precoCat = precoCat;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + Objects.hashCode(this.id);
-        hash = 13 * hash + Objects.hashCode(this.nome);
-        hash = 13 * hash + Objects.hashCode(this.tipoCategoria);
-        hash = 13 * hash + this.numeroPassageiros;
-        hash = 13 * hash + (this.arCondicionado ? 1 : 0);
-        hash = 13 * hash + (this.radio ? 1 : 0);
-        hash = 13 * hash + (this.dvd ? 1 : 0);
-        hash = 13 * hash + (this.mp3 ? 1 : 0);
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.nome);
+        hash = 29 * hash + Objects.hashCode(this.tipoCategoria);
+        hash = 29 * hash + Objects.hashCode(this.precoCat);
         return hash;
     }
 
@@ -85,21 +62,6 @@ public class Categoria implements Serializable {
             return false;
         }
         final Categoria other = (Categoria) obj;
-        if (this.numeroPassageiros != other.numeroPassageiros) {
-            return false;
-        }
-        if (this.arCondicionado != other.arCondicionado) {
-            return false;
-        }
-        if (this.radio != other.radio) {
-            return false;
-        }
-        if (this.dvd != other.dvd) {
-            return false;
-        }
-        if (this.mp3 != other.mp3) {
-            return false;
-        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
@@ -109,10 +71,16 @@ public class Categoria implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
+        if (!Objects.equals(this.precoCat, other.precoCat)) {
+            return false;
+        }
         return true;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Categoria{" + "id=" + id + ", nome=" + nome + ", tipoCategoria=" + tipoCategoria + ", precoCat=" + precoCat + '}';
+    }
 
     public Long getId() {
         return id;
@@ -138,48 +106,13 @@ public class Categoria implements Serializable {
         this.tipoCategoria = tipoCategoria;
     }
 
-    public int getNumeroPassageiros() {
-        return numeroPassageiros;
+    public Double getPrecoCat() {
+        return precoCat;
     }
 
-    public void setNumeroPassageiros(int numeroPassageiros) {
-        this.numeroPassageiros = numeroPassageiros;
+    public void setPrecoCat(Double precoCat) {
+        this.precoCat = precoCat;
     }
-
-    public boolean isArCondicionado() {
-        return arCondicionado;
-    }
-
-    public void setArCondicionado(boolean arCondicionado) {
-        this.arCondicionado = arCondicionado;
-    }
-
-    public boolean isRadio() {
-        return radio;
-    }
-
-    public void setRadio(boolean radio) {
-        this.radio = radio;
-    }
-
-    public boolean isDvd() {
-        return dvd;
-    }
-
-    public void setDvd(boolean dvd) {
-        this.dvd = dvd;
-    }
-
-    public boolean isMp3() {
-        return mp3;
-    }
-
-    public void setMp3(boolean mp3) {
-        this.mp3 = mp3;
-    }
-    
-    
-    
 
     
 }

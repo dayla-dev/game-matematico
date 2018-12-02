@@ -21,49 +21,90 @@ public class Veiculo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name= "placa", nullable=false, length=20)
+    private String placa;
+    @Column(name= "chassi", nullable=false, length=20)
+    private String chassi;
+    @Column(name="motor", nullable=false, length=20)
+    private String motor;
+    @Column(name="cor", nullable=false, length=20)
+    private String cor;
+    @Column(name="torque_motor", nullable=false, length=20)
+    private String torqueMotor;
+    @Column(name="combustivel", nullable=false, length=50)
+    private String tipoCombustivel;
+    @Column(name="km_atual", nullable=false, length=30)
+    private String kmAtual;
     @Column(name="fabricante", nullable=false, length=50)
     private String fabricante;
     @Column(name="modelo", nullable=false, length=50)
-    private String modelo;
-    @Column(name="numero_placa", nullable=false, length=20)
-    private String numeroPlaca;
-    @Column(name="cor", nullable=false, length=20)
-    private String cor;
-    @Column(name="numero_portas", nullable=false, length=50)
+    private String modelo; 
+    @Column(name="num_passageiros", nullable=false)
+    private int numPassageiros;
+    @Column(name="num_portas", nullable=false, length=50)
     private int numeroPortas;
-    @Column(name="motor", nullable=false, length=20)
-    private String motor;
-    @Column(name="ano_fabricacao", nullable=false, length=20)
+     @Column(name="ano_fabricacao", nullable=false, length=20)
     private String anoFabricacao;
     @Column(name="ano_modelo", nullable=false, length=50)
     private String anoModelo;
-    @Column(name="combustivel", nullable=false, length=50)
-    private String tipoCombustivel;
-    @Column(name="quilometragem", nullable=false, length=30)
-    private String quilAtual;
-    @Column(name="potencia", nullable=false, length=20)
-    private String potencia;
+    @Column(name="tamanho", nullable=false, length=50)
+    private String tamanho;
+    @Column(name = "ar_cond")
+    private boolean arCondicionado;
+    @Column(name = "radio")
+    private boolean radio;
+    @Column(name = "dvd")
+    private boolean dvd;
+    @Column(name = "mp3")
+    private boolean mp3;
+    
 
     public Veiculo() {
     }
 
-    public Veiculo(String fabricante, String modelo, int numeroPortas, String motor, String potencia) {
+    public Veiculo(String placa, String chassi, String motor, String cor, String torqueMotor, String tipoCombustivel, String kmAtual, String fabricante, String modelo, int numPassageiros, int numeroPortas, String anoFabricacao, String anoModelo, String tamanho, boolean arCondicionado, boolean radio, boolean dvd, boolean mp3) {
+        this.placa = placa;
+        this.chassi = chassi;
+        this.motor = motor;
+        this.cor = cor;
+        this.torqueMotor = torqueMotor;
+        this.tipoCombustivel = tipoCombustivel;
+        this.kmAtual = kmAtual;
         this.fabricante = fabricante;
         this.modelo = modelo;
+        this.numPassageiros = numPassageiros;
         this.numeroPortas = numeroPortas;
-        this.motor = motor;
-        this.potencia = potencia;
+        this.anoFabricacao = anoFabricacao;
+        this.anoModelo = anoModelo;
+        this.tamanho = tamanho;
+        this.arCondicionado = arCondicionado;
+        this.radio = radio;
+        this.dvd = dvd;
+        this.mp3 = mp3;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.fabricante);
-        hash = 67 * hash + Objects.hashCode(this.modelo);
-        hash = 67 * hash + this.numeroPortas;
-        hash = 67 * hash + Objects.hashCode(this.motor);
-        hash = 67 * hash + Objects.hashCode(this.potencia);
+        hash = 17 * hash + Objects.hashCode(this.id);
+        hash = 17 * hash + Objects.hashCode(this.placa);
+        hash = 17 * hash + Objects.hashCode(this.chassi);
+        hash = 17 * hash + Objects.hashCode(this.motor);
+        hash = 17 * hash + Objects.hashCode(this.cor);
+        hash = 17 * hash + Objects.hashCode(this.torqueMotor);
+        hash = 17 * hash + Objects.hashCode(this.tipoCombustivel);
+        hash = 17 * hash + Objects.hashCode(this.kmAtual);
+        hash = 17 * hash + Objects.hashCode(this.fabricante);
+        hash = 17 * hash + Objects.hashCode(this.modelo);
+        hash = 17 * hash + this.numPassageiros;
+        hash = 17 * hash + this.numeroPortas;
+        hash = 17 * hash + Objects.hashCode(this.anoFabricacao);
+        hash = 17 * hash + Objects.hashCode(this.anoModelo);
+        hash = 17 * hash + Objects.hashCode(this.tamanho);
+        hash = 17 * hash + (this.arCondicionado ? 1 : 0);
+        hash = 17 * hash + (this.radio ? 1 : 0);
+        hash = 17 * hash + (this.dvd ? 1 : 0);
+        hash = 17 * hash + (this.mp3 ? 1 : 0);
         return hash;
     }
 
@@ -79,7 +120,43 @@ public class Veiculo implements Serializable {
             return false;
         }
         final Veiculo other = (Veiculo) obj;
+        if (this.numPassageiros != other.numPassageiros) {
+            return false;
+        }
         if (this.numeroPortas != other.numeroPortas) {
+            return false;
+        }
+        if (this.arCondicionado != other.arCondicionado) {
+            return false;
+        }
+        if (this.radio != other.radio) {
+            return false;
+        }
+        if (this.dvd != other.dvd) {
+            return false;
+        }
+        if (this.mp3 != other.mp3) {
+            return false;
+        }
+        if (!Objects.equals(this.placa, other.placa)) {
+            return false;
+        }
+        if (!Objects.equals(this.chassi, other.chassi)) {
+            return false;
+        }
+        if (!Objects.equals(this.motor, other.motor)) {
+            return false;
+        }
+        if (!Objects.equals(this.cor, other.cor)) {
+            return false;
+        }
+        if (!Objects.equals(this.torqueMotor, other.torqueMotor)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipoCombustivel, other.tipoCombustivel)) {
+            return false;
+        }
+        if (!Objects.equals(this.kmAtual, other.kmAtual)) {
             return false;
         }
         if (!Objects.equals(this.fabricante, other.fabricante)) {
@@ -88,10 +165,13 @@ public class Veiculo implements Serializable {
         if (!Objects.equals(this.modelo, other.modelo)) {
             return false;
         }
-        if (!Objects.equals(this.motor, other.motor)) {
+        if (!Objects.equals(this.anoFabricacao, other.anoFabricacao)) {
             return false;
         }
-        if (!Objects.equals(this.potencia, other.potencia)) {
+        if (!Objects.equals(this.anoModelo, other.anoModelo)) {
+            return false;
+        }
+        if (!Objects.equals(this.tamanho, other.tamanho)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
@@ -102,11 +182,71 @@ public class Veiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "Veiculo{" + "id=" + id + ", fabricante=" + fabricante + ", modelo=" + modelo + ", numeroPortas=" + numeroPortas + ", motor=" + motor + ", potencia=" + potencia + '}';
+        return "Veiculo{" + "id=" + id + ", placa=" + placa + ", chassi=" + chassi + ", motor=" + motor + ", cor=" + cor + ", torqueMotor=" + torqueMotor + ", tipoCombustivel=" + tipoCombustivel + ", kmAtual=" + kmAtual + ", fabricante=" + fabricante + ", modelo=" + modelo + ", numPassageiros=" + numPassageiros + ", numeroPortas=" + numeroPortas + ", anoFabricacao=" + anoFabricacao + ", anoModelo=" + anoModelo + ", tamanho=" + tamanho + ", arCondicionado=" + arCondicionado + ", radio=" + radio + ", dvd=" + dvd + ", mp3=" + mp3 + '}';
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public String getChassi() {
+        return chassi;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
+    }
+
+    public String getMotor() {
+        return motor;
+    }
+
+    public void setMotor(String motor) {
+        this.motor = motor;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getTorqueMotor() {
+        return torqueMotor;
+    }
+
+    public void setTorqueMotor(String torqueMotor) {
+        this.torqueMotor = torqueMotor;
+    }
+
+    public String getTipoCombustivel() {
+        return tipoCombustivel;
+    }
+
+    public void setTipoCombustivel(String tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
+    }
+
+    public String getKmAtual() {
+        return kmAtual;
+    }
+
+    public void setKmAtual(String kmAtual) {
+        this.kmAtual = kmAtual;
     }
 
     public String getFabricante() {
@@ -125,6 +265,14 @@ public class Veiculo implements Serializable {
         this.modelo = modelo;
     }
 
+    public int getNumPassageiros() {
+        return numPassageiros;
+    }
+
+    public void setNumPassageiros(int numPassageiros) {
+        this.numPassageiros = numPassageiros;
+    }
+
     public int getNumeroPortas() {
         return numeroPortas;
     }
@@ -133,23 +281,59 @@ public class Veiculo implements Serializable {
         this.numeroPortas = numeroPortas;
     }
 
-    public String getMotor() {
-        return motor;
+    public String getAnoFabricacao() {
+        return anoFabricacao;
     }
 
-    public void setMotor(String motor) {
-        this.motor = motor;
+    public void setAnoFabricacao(String anoFabricacao) {
+        this.anoFabricacao = anoFabricacao;
     }
 
-    public String getPotencia() {
-        return potencia;
+    public String getAnoModelo() {
+        return anoModelo;
     }
 
-    public void setPotencia(String potencia) {
-        this.potencia = potencia;
+    public void setAnoModelo(String anoModelo) {
+        this.anoModelo = anoModelo;
     }
-    
-    
 
-   
+    public String getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public boolean isArCondicionado() {
+        return arCondicionado;
+    }
+
+    public void setArCondicionado(boolean arCondicionado) {
+        this.arCondicionado = arCondicionado;
+    }
+
+    public boolean isRadio() {
+        return radio;
+    }
+
+    public void setRadio(boolean radio) {
+        this.radio = radio;
+    }
+
+    public boolean isDvd() {
+        return dvd;
+    }
+
+    public void setDvd(boolean dvd) {
+        this.dvd = dvd;
+    }
+
+    public boolean isMp3() {
+        return mp3;
+    }
+
+    public void setMp3(boolean mp3) {
+        this.mp3 = mp3;
+    }
 }
