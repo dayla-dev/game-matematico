@@ -2,9 +2,7 @@
 package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
+import javax.persistence.Table;
 
 /**
  * @author Dayla
@@ -32,14 +28,11 @@ public class Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name="nome",nullable = false)
+    @Column(name="nome",nullable = false, length=100)
     private String nome;
-    @OneToMany(mappedBy = "pessoa")
-    private List<Contato> contatos = new ArrayList<>();
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name="pessoa_endereco", joinColumns = @JoinColumn(name="id_pessoa"), inverseJoinColumns = @JoinColumn(name="id_endereco"))
-    private List<Endereco> enderecos = new ArrayList<>();
-    
+    @ManyToOne
+    @JoinColumn (name = "endereco_id")
+    private Endereco endereco;
     
     
     public Pessoa(){}
@@ -47,40 +40,40 @@ public class Pessoa implements Serializable {
     public Pessoa(String nome){
         this.nome=nome;
     }
-    
-    public void addEndereco(Endereco endereco){
-        enderecos.add(endereco);
-        endereco.getPessoas().add(this);
+
+    public Pessoa(String nome, Endereco endereco) {
+        this.nome = nome;
+        this.endereco = endereco;
     }
-   public void removerEndereco(Endereco endereco){
-       enderecos.remove(endereco);
-       endereco.getPessoas().remove(this);
-   }
-  public void addContato(Contato contato) {
-        contatos.add(contato);
-        contato.setPessoa(this);
-    }
- 
-    public void removeContato(Contato contato) {
-        contatos.remove(contato);
-        contato.setPessoa(null);
-    }
-    
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (getId() != null ? getId().hashCode() : 0);
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.id);
+        hash = 83 * hash + Objects.hashCode(this.nome);
+        hash = 83 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pessoa)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Pessoa other = (Pessoa) object;
-        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pessoa other = (Pessoa) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.endereco, other.endereco)) {
             return false;
         }
         return true;
@@ -88,17 +81,15 @@ public class Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + getId() + ", nome=" + getNome() +  '}';
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + '}';
     }
-    
-    
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public static void setSerialVersionUID(long aSerialVersionUID) {
-        serialVersionUID = aSerialVersionUID;
+    public static void setSerialVersionUID(long serialVersionUID) {
+        Pessoa.serialVersionUID = serialVersionUID;
     }
 
     public Long getId() {
@@ -117,11 +108,15 @@ public class Pessoa implements Serializable {
         this.nome = nome;
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
-    }    
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    
+    
+  
 }

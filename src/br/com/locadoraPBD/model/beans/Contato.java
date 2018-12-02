@@ -28,9 +28,6 @@ public class Contato implements Serializable {
     private String telefone;
     @Column (name = "email")
     private String email;
-    @ManyToOne
-    @JoinColumn(name = "id_pessoa")
-    private Pessoa pessoa;
 
     public Contato(){
         
@@ -49,7 +46,6 @@ public class Contato implements Serializable {
         hash = 97 * hash + Objects.hashCode(this.celular);
         hash = 97 * hash + Objects.hashCode(this.telefone);
         hash = 97 * hash + Objects.hashCode(this.email);
-        hash = 97 * hash + Objects.hashCode(this.pessoa);
         return hash;
     }
 
@@ -77,9 +73,7 @@ public class Contato implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.pessoa, other.pessoa)) {
-            return false;
-        }
+        
         return true;
     }
 
@@ -120,14 +114,5 @@ public class Contato implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-    
     
 }

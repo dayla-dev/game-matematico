@@ -1,15 +1,12 @@
 package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,36 +20,43 @@ public class Endereco implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column (name = "logradouro")
+    @Column (name = "logradouro", nullable=false, length=100)
     private String logradouro;
-    @Column (name="numero")
+    @Column (name="numero", nullable=false, length=50)
     private String numero;
-    @Column (name="bairro")
+    @Column (name="bairro", nullable=false, length=50)
     private String bairro;
-    @Column (name="cep")
+    @Column (name="cep", nullable=false, length=50)
     private String cep;
-    @ManyToMany (mappedBy = "enderecos")
-    private List<Pessoa> pessoas = new ArrayList<>();
+    @Column (name="cidade", nullable=false, length=50)
+    private String cidade;
+    @Column (name="estado", nullable=false, length=50)
+    private String estado;
+    
     
     public Endereco(){
         
     }
 
-    public Endereco(String logradouro, String numero, String bairro, String cep) {
+    public Endereco(String logradouro, String numero, String bairro, String cep, String cidade, String estado) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.bairro = bairro;
         this.cep = cep;
+        this.cidade = cidade;
+        this.estado = estado;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.logradouro);
-        hash = 89 * hash + Objects.hashCode(this.numero);
-        hash = 89 * hash + Objects.hashCode(this.bairro);
-        hash = 89 * hash + Objects.hashCode(this.cep);
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.logradouro);
+        hash = 37 * hash + Objects.hashCode(this.numero);
+        hash = 37 * hash + Objects.hashCode(this.bairro);
+        hash = 37 * hash + Objects.hashCode(this.cep);
+        hash = 37 * hash + Objects.hashCode(this.cidade);
+        hash = 37 * hash + Objects.hashCode(this.estado);
         return hash;
     }
 
@@ -80,6 +84,12 @@ public class Endereco implements Serializable {
         if (!Objects.equals(this.cep, other.cep)) {
             return false;
         }
+        if (!Objects.equals(this.cidade, other.cidade)) {
+            return false;
+        }
+        if (!Objects.equals(this.estado, other.estado)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -88,10 +98,10 @@ public class Endereco implements Serializable {
 
     @Override
     public String toString() {
-        return "Endereco{" + "id=" + id + ", logradouro=" + logradouro + ", bairro=" + bairro + ", numero=" + numero + ", cep=" + cep + '}';
+        return "Endereco{" + "id=" + id + ", logradouro=" + logradouro + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", cidade=" + cidade + ", estado=" + estado + '}';
     }
-    
-     public Long getId() {
+
+    public Long getId() {
         return id;
     }
 
@@ -131,14 +141,22 @@ public class Endereco implements Serializable {
         this.cep = cep;
     }
 
-    public List<Pessoa> getPessoas() {
-        return pessoas;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setPessoas(List<Pessoa> pessoas) {
-        this.pessoas = pessoas;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
-    
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     
     
 }
