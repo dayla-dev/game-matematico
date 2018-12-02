@@ -20,6 +20,8 @@ public class Veiculo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name= "status")
+    private boolean status;
     @Column(name= "placa", nullable=false, length=20)
     private String placa;
     @Column(name= "chassi", nullable=false, length=20)
