@@ -10,6 +10,12 @@
     <class>br.com.locadoraPBD.model.beans.Filial</class>
     <class>br.com.locadoraPBD.model.beans.Categoria</class>
     <class>br.com.locadoraPBD.model.beans.Veiculo</class>
+    <class>br.com.locadoraPBD.model.beans.PessoaFisica</class>
+    <class>br.com.locadoraPBD.model.beans.Usuario</class>
+    <class>br.com.locadoraPBD.model.beans.CamioneteCarga</class>
+    <class>br.com.locadoraPBD.model.beans.CamionetePassageiros</class>
+    <class>br.com.locadoraPBD.model.beans.Reserva</class>
+    <class>br.com.locadoraPBD.model.beans.Alocacao</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/LocadoraPBD"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
