@@ -20,9 +20,9 @@ import javax.persistence.criteria.Root;
  *
  * @author Dayla
  */
-public class EnderecoDAO implements Serializable {
+public class EnderecoJpaController implements Serializable {
 
-    public EnderecoDAO(EntityManagerFactory emf) {
+    public EnderecoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;

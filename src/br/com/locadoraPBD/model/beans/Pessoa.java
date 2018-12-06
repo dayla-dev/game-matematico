@@ -32,7 +32,7 @@ public class Pessoa implements Serializable {
     private String nome;
     @ManyToOne
     @JoinColumn (name = "endereco_id")
-    private Endereco endereco;
+    private Endereco endereco ;
     
     
     public Pessoa(){}

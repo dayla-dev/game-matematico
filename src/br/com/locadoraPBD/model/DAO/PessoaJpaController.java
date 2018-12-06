@@ -6,7 +6,7 @@
 package br.com.locadoraPBD.model.DAO;
 
 import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
-import br.com.locadoraPBD.model.beans.Cidade;
+import br.com.locadoraPBD.model.beans.Pessoa;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,9 +20,9 @@ import javax.persistence.criteria.Root;
  *
  * @author Dayla
  */
-public class CidadeDAO implements Serializable {
+public class PessoaJpaController implements Serializable {
 
-    public CidadeDAO(EntityManagerFactory emf) {
+    public PessoaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class CidadeDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Cidade cidade) {
+    public void create(Pessoa pessoa) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(cidade);
+            em.persist(pessoa);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class CidadeDAO implements Serializable {
         }
     }
 
-    public void edit(Cidade cidade) throws NonexistentEntityException, Exception {
+    public void edit(Pessoa pessoa) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            cidade = em.merge(cidade);
+            pessoa = em.merge(pessoa);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = cidade.getId();
-                if (findCidade(id) == null) {
-                    throw new NonexistentEntityException("The cidade with id " + id + " no longer exists.");
+                Long id = pessoa.getId();
+                if (findPessoa(id) == null) {
+                    throw new NonexistentEntityException("The pessoa with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class CidadeDAO implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Cidade cidade;
+            Pessoa pessoa;
             try {
-                cidade = em.getReference(Cidade.class, id);
-                cidade.getId();
+                pessoa = em.getReference(Pessoa.class, id);
+                pessoa.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The cidade with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The pessoa with id " + id + " no longer exists.", enfe);
             }
-            em.remove(cidade);
+            em.remove(pessoa);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class CidadeDAO implements Serializable {
         }
     }
 
-    public List<Cidade> findCidadeEntities() {
-        return findCidadeEntities(true, -1, -1);
+    public List<Pessoa> findPessoaEntities() {
+        return findPessoaEntities(true, -1, -1);
     }
 
-    public List<Cidade> findCidadeEntities(int maxResults, int firstResult) {
-        return findCidadeEntities(false, maxResults, firstResult);
+    public List<Pessoa> findPessoaEntities(int maxResults, int firstResult) {
+        return findPessoaEntities(false, maxResults, firstResult);
     }
 
-    private List<Cidade> findCidadeEntities(boolean all, int maxResults, int firstResult) {
+    private List<Pessoa> findPessoaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Cidade.class));
+            cq.select(cq.from(Pessoa.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class CidadeDAO implements Serializable {
         }
     }
 
-    public Cidade findCidade(Long id) {
+    public Pessoa findPessoa(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Cidade.class, id);
+            return em.find(Pessoa.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getCidadeCount() {
+    public int getPessoaCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Cidade> rt = cq.from(Cidade.class);
+            Root<Pessoa> rt = cq.from(Pessoa.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
