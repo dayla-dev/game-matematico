@@ -32,17 +32,17 @@ public class App {
         EnderecoJpaController enderecoDAO = new EnderecoJpaController(Conexao.conexao());
         
         Endereco end = new Endereco();
-        end.setLogradouro("rua 1");
-        end.setNumero("100");
-        end.setBairro("centro");
-        end.setCep("123");
-        end.setCidade("Tavares");
-        end.setEstado("paraiba");
+        end.setLogradouro("rua 5");
+        end.setNumero("89");
+        end.setBairro("bairro 3");
+        end.setCep("54.549-222");
+        end.setCidade("Princesa isabel");
+        end.setEstado("Pernambuco");
         
         enderecoDAO.create(end);
         
         Pessoa p = new Pessoa();
-        p.setNome("Datla");
+        p.setNome("Andre");
         p.setEndereco(end);
         
         pessoaDAO.create(p);
