@@ -4,8 +4,9 @@ package br.com.locadoraPBD.app;
 
 import br.com.locadoraPBD.JPAUtil.Conexao;
 import br.com.locadoraPBD.model.DAO.CategoriaDAO;
-import br.com.locadoraPBD.model.DAO.EnderecoJpaController;
-import br.com.locadoraPBD.model.DAO.PessoaJpaController;
+import br.com.locadoraPBD.model.DAO.EnderecoDAO;
+import br.com.locadoraPBD.model.DAO.PessoaDAO;
+import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
 import br.com.locadoraPBD.model.beans.Categoria;
 import br.com.locadoraPBD.model.beans.Endereco;
 import br.com.locadoraPBD.model.beans.Pessoa;
@@ -26,26 +27,13 @@ import br.com.locadoraPBD.model.beans.Pessoa;
  */
 public class App {
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws NonexistentEntityException {
         
-        PessoaJpaController pessoaDAO = new PessoaJpaController(Conexao.conexao());
-        EnderecoJpaController enderecoDAO = new EnderecoJpaController(Conexao.conexao());
         
-        Endereco end = new Endereco();
-        end.setLogradouro("rua 5");
-        end.setNumero("89");
-        end.setBairro("bairro 3");
-        end.setCep("54.549-222");
-        end.setCidade("Princesa isabel");
-        end.setEstado("Pernambuco");
+       
         
-        enderecoDAO.create(end);
+//        pessoaDAO.destroy(p.getId());
         
-        Pessoa p = new Pessoa();
-        p.setNome("Andre");
-        p.setEndereco(end);
-        
-        pessoaDAO.create(p);
         
 //        CategoriaDAO catDAO = new CategoriaDAO(Conexao.conexao());
 //        

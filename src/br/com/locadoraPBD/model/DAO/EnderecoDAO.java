@@ -6,7 +6,7 @@
 package br.com.locadoraPBD.model.DAO;
 
 import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
-import br.com.locadoraPBD.model.beans.Pessoa;
+import br.com.locadoraPBD.model.beans.Endereco;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,9 +20,9 @@ import javax.persistence.criteria.Root;
  *
  * @author Dayla
  */
-public class PessoaJpaController implements Serializable {
+public class EnderecoDAO implements Serializable {
 
-    public PessoaJpaController(EntityManagerFactory emf) {
+    public EnderecoDAO(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class PessoaJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Pessoa pessoa) {
+    public void create(Endereco endereco) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(pessoa);
+            em.persist(endereco);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class PessoaJpaController implements Serializable {
         }
     }
 
-    public void edit(Pessoa pessoa) throws NonexistentEntityException, Exception {
+    public void edit(Endereco endereco) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            pessoa = em.merge(pessoa);
+            endereco = em.merge(endereco);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = pessoa.getId();
-                if (findPessoa(id) == null) {
-                    throw new NonexistentEntityException("The pessoa with id " + id + " no longer exists.");
+                Long id = endereco.getId();
+                if (findEndereco(id) == null) {
+                    throw new NonexistentEntityException("The endereco with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class PessoaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Pessoa pessoa;
+            Endereco endereco;
             try {
-                pessoa = em.getReference(Pessoa.class, id);
-                pessoa.getId();
+                endereco = em.getReference(Endereco.class, id);
+                endereco.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The pessoa with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The endereco with id " + id + " no longer exists.", enfe);
             }
-            em.remove(pessoa);
+            em.remove(endereco);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class PessoaJpaController implements Serializable {
         }
     }
 
-    public List<Pessoa> findPessoaEntities() {
-        return findPessoaEntities(true, -1, -1);
+    public List<Endereco> findEnderecoEntities() {
+        return findEnderecoEntities(true, -1, -1);
     }
 
-    public List<Pessoa> findPessoaEntities(int maxResults, int firstResult) {
-        return findPessoaEntities(false, maxResults, firstResult);
+    public List<Endereco> findEnderecoEntities(int maxResults, int firstResult) {
+        return findEnderecoEntities(false, maxResults, firstResult);
     }
 
-    private List<Pessoa> findPessoaEntities(boolean all, int maxResults, int firstResult) {
+    private List<Endereco> findEnderecoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Pessoa.class));
+            cq.select(cq.from(Endereco.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class PessoaJpaController implements Serializable {
         }
     }
 
-    public Pessoa findPessoa(Long id) {
+    public Endereco findEndereco(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Pessoa.class, id);
+            return em.find(Endereco.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getPessoaCount() {
+    public int getEnderecoCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Pessoa> rt = cq.from(Pessoa.class);
+            Root<Endereco> rt = cq.from(Endereco.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

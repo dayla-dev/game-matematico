@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Table (name ="pessoa")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Pessoa implements Serializable {
+public abstract class Pessoa implements Serializable {
 
     private static long serialVersionUID = 1L;
     @Id
