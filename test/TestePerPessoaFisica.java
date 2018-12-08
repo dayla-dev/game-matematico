@@ -8,7 +8,7 @@ import br.com.locadoraPBD.model.beans.PessoaFisica;
 /*
  * @author Dayla
  */
-public class TestePerPessoaFis {
+public class TestePerPessoaFisica {
     
     public static void main(String args[]){
      
