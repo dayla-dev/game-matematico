@@ -1,16 +1,12 @@
 package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /*
@@ -24,8 +20,8 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="nome", nullable=false, length=50)
-    private String nome;
+    @Column(name="nome_categoria", nullable=false, length=50)
+    private String nomeCategoria;
     @Column(name="tipo_categoria", nullable=false, length=50)
     private String tipoCategoria;
     @Column(name="preco_cat")
@@ -34,8 +30,8 @@ public class Categoria implements Serializable {
     public Categoria() {
     }
 
-    public Categoria(String nome, String tipoCategoria, Double precoCat) {
-        this.nome = nome;
+    public Categoria(String nomeCategoria, String tipoCategoria, Double precoCat) {
+        this.nomeCategoria = nomeCategoria;
         this.tipoCategoria = tipoCategoria;
         this.precoCat = precoCat;
     }
@@ -43,10 +39,10 @@ public class Categoria implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.nome);
-        hash = 29 * hash + Objects.hashCode(this.tipoCategoria);
-        hash = 29 * hash + Objects.hashCode(this.precoCat);
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.nomeCategoria);
+        hash = 89 * hash + Objects.hashCode(this.tipoCategoria);
+        hash = 89 * hash + Objects.hashCode(this.precoCat);
         return hash;
     }
 
@@ -62,7 +58,7 @@ public class Categoria implements Serializable {
             return false;
         }
         final Categoria other = (Categoria) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
+        if (!Objects.equals(this.nomeCategoria, other.nomeCategoria)) {
             return false;
         }
         if (!Objects.equals(this.tipoCategoria, other.tipoCategoria)) {
@@ -79,7 +75,7 @@ public class Categoria implements Serializable {
 
     @Override
     public String toString() {
-        return "Categoria{" + "id=" + id + ", nome=" + nome + ", tipoCategoria=" + tipoCategoria + ", precoCat=" + precoCat + '}';
+        return "Categoria{" + "id=" + id + ", nomeCategoria=" + nomeCategoria + ", tipoCategoria=" + tipoCategoria + ", precoCat=" + precoCat + '}';
     }
 
     public Long getId() {
@@ -90,12 +86,12 @@ public class Categoria implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCategoria() {
+        return nomeCategoria;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeCategoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
     }
 
     public String getTipoCategoria() {
