@@ -49,9 +49,9 @@ public abstract class Pessoa implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.id);
-        hash = 83 * hash + Objects.hashCode(this.nome);
-        hash = 83 * hash + Objects.hashCode(this.endereco);
+        hash = 13 * hash + Objects.hashCode(this.id);
+        hash = 13 * hash + Objects.hashCode(this.nome);
+        hash = 13 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -79,8 +79,7 @@ public abstract class Pessoa implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
+      public String toString() {
         return "Pessoa{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + '}';
     }
 

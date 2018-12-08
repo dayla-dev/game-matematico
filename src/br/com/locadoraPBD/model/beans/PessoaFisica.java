@@ -2,6 +2,7 @@ package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
  * @author Dayla
  */
 @Entity
-@Table (name= "funcionario")
+@Table (name= "pessoaFisica")
 @PrimaryKeyJoinColumn(name = "idPessoa")
 public class PessoaFisica extends Pessoa implements Serializable {
 
@@ -22,8 +23,11 @@ public class PessoaFisica extends Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column (name = "data_nasc")
     private String data_nasc;
+    @Column (name = "cpf")
     private  String cpf;
+    @Column (name = "sexo")
     private String sexo;
 
     public PessoaFisica() {

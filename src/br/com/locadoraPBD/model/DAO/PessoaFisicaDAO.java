@@ -183,8 +183,6 @@ public class PessoaFisicaDAO implements IcorePessoaFisicaDAO, Serializable {
             em.close();
         }
 }
-  
-
 }
 
    
