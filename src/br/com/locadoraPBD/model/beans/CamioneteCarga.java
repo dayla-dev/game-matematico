@@ -6,12 +6,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 /*
  * @author Dayla
  */
 @Entity
-public class CamioneteCarga implements Serializable {
+@Table (name = "camioneteCarga")
+@PrimaryKeyJoinColumn(name = "idVeiculo")
+public class CamioneteCarga extends Veiculo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

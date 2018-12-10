@@ -7,12 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 /*
  * @author Dayla
  */
 @Entity
-public class Usuario implements Serializable {
+@Table (name = "usuario")
+@PrimaryKeyJoinColumn (name = "idPessoa")
+public class Usuario extends Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -20,7 +24,7 @@ public class Usuario implements Serializable {
     private Long id;
     @Column(name="login",nullable = false, length=60)
     private String login;
-    @Column(name="senha",nullable = false, length=20)
+    @Column(name="senha")
     private String senha;
     @Column(name="tipo_usuario",nullable = false, length=40)
     private String tipoUsuario;

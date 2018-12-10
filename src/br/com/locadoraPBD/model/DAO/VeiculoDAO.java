@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.locadoraPBD.model.DAO;
 
 import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
@@ -13,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -20,18 +16,16 @@ import javax.persistence.criteria.Root;
  *
  * @author Dayla
  */
-public class VeiculoDAO implements Serializable {
+public class VeiculoDAO implements IcoreVeiculoDAO, Serializable {
+    
+    private EntityManagerFactory emf = null;
 
     public VeiculoDAO(EntityManagerFactory emf) {
         this.emf = emf;
-    }
-    private EntityManagerFactory emf = null;
+    }    
 
-    public EntityManager getEntityManager() {
-        return emf.createEntityManager();
-    }
-
-    public void create(Veiculo veiculo) {
+    @Override
+    public void Salvar(Veiculo veiculo) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -45,7 +39,8 @@ public class VeiculoDAO implements Serializable {
         }
     }
 
-    public void edit(Veiculo veiculo) throws NonexistentEntityException, Exception {
+    @Override
+    public void Editar(Veiculo veiculo) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -56,7 +51,7 @@ public class VeiculoDAO implements Serializable {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Long id = veiculo.getId();
-                if (findVeiculo(id) == null) {
+                if (getVeiculoPorId(id) == null) {
                     throw new NonexistentEntityException("The veiculo with id " + id + " no longer exists.");
                 }
             }
@@ -68,7 +63,8 @@ public class VeiculoDAO implements Serializable {
         }
     }
 
-    public void destroy(Long id) throws NonexistentEntityException {
+    @Override
+    public void Remover(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -87,17 +83,69 @@ public class VeiculoDAO implements Serializable {
                 em.close();
             }
         }
+   }
+
+    @Override
+    public List<Veiculo> getVeiculoPorModelo(String modelo) {
+        EntityManager em = getEntityManager();
+        List<Veiculo> veiculos = null;
+        
+        try{
+            String consulta = "select v from Veiculo v where v.modelo like :modelo";
+            TypedQuery<Veiculo> query = em.createQuery(consulta, Veiculo.class);
+            query.setParameter("modelo", "%" + modelo + "%");
+            veiculos = query.getResultList();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            em.close();                    
+        }
+        
+        return veiculos;   
     }
 
-    public List<Veiculo> findVeiculoEntities() {
-        return findVeiculoEntities(true, -1, -1);
+    @Override
+    public List<Veiculo> getVeiculoPorFabricante(String fabricante) {
+     EntityManager em = getEntityManager();
+        List<Veiculo> veiculos = null;
+        
+        try{
+            String consulta = "select v from Veiculo v where v.fabricante like :fabricante";
+            TypedQuery<Veiculo> query = em.createQuery(consulta, Veiculo.class);
+            query.setParameter("fabricante", "%" + fabricante + "%");
+            veiculos = query.getResultList();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            em.close();                    
+        }
+        
+        return veiculos; 
     }
 
-    public List<Veiculo> findVeiculoEntities(int maxResults, int firstResult) {
-        return findVeiculoEntities(false, maxResults, firstResult);
+    @Override
+    public Veiculo getVeiculoPorId(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(Veiculo.class, id);
+        } finally {
+            em.close();
+        }  
+    }
+    
+    public List<Veiculo> getTodosVeiculos() {
+        return getTodosVeiculos(true, -1, -1);
     }
 
-    private List<Veiculo> findVeiculoEntities(boolean all, int maxResults, int firstResult) {
+    public List<Veiculo> getTodosVeiculos(int maxResults, int firstResult) {
+        return getTodosVeiculos(false, maxResults, firstResult);
+    }
+
+    private List<Veiculo> getTodosVeiculos(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
@@ -112,17 +160,8 @@ public class VeiculoDAO implements Serializable {
             em.close();
         }
     }
-
-    public Veiculo findVeiculo(Long id) {
-        EntityManager em = getEntityManager();
-        try {
-            return em.find(Veiculo.class, id);
-        } finally {
-            em.close();
-        }
-    }
-
-    public int getVeiculoCount() {
+    
+     public int getVeiculoCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
@@ -133,6 +172,10 @@ public class VeiculoDAO implements Serializable {
         } finally {
             em.close();
         }
+    }
+    
+    public EntityManager getEntityManager() {
+        return emf.createEntityManager();
     }
     
 }

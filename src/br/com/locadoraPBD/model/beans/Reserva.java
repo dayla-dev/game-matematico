@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +18,12 @@ public class Reserva implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Date data_locacao;
+    private Date data_reserva;
+    private String status;
+    private PessoaFisica pessoaFisica;
+    private PessoaJuridica pessoaJuridica;
+    
 
     public Long getId() {
         return id;

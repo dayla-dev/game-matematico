@@ -2,10 +2,13 @@ package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,7 +22,11 @@ public class Filial implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column (name = "nome", nullable=false, length=50)
     private String nome;
+    @OneToOne
+    @JoinColumn (name = "endereco_id")
+    private Endereco endereco;
 
     public Filial() {
     }
@@ -31,8 +38,9 @@ public class Filial implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.id);
-        hash = 17 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -54,11 +62,38 @@ public class Filial implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Filial{" + "id=" + id + ", nome=" + nome + '}';
+        return "Filial{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }    
 }
