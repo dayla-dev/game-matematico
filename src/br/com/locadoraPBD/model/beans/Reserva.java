@@ -2,6 +2,7 @@ package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,12 +24,10 @@ public class Reserva implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "data_locacao")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataLocacao;
-    @Column(name = "data_reserva")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataReserva;
+    @Column(name = "data_hr_locacao")    
+    private String dataHrLocacao;
+    @Column(name = "data_hr_reserva")
+    private String dataHrReserva;
     @Column(nullable=false,length=30)
     private String status;
     @Column(name = "valor_entrada")
@@ -36,35 +35,68 @@ public class Reserva implements Serializable {
     @OneToOne
     private PessoaFisica pessoaFisica;
     @OneToOne
-    private PessoaJuridica pessoaJuridica;
+    private Pessoa pessoa;
     @OneToOne
     private Categoria categoria;
 
     public Reserva() {
     }
 
-    public Reserva(Date dataLocacao, Date dataReserva, String status) {
-        this.dataLocacao = dataLocacao;
-        this.dataReserva = dataReserva;
+    public Reserva(String dataHrLocacao, String dataHrReserva, String status, Double valorEntrada) {
+        this.dataHrLocacao = dataHrLocacao;
+        this.dataHrReserva = dataHrReserva;
         this.status = status;
+        this.valorEntrada = valorEntrada;
     }
-    
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.dataHrLocacao);
+        hash = 67 * hash + Objects.hashCode(this.dataHrReserva);
+        hash = 67 * hash + Objects.hashCode(this.status);
+        hash = 67 * hash + Objects.hashCode(this.valorEntrada);
+        hash = 67 * hash + Objects.hashCode(this.pessoaFisica);
+        hash = 67 * hash + Objects.hashCode(this.pessoa);
+        hash = 67 * hash + Objects.hashCode(this.categoria);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Reserva)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Reserva other = (Reserva) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Reserva other = (Reserva) obj;
+        if (!Objects.equals(this.dataHrLocacao, other.dataHrLocacao)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataHrReserva, other.dataHrReserva)) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.valorEntrada, other.valorEntrada)) {
+            return false;
+        }
+        if (!Objects.equals(this.pessoaFisica, other.pessoaFisica)) {
+            return false;
+        }
+        if (!Objects.equals(this.pessoa, other.pessoa)) {
+            return false;
+        }
+        if (!Objects.equals(this.categoria, other.categoria)) {
             return false;
         }
         return true;
@@ -72,7 +104,7 @@ public class Reserva implements Serializable {
 
     @Override
     public String toString() {
-        return "Reserva{" + "id=" + id + ", dataLocacao=" + dataLocacao + ", dataReserva=" + dataReserva + ", status=" + status + ", pessoaFisica=" + pessoaFisica + ", pessoaJuridica=" + pessoaJuridica + ", categoria=" + categoria + '}';
+        return "Reserva{" + "id=" + id + ", dataHrLocacao=" + dataHrLocacao + ", dataHrReserva=" + dataHrReserva + ", status=" + status + ", valorEntrada=" + valorEntrada + ", pessoaFisica=" + pessoaFisica + ", pessoa=" + pessoa + ", categoria=" + categoria + '}';
     }
 
     public Long getId() {
@@ -83,20 +115,20 @@ public class Reserva implements Serializable {
         this.id = id;
     }
 
-    public Date getDataLocacao() {
-        return dataLocacao;
+    public String getDataHrLocacao() {
+        return dataHrLocacao;
     }
 
-    public void setDataLocacao(Date dataLocacao) {
-        this.dataLocacao = dataLocacao;
+    public void setDataHrLocacao(String dataHrLocacao) {
+        this.dataHrLocacao = dataHrLocacao;
     }
 
-    public Date getDataReserva() {
-        return dataReserva;
+    public String getDataHrReserva() {
+        return dataHrReserva;
     }
 
-    public void setDataReserva(Date dataReserva) {
-        this.dataReserva = dataReserva;
+    public void setDataHrReserva(String dataHrReserva) {
+        this.dataHrReserva = dataHrReserva;
     }
 
     public String getStatus() {
@@ -107,6 +139,14 @@ public class Reserva implements Serializable {
         this.status = status;
     }
 
+    public Double getValorEntrada() {
+        return valorEntrada;
+    }
+
+    public void setValorEntrada(Double valorEntrada) {
+        this.valorEntrada = valorEntrada;
+    }
+
     public PessoaFisica getPessoaFisica() {
         return pessoaFisica;
     }
@@ -115,12 +155,12 @@ public class Reserva implements Serializable {
         this.pessoaFisica = pessoaFisica;
     }
 
-    public PessoaJuridica getPessoaJuridica() {
-        return pessoaJuridica;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setPessoaJuridica(PessoaJuridica pessoaJuridica) {
-        this.pessoaJuridica = pessoaJuridica;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public Categoria getCategoria() {
@@ -131,6 +171,5 @@ public class Reserva implements Serializable {
         this.categoria = categoria;
     }
 
-   
-    
+      
 }

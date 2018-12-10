@@ -14,9 +14,9 @@ public class TestePerCategoria {
         CategoriaDAO categoriaDAO = new CategoriaDAO(Conexao.conexao());
         
         Categoria categoria = new Categoria();
-        categoria.setNomeCategoria("A1");
-        categoria.setTipoCategoria("Carro Passeio");
-        categoria.setPrecoCat(150.00);
+        categoria.setNomeCategoria("A3");
+        categoria.setTipoCategoria("Carros de passeio simples");
+        categoria.setPrecoCat(90.00);
         
         categoriaDAO.Salvar(categoria);
         

@@ -18,7 +18,7 @@ public class TestePerPessoaJuridica {
         
         Endereco endereco = new Endereco();
         endereco.setLogradouro("Rua Enock");
-        endereco.setNumero("210 - Ap 5");
+        endereco.setNumero("402");
         endereco.setBairro("Centro");
         endereco.setCep("58.987-123");
         endereco.setCidade("Serra Talhada");
@@ -28,8 +28,8 @@ public class TestePerPessoaJuridica {
         PessoaJuridica pessoaJuridica = new PessoaJuridica();
         
         pessoaJuridica.setNome("Loja 1");
-        pessoaJuridica.setCnpj("4321-8/17");
-        pessoaJuridica.setInscricaoEstadual("00.000.000/0000-00");
+        pessoaJuridica.setCnpj("9731-8/35");
+        pessoaJuridica.setInscricaoEstadual("11.111.111/0111-00");
         pessoaJuridica.setEndereco(endereco);
         
         pessoaJuridicaDAO.Salvar(pessoaJuridica);

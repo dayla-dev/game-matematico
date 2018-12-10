@@ -29,6 +29,8 @@ public class PessoaFisica extends Pessoa implements Serializable {
     private  String cpf;
     @Column (name = "sexo")
     private String sexo;
+    private String num_hab;
+    private String data_venc;
   
 
     public PessoaFisica() {
@@ -41,13 +43,36 @@ public class PessoaFisica extends Pessoa implements Serializable {
         this.sexo = sexo;
     }
 
-    public PessoaFisica(Long id, String data_nasc, String cpf, String sexo, String nome) {
+    public PessoaFisica(Long id, String data_nasc, String cpf, String sexo, String num_hab, String data_venc) {
+        this.id = id;
+        this.data_nasc = data_nasc;
+        this.cpf = cpf;
+        this.sexo = sexo;
+        this.num_hab = num_hab;
+        this.data_venc = data_venc;
+    }
+
+    public PessoaFisica(Long id, String data_nasc, String cpf, String sexo, String num_hab, String data_venc, String nome) {
         super(nome);
         this.id = id;
         this.data_nasc = data_nasc;
         this.cpf = cpf;
         this.sexo = sexo;
+        this.num_hab = num_hab;
+        this.data_venc = data_venc;
     }
+
+    public PessoaFisica(Long id, String data_nasc, String cpf, String sexo, String num_hab, String data_venc, String nome, Endereco endereco) {
+        super(nome, endereco);
+        this.id = id;
+        this.data_nasc = data_nasc;
+        this.cpf = cpf;
+        this.sexo = sexo;
+        this.num_hab = num_hab;
+        this.data_venc = data_venc;
+    }
+
+    
 
     public PessoaFisica(Long id, String data_nasc, String cpf, String sexo, String nome, Endereco endereco) {
         super(nome, endereco);
@@ -96,8 +121,10 @@ public class PessoaFisica extends Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "PessoaFisica{" + "id=" + id + ", data_nasc=" + data_nasc + ", cpf=" + cpf + ", sexo=" + sexo + '}';
+        return "PessoaFisica{" + "id=" + id + ", data_nasc=" + data_nasc + ", cpf=" + cpf + ", sexo=" + sexo + ", num_hab=" + num_hab + ", data_venc=" + data_venc + '}';
     }
+
+   
 
     public Long getId() {
         return id;
@@ -129,6 +156,22 @@ public class PessoaFisica extends Pessoa implements Serializable {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+
+    public String getNum_hab() {
+        return num_hab;
+    }
+
+    public void setNum_hab(String num_hab) {
+        this.num_hab = num_hab;
+    }
+
+    public String getData_venc() {
+        return data_venc;
+    }
+
+    public void setData_venc(String data_venc) {
+        this.data_venc = data_venc;
     }
 
    

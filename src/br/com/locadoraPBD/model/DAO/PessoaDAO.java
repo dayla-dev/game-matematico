@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.locadoraPBD.model.DAO;
 
 import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
@@ -13,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -87,6 +84,25 @@ public class PessoaDAO implements Serializable {
                 em.close();
             }
         }
+    }
+    
+    public List<Pessoa> getPessoaPorNome(String nome) {
+    EntityManager em = getEntityManager();
+    List<Pessoa> pessoas = null;
+    
+    try{
+        String consulta = "select p from Pessoa p where ps.nome like :nome";
+        TypedQuery<Pessoa> query = em.createQuery(consulta, Pessoa.class);
+        query.setParameter("nome", "%" + nome + "%");
+        pessoas = query.getResultList();        
+    }
+    catch(Exception e){
+        e.printStackTrace();
+    }
+    finally{
+        em.close();
+    }
+    return pessoas;
     }
 
     public List<Pessoa> findPessoaEntities() {
