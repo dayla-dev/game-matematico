@@ -16,8 +16,8 @@ public class TestePerPessoaFisica {
         EnderecoDAO enderecoDAO = new EnderecoDAO(Conexao.conexao());
         
         Endereco endereco = new Endereco();
-        endereco.setLogradouro("Rua Afonso Magalhaes");
-        endereco.setNumero("690 - Ap 3");
+        endereco.setLogradouro("Rua 2");
+        endereco.setNumero("540");
         endereco.setBairro("Centro");
         endereco.setCep("58.753-000");
         endereco.setCidade("Serra Talhada");
@@ -26,10 +26,10 @@ public class TestePerPessoaFisica {
         
         PessoaFisica ps = new PessoaFisica();
         
-        ps.setNome("Lucas");
-        ps.setData_nasc("11/11/2011");
-        ps.setCpf("000.000.000-00");
-        ps.setSexo("Masculino");
+        ps.setNome("Dayla");
+        ps.setData_nasc("10/12/2018");
+        ps.setCpf("111.111.111-11");
+        ps.setSexo("Feminino");
         ps.setEndereco(endereco);
         
         pessoaFisicaDAO.Salvar(ps);

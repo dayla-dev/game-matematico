@@ -2,6 +2,7 @@ package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,11 +22,15 @@ public class CamioneteCarga extends Veiculo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name="cap_carga")
     private Double capCarga;
+    @Column(name="acionamento_emb")
     private String acionamentoEmb;
     private Double consumo;
     private Double potencia;
+    @Column(name="volume_combust")
     private String volumeCombust;
+    @Column(name="dist_eixos")
     private Double distEixos;
 
     public CamioneteCarga() {

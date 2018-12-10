@@ -1,7 +1,12 @@
 
 package view;
 
+import br.com.locadoraPBD.JPAUtil.Criptografia;
+import br.com.locadoraPBD.model.DAO.ValidacaoDAO;
 import br.com.locadoraPBD.model.beans.Usuario;
+import java.util.List;
+import javafx.scene.paint.Color;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,6 +16,9 @@ import javax.swing.JOptionPane;
 public class TelaLogin extends javax.swing.JFrame {
 
    private Usuario usuario;
+   private ValidacaoDAO validacao;
+   private JFrame tela;
+   
     public TelaLogin() {
         initComponents();
     }
@@ -31,9 +39,11 @@ public class TelaLogin extends javax.swing.JFrame {
         entrarButton = new javax.swing.JButton();
         sairButton = new javax.swing.JButton();
         logomarca = new javax.swing.JLabel();
+        notificacao = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -79,6 +89,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         logomarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo.png"))); // NOI18N
         getContentPane().add(logomarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 90));
+        getContentPane().add(notificacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 140, 20));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/background-banner.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
@@ -96,14 +107,15 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_senhaFieldActionPerformed
 
     private void entrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarButtonActionPerformed
-       if(loginField.getText().equalsIgnoreCase(usuario.getLogin()) 
-               && senhaField.getText().equalsIgnoreCase(usuario.getSenha())){
-           JOptionPane.showMessageDialog(null, "Logado com sucesso");
-       }
-       else{
-           JOptionPane.showMessageDialog(null, "usuario não cadastrado");
-       }
-        
+
+                if(loginField.getText().equals("super") && senhaField.getText().equals("123")){
+                    JOptionPane.showMessageDialog(null, "Logado com sucesso");
+//                   new TelaInicialSuper().setVisible(true);
+                    notificacao.setText("");
+                }
+                else{
+                    notificacao.setText("Usuario inexistente");
+                }
         
         
     }//GEN-LAST:event_entrarButtonActionPerformed
@@ -153,6 +165,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton entrarButton;
     private javax.swing.JTextField loginField;
     private javax.swing.JLabel logomarca;
+    private javax.swing.JLabel notificacao;
     private javax.swing.JButton sairButton;
     private javax.swing.JPasswordField senhaField;
     private javax.swing.JLabel senhaLabel;
