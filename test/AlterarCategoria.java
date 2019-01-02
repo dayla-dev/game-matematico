@@ -19,10 +19,10 @@ public class AlterarCategoria {
         
         try{
             
-            categorias = categoriaDAO.getCategoriaPorNomeCat("A0");
+            categorias = categoriaDAO.getCategoriaPorNomeCat("A1");
             for(int i = 0; i<categorias.size(); i++){
-                categorias.get(i).setNomeCategoria("A3");
-                categorias.get(i).setTipoCategoria("Carros passeio simples");
+                categorias.get(i).setNomeCategoria("A0");
+                categorias.get(i).setTipoCategoria("Carros passeio ");
                 categorias.get(i).setPrecoCat(150.00);
                 categoriaDAO.Editar(categorias.get(i));
             }            

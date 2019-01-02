@@ -16,22 +16,22 @@ public class TestePerPessoaFisica {
         EnderecoDAO enderecoDAO = new EnderecoDAO(Conexao.conexao());
         
         Endereco endereco = new Endereco();
-        endereco.setLogradouro("Rua Z");
-        endereco.setNumero("897");
+        endereco.setLogradouro("Rua dois");
+        endereco.setNumero("100");
         endereco.setBairro("Centro");
-        endereco.setCep("58.753-000");
+        endereco.setCep("51.412-000");
         endereco.setCidade("Tavares");
         endereco.setEstado("Paraiba");
         enderecoDAO.create(endereco);
         
         PessoaFisica ps = new PessoaFisica();
         
-        ps.setNome("Dani");
-        ps.setData_nasc("18/02/1993");
-        ps.setCpf("111.111.111-11");
+        ps.setNome("Cecilia");
+        ps.setData_nasc("22/03/1983");
+        ps.setCpf("222.222.222-22");
         ps.setSexo("Feminino");
-        ps.setNum_hab("9287-65");
-        ps.setData_venc("12/12/2020");
+        ps.setNum_hab("1233-00");
+        ps.setData_venc("12/12/2022");
         ps.setEndereco(endereco);
         
         pessoaFisicaDAO.Salvar(ps);

@@ -5,7 +5,6 @@ import br.com.locadoraPBD.model.DAO.EnderecoDAO;
 import br.com.locadoraPBD.model.DAO.UsuarioDAO;
 import br.com.locadoraPBD.model.beans.Endereco;
 import br.com.locadoraPBD.model.beans.Usuario;
-import java.security.NoSuchAlgorithmException;
 
 /**
  *

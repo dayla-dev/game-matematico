@@ -91,7 +91,7 @@ public class PessoaDAO implements Serializable {
     List<Pessoa> pessoas = null;
     
     try{
-        String consulta = "select p from Pessoa p where ps.nome like :nome";
+        String consulta = "select p from Pessoa p where p.nome like :nome";
         TypedQuery<Pessoa> query = em.createQuery(consulta, Pessoa.class);
         query.setParameter("nome", "%" + nome + "%");
         pessoas = query.getResultList();        

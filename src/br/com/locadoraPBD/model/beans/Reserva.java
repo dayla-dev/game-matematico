@@ -13,11 +13,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
- *
  * @author Dayla
  */
 @Entity
-@Table (name = "atendimento")
+@Table (name = "reserva")
 public class Reserva implements Serializable {
 
     private static final long serialVersionUID = 1L;
