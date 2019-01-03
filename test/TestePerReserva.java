@@ -34,34 +34,25 @@ public class TestePerReserva {
         reserva.setDataHrReserva("06/12/2018 - 08:00");
         reserva.setStatus("ativada");
         reserva.setValorEntrada(200.00);
-
-        try {
-            pessoas = pessoaDAO.getPessoaPorNome("Cecilia");
-            for (int i = 0; i < pessoas.size(); i++) {
-                reserva.setPessoa(pessoas.get(i));
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-           try{
-               pessoasFisicas = pessoaFisicaDAO.getPessoaFisicaPorNome("Cecilia");
-            for (int i = 0; i < pessoasFisicas.size(); i++) {
-                reserva.setPessoaFisica(pessoasFisicas.get(i));
-            }
-           }catch (Exception e) {
-            e.printStackTrace();
-        }
-           try{
-               
-            categorias = categoriaDAO.getCategoriaPorNomeCat("A3");
-            for (int i = 0; i < categorias.size(); i++) {
-                reserva.setCategoria(categorias.get(i));
-            }
-           }catch (Exception e) {
-            e.printStackTrace();
+        
+        pessoas = pessoaDAO.getPessoaPorNome("Cecilia");
+        for(int i = 0; i < pessoas.size(); i++){
+            reserva.setPessoa(pessoas.get(i));
         }
 
+       pessoasFisicas = pessoaFisicaDAO.getPessoaFisicaPorNome("Cecilia");
+       for(int i=0; i<pessoasFisicas.size(); i++){
+           reserva.setPessoaFisica(pessoasFisicas.get(i));
+       }
+       
+       categorias = categoriaDAO.getCategoriaPorNomeCat("A3");
+       for(int i = 0; i< categorias.size(); i++){
+           reserva.setCategoria(categorias.get(i));
+       }
+
+       reservaDAO.Salvar(reserva);
         } 
+    
+    
     }
 
