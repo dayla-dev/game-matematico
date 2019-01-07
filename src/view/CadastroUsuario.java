@@ -340,6 +340,11 @@ public class CadastroUsuario extends javax.swing.JDialog {
         cancelarButton.setText("Cancelar");
         cancelarButton.setToolTipText("Cancelar cadastro");
         cancelarButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -405,6 +410,10 @@ public class CadastroUsuario extends javax.swing.JDialog {
     private void lograFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lograFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lograFieldActionPerformed
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments

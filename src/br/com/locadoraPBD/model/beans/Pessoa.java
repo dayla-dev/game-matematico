@@ -30,6 +30,12 @@ public abstract class Pessoa implements Serializable {
     private Long id;
     @Column(name="nome",nullable = false, length=100)
     private String nome;
+    @Column(name="email", length=60)
+    private String email;
+    @Column(name="telefone", length=20)
+    private String telefone;
+    @Column(name="celular", length=20)
+    private String celular;
     @ManyToOne
     @JoinColumn (name = "endereco_id")
     private Endereco endereco ;
@@ -48,10 +54,13 @@ public abstract class Pessoa implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.id);
-        hash = 13 * hash + Objects.hashCode(this.nome);
-        hash = 13 * hash + Objects.hashCode(this.endereco);
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.nome);
+        hash = 37 * hash + Objects.hashCode(this.email);
+        hash = 37 * hash + Objects.hashCode(this.telefone);
+        hash = 37 * hash + Objects.hashCode(this.celular);
+        hash = 37 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -70,6 +79,15 @@ public abstract class Pessoa implements Serializable {
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefone, other.telefone)) {
+            return false;
+        }
+        if (!Objects.equals(this.celular, other.celular)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -79,8 +97,11 @@ public abstract class Pessoa implements Serializable {
         return true;
     }
 
-      public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + '}';
+    
+
+    @Override
+    public String toString() {
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", celular=" + celular + ", endereco=" + endereco + '}';
     }
 
     public static long getSerialVersionUID() {
@@ -113,6 +134,30 @@ public abstract class Pessoa implements Serializable {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
     
     

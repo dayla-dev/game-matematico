@@ -1,6 +1,7 @@
 package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -23,28 +26,22 @@ public class PessoaFisica extends Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Temporal(TemporalType.DATE)
     @Column (name = "data_nasc")
-    private String data_nasc;
+    private Date data_nasc;
     @Column (name = "cpf")
     private  String cpf;
     @Column (name = "sexo")
     private String sexo;
     private String num_hab;
-    private String data_venc;
+    @Temporal(TemporalType.DATE)
+    private Date data_venc;
   
 
     public PessoaFisica() {
     }
 
-    public PessoaFisica(Long id, String data_nasc, String cpf, String sexo) {
-        this.id = id;
-        this.data_nasc = data_nasc;
-        this.cpf = cpf;
-        this.sexo = sexo;
-    }
-
-    public PessoaFisica(Long id, String data_nasc, String cpf, String sexo, String num_hab, String data_venc) {
-        this.id = id;
+    public PessoaFisica(Date data_nasc, String cpf, String sexo, String num_hab, Date data_venc) {
         this.data_nasc = data_nasc;
         this.cpf = cpf;
         this.sexo = sexo;
@@ -52,7 +49,8 @@ public class PessoaFisica extends Pessoa implements Serializable {
         this.data_venc = data_venc;
     }
 
-    public PessoaFisica(Long id, String data_nasc, String cpf, String sexo, String num_hab, String data_venc, String nome) {
+
+    public PessoaFisica(Date data_nasc, String cpf, String sexo, String num_hab, Date data_venc, String nome) {
         super(nome);
         this.id = id;
         this.data_nasc = data_nasc;
@@ -62,7 +60,7 @@ public class PessoaFisica extends Pessoa implements Serializable {
         this.data_venc = data_venc;
     }
 
-    public PessoaFisica(Long id, String data_nasc, String cpf, String sexo, String num_hab, String data_venc, String nome, Endereco endereco) {
+    public PessoaFisica(Date data_nasc, String cpf, String sexo, String num_hab, Date data_venc, String nome, Endereco endereco) {
         super(nome, endereco);
         this.id = id;
         this.data_nasc = data_nasc;
@@ -72,16 +70,6 @@ public class PessoaFisica extends Pessoa implements Serializable {
         this.data_venc = data_venc;
     }
 
-    
-
-    public PessoaFisica(Long id, String data_nasc, String cpf, String sexo, String nome, Endereco endereco) {
-        super(nome, endereco);
-        this.id = id;
-        this.data_nasc = data_nasc;
-        this.cpf = cpf;
-        this.sexo = sexo;
-    }
-
     @Override
     public int hashCode() {
         int hash = 5;
@@ -89,6 +77,8 @@ public class PessoaFisica extends Pessoa implements Serializable {
         hash = 97 * hash + Objects.hashCode(this.data_nasc);
         hash = 97 * hash + Objects.hashCode(this.cpf);
         hash = 97 * hash + Objects.hashCode(this.sexo);
+        hash = 97 * hash + Objects.hashCode(this.num_hab);
+        hash = 97 * hash + Objects.hashCode(this.data_venc);
         return hash;
     }
 
@@ -104,16 +94,22 @@ public class PessoaFisica extends Pessoa implements Serializable {
             return false;
         }
         final PessoaFisica other = (PessoaFisica) obj;
-        if (!Objects.equals(this.data_nasc, other.data_nasc)) {
-            return false;
-        }
         if (!Objects.equals(this.cpf, other.cpf)) {
             return false;
         }
         if (!Objects.equals(this.sexo, other.sexo)) {
             return false;
         }
+        if (!Objects.equals(this.num_hab, other.num_hab)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.data_nasc, other.data_nasc)) {
+            return false;
+        }
+        if (!Objects.equals(this.data_venc, other.data_venc)) {
             return false;
         }
         return true;
@@ -124,8 +120,6 @@ public class PessoaFisica extends Pessoa implements Serializable {
         return "PessoaFisica{" + "id=" + id + ", data_nasc=" + data_nasc + ", cpf=" + cpf + ", sexo=" + sexo + ", num_hab=" + num_hab + ", data_venc=" + data_venc + '}';
     }
 
-   
-
     public Long getId() {
         return id;
     }
@@ -134,11 +128,11 @@ public class PessoaFisica extends Pessoa implements Serializable {
         this.id = id;
     }
 
-    public String getData_nasc() {
+    public Date getData_nasc() {
         return data_nasc;
     }
 
-    public void setData_nasc(String data_nasc) {
+    public void setData_nasc(Date data_nasc) {
         this.data_nasc = data_nasc;
     }
 
@@ -166,13 +160,12 @@ public class PessoaFisica extends Pessoa implements Serializable {
         this.num_hab = num_hab;
     }
 
-    public String getData_venc() {
+    public Date getData_venc() {
         return data_venc;
     }
 
-    public void setData_venc(String data_venc) {
+    public void setData_venc(Date data_venc) {
         this.data_venc = data_venc;
     }
-
    
 }
