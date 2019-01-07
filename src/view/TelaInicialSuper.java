@@ -62,12 +62,27 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         cadastro.setText("Cadastrar");
 
         usuariosCad.setText("Usuarios");
+        usuariosCad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuariosCadActionPerformed(evt);
+            }
+        });
         cadastro.add(usuariosCad);
 
         pessoaFisCad.setText("Pessoas físicas");
+        pessoaFisCad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pessoaFisCadActionPerformed(evt);
+            }
+        });
         cadastro.add(pessoaFisCad);
 
         pessoaJurCad.setText("Pessoas jurídicas");
+        pessoaJurCad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pessoaJurCadActionPerformed(evt);
+            }
+        });
         cadastro.add(pessoaJurCad);
 
         filialCad.setText("Filial");
@@ -169,6 +184,21 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     private void bCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCategoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bCategoriaActionPerformed
+
+    private void usuariosCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosCadActionPerformed
+       CadastroUsuario cadUsuario = new CadastroUsuario(this, true);
+       cadUsuario.setVisible(true);
+    }//GEN-LAST:event_usuariosCadActionPerformed
+
+    private void pessoaFisCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pessoaFisCadActionPerformed
+        CadastroPessoaFisica cadPessoaFisica = new CadastroPessoaFisica(this, true);
+        cadPessoaFisica.setVisible(true);
+    }//GEN-LAST:event_pessoaFisCadActionPerformed
+
+    private void pessoaJurCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pessoaJurCadActionPerformed
+        CadastroPessoaJuridica cadPessoaJur = new CadastroPessoaJuridica(this, true);
+        cadPessoaJur.setVisible(true);
+    }//GEN-LAST:event_pessoaJurCadActionPerformed
 
     
 

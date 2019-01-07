@@ -13,16 +13,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Usuarios"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usuariosCadActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="pessoaFisCad">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pessoas f&#xed;sicas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pessoaFisCadActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="pessoaJurCad">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pessoas jur&#xed;dicas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pessoaJurCadActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="filialCad">
               <Properties>
