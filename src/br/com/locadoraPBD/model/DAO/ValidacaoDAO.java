@@ -21,7 +21,7 @@ public class ValidacaoDAO {
         return emf.createEntityManager();
     }
      
-    public List<Usuario> ValidarLogin(String login, String senha){
+    public List<Usuario> ValidarLogin(String login){
            EntityManager em = getEntityManager();
     try{
         List<Usuario> usuarios = null;

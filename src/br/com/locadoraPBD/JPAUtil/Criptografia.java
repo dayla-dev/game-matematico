@@ -21,10 +21,12 @@ public class Criptografia {
         
         return mensagem;
     }
-    public static void descriptografar(String senha){
+    public static String descriptografar(String senha){
         
         byte[] arrayByteDescriptografado = Base64.getDecoder().decode(mensagem);
-        senha = new String(arrayByteDescriptografado);
+        String senhades = new String(arrayByteDescriptografado);
+        
+        return senhades;
         
     }
 }

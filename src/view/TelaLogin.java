@@ -4,6 +4,7 @@ package view;
 import br.com.locadoraPBD.JPAUtil.Criptografia;
 import br.com.locadoraPBD.model.DAO.ValidacaoDAO;
 import br.com.locadoraPBD.model.beans.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.paint.Color;
 import javax.swing.JFrame;
@@ -15,7 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JFrame {
 
-   private Usuario usuario;
+    ArrayList<Usuario> usuarios = new ArrayList<>();
+  
    private ValidacaoDAO validacao;
    private JFrame tela;
    
@@ -102,9 +104,28 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_senhaFieldActionPerformed
 
     private void entrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarButtonActionPerformed
-
-        
-        
+       
+        if(loginField.getText().equals("super")&&senhaField.getText().equals("super")){
+            TelaInicialSuper telaSuper = new TelaInicialSuper();
+            telaSuper.setVisible(true);
+            this.dispose();            
+        }
+        else{
+            List<Usuario> usuarios = validacao.ValidarLogin(loginField.getText());
+            if(usuarios.size() == 0){
+                notificacao.setText("Login Errado!");
+            }
+              else{
+                   for(Usuario user: usuarios){
+                       if(senhaField.getText().equals(Criptografia.descriptografar(user.getSenha()))){
+                          notificacao.setText("Logado com sucesso!");
+                        }
+                       else{
+                           notificacao.setText("Senha Errado!");
+                       }
+                    }
+                }
+        }
     }//GEN-LAST:event_entrarButtonActionPerformed
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed

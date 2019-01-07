@@ -29,11 +29,15 @@ public class TestePerUsuario {
         
          
         Usuario user = new Usuario();
-        user.setNome("Joao");
-        user.setLogin("super");
-        user.setSenha("123");
+        user.setNome("Vanessa");
+        user.setLogin("adm");
+        user.setSenha("abc123");
         user.setSenha(Criptografia.encriptografar(user.getSenha()));
         
+        System.out.println(user.getSenha());
+        
+        user.setSenha(Criptografia.descriptografar(user.getSenha()));
+        System.out.println(user.getSenha());
         
         user.setTipoUsuario("super usuario");
         user.setEndereco(end);
