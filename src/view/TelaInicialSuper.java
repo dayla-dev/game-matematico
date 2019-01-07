@@ -86,6 +86,11 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         cadastro.add(pessoaJurCad);
 
         filialCad.setText("Filial");
+        filialCad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filialCadActionPerformed(evt);
+            }
+        });
         cadastro.add(filialCad);
 
         categoriaCad.setText("Categoria");
@@ -170,7 +175,8 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void categoriaCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaCadActionPerformed
-        // TODO add your handling code here:
+        CadastroCategoria cadCategoria = new CadastroCategoria(this, true);
+        cadCategoria.setVisible(true);
     }//GEN-LAST:event_categoriaCadActionPerformed
 
     private void bVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVeiculoActionPerformed
@@ -199,6 +205,11 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         CadastroPessoaJuridica cadPessoaJur = new CadastroPessoaJuridica(this, true);
         cadPessoaJur.setVisible(true);
     }//GEN-LAST:event_pessoaJurCadActionPerformed
+
+    private void filialCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filialCadActionPerformed
+        CadastroFilial cadFilial = new CadastroFilial(this, true);
+        cadFilial.setVisible(true);
+    }//GEN-LAST:event_filialCadActionPerformed
 
     
 
