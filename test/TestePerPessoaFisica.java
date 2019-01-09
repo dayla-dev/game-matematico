@@ -4,6 +4,7 @@ import br.com.locadoraPBD.model.DAO.EnderecoDAO;
 import br.com.locadoraPBD.model.DAO.PessoaFisicaDAO;
 import br.com.locadoraPBD.model.beans.Endereco;
 import br.com.locadoraPBD.model.beans.PessoaFisica;
+import java.util.Date;
 
 /*
  * @author Dayla
@@ -27,11 +28,11 @@ public class TestePerPessoaFisica {
         PessoaFisica ps = new PessoaFisica();
         
         ps.setNome("Cecilia");
-        ps.setData_nasc("22/03/1983");
+        ps.setData_nasc(new Date());
         ps.setCpf("222.222.222-22");
         ps.setSexo("Feminino");
         ps.setNum_hab("1233-00");
-        ps.setData_venc("12/12/2022");
+        ps.setData_venc(new Date(2019-01-23));
         ps.setEndereco(endereco);
         
         pessoaFisicaDAO.Salvar(ps);

@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Color;
+
 /**
  *
  * @author Dayla
@@ -8,6 +10,11 @@ public class TelaInicialSuper extends javax.swing.JFrame {
 
     public TelaInicialSuper() {
         initComponents();
+        panelAcessoRapido.setBackground(new Color(0,0,0,50));
+        panelCadReserva.setBackground(new Color(0,0,0,100));
+        panelBusReserva.setBackground(new Color(0,0,0,100));
+        panelCadLocacao.setBackground(new Color(0,0,0,100));
+        panelBusLocacao.setBackground(new Color(0,0,0,100));
     }
 
     public static void main(String args[]) {
@@ -23,6 +30,18 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelAcessoRapido = new javax.swing.JPanel();
+        panelCadReserva = new javax.swing.JPanel();
+        realizarResLabel = new javax.swing.JLabel();
+        iconeReserva = new javax.swing.JLabel();
+        panelBusReserva = new javax.swing.JPanel();
+        busReservaLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        panelCadLocacao = new javax.swing.JPanel();
+        realizarLocacaoLb = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        panelBusLocacao = new javax.swing.JPanel();
+        busLocLabel = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         cadastro = new javax.swing.JMenu();
@@ -51,13 +70,181 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Super usuário");
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(640, 465));
+        setMinimumSize(new java.awt.Dimension(640, 460));
         setResizable(false);
-        setSize(new java.awt.Dimension(640, 455));
+        setSize(new java.awt.Dimension(640, 470));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        panelAcessoRapido.setBackground(new java.awt.Color(255, 255, 255));
+        panelAcessoRapido.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Acesso rápido", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        panelCadReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelCadReservaMouseClicked(evt);
+            }
+        });
+
+        realizarResLabel.setBackground(new java.awt.Color(255, 255, 255));
+        realizarResLabel.setForeground(new java.awt.Color(255, 255, 255));
+        realizarResLabel.setText(" Realizar Reserva");
+        realizarResLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                realizarResLabelMouseClicked(evt);
+            }
+        });
+
+        iconeReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/calendar (5).png"))); // NOI18N
+        iconeReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconeReservaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelCadReservaLayout = new javax.swing.GroupLayout(panelCadReserva);
+        panelCadReserva.setLayout(panelCadReservaLayout);
+        panelCadReservaLayout.setHorizontalGroup(
+            panelCadReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(realizarResLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadReservaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(iconeReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelCadReservaLayout.setVerticalGroup(
+            panelCadReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadReservaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(iconeReserva)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(realizarResLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panelBusReserva.setFocusTraversalPolicyProvider(true);
+        panelBusReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBusReservaMouseClicked(evt);
+            }
+        });
+
+        busReservaLabel.setBackground(new java.awt.Color(255, 255, 255));
+        busReservaLabel.setForeground(new java.awt.Color(255, 255, 255));
+        busReservaLabel.setText("  Buscar Reserva");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/calendar (6).png"))); // NOI18N
+
+        javax.swing.GroupLayout panelBusReservaLayout = new javax.swing.GroupLayout(panelBusReserva);
+        panelBusReserva.setLayout(panelBusReservaLayout);
+        panelBusReservaLayout.setHorizontalGroup(
+            panelBusReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(busReservaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+            .addGroup(panelBusReservaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelBusReservaLayout.setVerticalGroup(
+            panelBusReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusReservaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(busReservaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panelCadLocacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelCadLocacaoMouseClicked(evt);
+            }
+        });
+
+        realizarLocacaoLb.setBackground(new java.awt.Color(255, 255, 255));
+        realizarLocacaoLb.setForeground(new java.awt.Color(255, 255, 255));
+        realizarLocacaoLb.setText("  Realizar Locação");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/car.png"))); // NOI18N
+
+        javax.swing.GroupLayout panelCadLocacaoLayout = new javax.swing.GroupLayout(panelCadLocacao);
+        panelCadLocacao.setLayout(panelCadLocacaoLayout);
+        panelCadLocacaoLayout.setHorizontalGroup(
+            panelCadLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCadLocacaoLayout.createSequentialGroup()
+                .addComponent(realizarLocacaoLb)
+                .addGap(0, 11, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadLocacaoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(36, 36, 36))
+        );
+        panelCadLocacaoLayout.setVerticalGroup(
+            panelCadLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadLocacaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(realizarLocacaoLb)
+                .addGap(21, 21, 21))
+        );
+
+        panelBusLocacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBusLocacaoMouseClicked(evt);
+            }
+        });
+
+        busLocLabel.setBackground(new java.awt.Color(255, 255, 255));
+        busLocLabel.setForeground(new java.awt.Color(255, 255, 255));
+        busLocLabel.setText("Buscar Locação");
+
+        javax.swing.GroupLayout panelBusLocacaoLayout = new javax.swing.GroupLayout(panelBusLocacao);
+        panelBusLocacao.setLayout(panelBusLocacaoLayout);
+        panelBusLocacaoLayout.setHorizontalGroup(
+            panelBusLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBusLocacaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(busLocLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelBusLocacaoLayout.setVerticalGroup(
+            panelBusLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusLocacaoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(busLocLabel)
+                .addGap(21, 21, 21))
+        );
+
+        javax.swing.GroupLayout panelAcessoRapidoLayout = new javax.swing.GroupLayout(panelAcessoRapido);
+        panelAcessoRapido.setLayout(panelAcessoRapidoLayout);
+        panelAcessoRapidoLayout.setHorizontalGroup(
+            panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAcessoRapidoLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(panelCadReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(panelBusReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(panelCadLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(panelBusLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        panelAcessoRapidoLayout.setVerticalGroup(
+            panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAcessoRapidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelCadReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBusReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelCadLocacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBusLocacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(panelAcessoRapido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 620, 230));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/telaBack.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 640, 480));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 640, 490));
 
         cadastro.setText("Cadastrar");
 
@@ -211,6 +398,34 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         cadFilial.setVisible(true);
     }//GEN-LAST:event_filialCadActionPerformed
 
+    private void realizarResLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_realizarResLabelMouseClicked
+      
+    }//GEN-LAST:event_realizarResLabelMouseClicked
+
+    private void iconeReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconeReservaMouseClicked
+      ;
+    }//GEN-LAST:event_iconeReservaMouseClicked
+
+    private void panelBusReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBusReservaMouseClicked
+        BuscarReserva buscRes = new BuscarReserva(this, true);
+        buscRes.setVisible(true);
+    }//GEN-LAST:event_panelBusReservaMouseClicked
+
+    private void panelCadReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCadReservaMouseClicked
+        CadastroReserva cr = new CadastroReserva(this, true);
+      cr.setVisible(true);
+    }//GEN-LAST:event_panelCadReservaMouseClicked
+
+    private void panelCadLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCadLocacaoMouseClicked
+        CadastroLocacao cl = new CadastroLocacao(this, true);
+        cl.setVisible(true);
+    }//GEN-LAST:event_panelCadLocacaoMouseClicked
+
+    private void panelBusLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBusLocacaoMouseClicked
+        BuscarLocacao busLoc = new BuscarLocacao(this, true);
+        busLoc.setVisible(true);
+    }//GEN-LAST:event_panelBusLocacaoMouseClicked
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -224,16 +439,28 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     private javax.swing.JMenuItem bUsuario;
     private javax.swing.JMenuItem bVeiculo;
     private javax.swing.JLabel background;
+    private javax.swing.JLabel busLocLabel;
+    private javax.swing.JLabel busReservaLabel;
     private javax.swing.JMenu buscas;
     private javax.swing.JMenu cadastro;
     private javax.swing.JMenuItem camionetePassCad;
     private javax.swing.JMenuItem categoriaCad;
     private javax.swing.JMenu configuracoes;
     private javax.swing.JMenuItem filialCad;
+    private javax.swing.JLabel iconeReserva;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel panelAcessoRapido;
+    private javax.swing.JPanel panelBusLocacao;
+    private javax.swing.JPanel panelBusReserva;
+    private javax.swing.JPanel panelCadLocacao;
+    private javax.swing.JPanel panelCadReserva;
     private javax.swing.JMenuItem pessoaFisCad;
     private javax.swing.JMenuItem pessoaJurCad;
+    private javax.swing.JLabel realizarLocacaoLb;
+    private javax.swing.JLabel realizarResLabel;
     private javax.swing.JMenuItem reservarCategoria;
     private javax.swing.JMenu servicos;
     private javax.swing.JMenuItem usuariosCad;
