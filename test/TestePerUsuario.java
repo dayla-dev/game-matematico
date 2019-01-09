@@ -29,9 +29,9 @@ public class TestePerUsuario {
         
          
         Usuario user = new Usuario();
-        user.setNome("Vanessa");
-        user.setLogin("adm");
-        user.setSenha("abc123");
+        user.setNome("Luana");
+        user.setLogin("atendente");
+        user.setSenha("54321");
         user.setSenha(Criptografia.encriptografar(user.getSenha()));
         
         System.out.println(user.getSenha());
