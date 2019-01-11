@@ -28,21 +28,484 @@ public class CadastroCamioneteCarga extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        arGrupo = new javax.swing.ButtonGroup();
+        dvdGrupo = new javax.swing.ButtonGroup();
+        mp3Grupo = new javax.swing.ButtonGroup();
+        radioGrupo = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        panelcamCarga = new javax.swing.JPanel();
+        modeloLB = new javax.swing.JLabel();
+        modeloFD = new javax.swing.JTextField();
+        fabLB = new javax.swing.JLabel();
+        fabFD = new javax.swing.JTextField();
+        anoFabLB = new javax.swing.JLabel();
+        anoFabFD = new javax.swing.JTextField();
+        anoModLB = new javax.swing.JLabel();
+        anoModFD = new javax.swing.JTextField();
+        tamLB = new javax.swing.JLabel();
+        comboTamFD = new javax.swing.JComboBox<>();
+        corLB = new javax.swing.JLabel();
+        corFD = new javax.swing.JTextField();
+        kmAtualLB = new javax.swing.JLabel();
+        kmAtualFD = new javax.swing.JTextField();
+        motorLB = new javax.swing.JLabel();
+        motorFD = new javax.swing.JTextField();
+        chassiLB = new javax.swing.JLabel();
+        chassiFD = new javax.swing.JTextField();
+        torqueMotorLB = new javax.swing.JLabel();
+        torqueMotorFD = new javax.swing.JTextField();
+        combLB = new javax.swing.JLabel();
+        combusFD = new javax.swing.JComboBox<>();
+        placaLB = new javax.swing.JLabel();
+        placaFD = new javax.swing.JTextField();
+        capCargaLB = new javax.swing.JLabel();
+        capCargaFD = new javax.swing.JTextField();
+        acionEmbLB = new javax.swing.JLabel();
+        acionEmbFD = new javax.swing.JTextField();
+        potMotorLB = new javax.swing.JLabel();
+        potMotorFD = new javax.swing.JTextField();
+        consumoLB = new javax.swing.JLabel();
+        consumoFD = new javax.swing.JTextField();
+        volCombLB = new javax.swing.JLabel();
+        volCombFD = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        distEixosFD = new javax.swing.JTextField();
+        panelAcessorios = new javax.swing.JPanel();
+        arCondLB = new javax.swing.JLabel();
+        arSimGroup = new javax.swing.JRadioButton();
+        arNaoGroup = new javax.swing.JRadioButton();
+        dvdLB = new javax.swing.JLabel();
+        dvdSimGroup = new javax.swing.JRadioButton();
+        dvdNaoGroup = new javax.swing.JRadioButton();
+        mp3LB = new javax.swing.JLabel();
+        mp3SimGroup = new javax.swing.JRadioButton();
+        mp3NaoGroup = new javax.swing.JRadioButton();
+        radioLB = new javax.swing.JLabel();
+        radioSimGroup = new javax.swing.JRadioButton();
+        radioNaoGroup = new javax.swing.JRadioButton();
+        panelDisponibilidade = new javax.swing.JPanel();
+        statusLB = new javax.swing.JLabel();
+        comboStatus = new javax.swing.JComboBox<>();
+        catLB = new javax.swing.JLabel();
+        catFD = new javax.swing.JTextField();
+        salvarButton = new javax.swing.JButton();
+        cancelarButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de camionete de carga");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelcamCarga.setBackground(new java.awt.Color(255, 255, 255));
+        panelcamCarga.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Informações da camionete de carga"));
+
+        modeloLB.setText("Modelo:");
+
+        modeloFD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modeloFDActionPerformed(evt);
+            }
+        });
+
+        fabLB.setText("Fabricante:");
+
+        anoFabLB.setText("Ano fabricação:");
+
+        anoModLB.setText("Ano do modelo:");
+
+        tamLB.setText("Tamanho:");
+
+        comboTamFD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Mini", "Pequeno", "Médio", "Grande" }));
+
+        corLB.setText("Cor:");
+
+        kmAtualLB.setText("Km atual:");
+
+        kmAtualFD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kmAtualFDActionPerformed(evt);
+            }
+        });
+
+        motorLB.setText("Motor:");
+
+        chassiLB.setText("Chassi:");
+
+        torqueMotorLB.setText("Torque do motor:");
+
+        combLB.setText("Tipo de combustível:");
+
+        combusFD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Gasolina", "Etanol", "Diesel" }));
+
+        placaLB.setText("Placa:");
+
+        capCargaLB.setText("Capacidade da carga:");
+
+        acionEmbLB.setText("Acionamento da embreagem:");
+
+        potMotorLB.setText("Potência do motor:");
+
+        potMotorFD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                potMotorFDActionPerformed(evt);
+            }
+        });
+
+        consumoLB.setText("Consumo:");
+
+        volCombLB.setText("Vol. combustível:");
+
+        jLabel1.setText("Distância entre eixos:");
+
+        javax.swing.GroupLayout panelcamCargaLayout = new javax.swing.GroupLayout(panelcamCarga);
+        panelcamCarga.setLayout(panelcamCargaLayout);
+        panelcamCargaLayout.setHorizontalGroup(
+            panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelcamCargaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelcamCargaLayout.createSequentialGroup()
+                            .addComponent(capCargaLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(capCargaFD, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(acionEmbLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(acionEmbFD, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelcamCargaLayout.createSequentialGroup()
+                            .addComponent(motorLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(motorFD)
+                            .addGap(18, 18, 18)
+                            .addComponent(potMotorLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(potMotorFD, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(torqueMotorLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(torqueMotorFD, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelcamCargaLayout.createSequentialGroup()
+                            .addComponent(modeloLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(modeloFD)
+                            .addGap(18, 18, 18)
+                            .addComponent(fabLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(fabFD, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelcamCargaLayout.createSequentialGroup()
+                            .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelcamCargaLayout.createSequentialGroup()
+                                    .addComponent(anoFabLB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(anoFabFD, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(anoModLB)
+                                    .addGap(2, 2, 2)
+                                    .addComponent(anoModFD, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelcamCargaLayout.createSequentialGroup()
+                                    .addComponent(chassiLB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chassiFD, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(kmAtualLB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(kmAtualFD, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(18, 18, 18)
+                            .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcamCargaLayout.createSequentialGroup()
+                                    .addComponent(tamLB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(comboTamFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelcamCargaLayout.createSequentialGroup()
+                                    .addComponent(corLB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(corFD, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(panelcamCargaLayout.createSequentialGroup()
+                        .addComponent(combLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(combusFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(consumoLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(consumoFD, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(volCombLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(volCombFD, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelcamCargaLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(distEixosFD, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(placaLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(placaFD, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelcamCargaLayout.setVerticalGroup(
+            panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelcamCargaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modeloLB)
+                    .addComponent(modeloFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fabLB)
+                    .addComponent(fabFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(anoFabLB)
+                    .addComponent(anoFabFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anoModLB)
+                    .addComponent(anoModFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tamLB)
+                    .addComponent(comboTamFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(corLB)
+                    .addComponent(corFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chassiLB)
+                    .addComponent(chassiFD, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kmAtualLB)
+                    .addComponent(kmAtualFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(motorLB)
+                    .addComponent(motorFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(potMotorLB)
+                    .addComponent(potMotorFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(torqueMotorLB)
+                    .addComponent(torqueMotorFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(capCargaLB)
+                    .addComponent(capCargaFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(acionEmbLB)
+                    .addComponent(acionEmbFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(combLB)
+                    .addComponent(combusFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(consumoLB)
+                    .addComponent(consumoFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(volCombLB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(volCombFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(panelcamCargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(distEixosFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placaLB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(placaFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        panelAcessorios.setBackground(new java.awt.Color(255, 255, 255));
+        panelAcessorios.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Acessórios"));
+
+        arCondLB.setText("Ar-condicionado:");
+
+        arGrupo.add(arSimGroup);
+        arSimGroup.setText("Sim");
+
+        arGrupo.add(arNaoGroup);
+        arNaoGroup.setText("Não");
+
+        dvdLB.setText("DVD:");
+
+        dvdGrupo.add(dvdSimGroup);
+        dvdSimGroup.setText("Sim");
+
+        dvdGrupo.add(dvdNaoGroup);
+        dvdNaoGroup.setText("Não");
+
+        mp3LB.setText("MP3:");
+
+        mp3Grupo.add(mp3SimGroup);
+        mp3SimGroup.setText("Sim");
+
+        mp3Grupo.add(mp3NaoGroup);
+        mp3NaoGroup.setText("Não");
+
+        radioLB.setText("Rádio:");
+
+        radioGrupo.add(radioSimGroup);
+        radioSimGroup.setText("Sim");
+
+        radioGrupo.add(radioNaoGroup);
+        radioNaoGroup.setText("Não");
+
+        javax.swing.GroupLayout panelAcessoriosLayout = new javax.swing.GroupLayout(panelAcessorios);
+        panelAcessorios.setLayout(panelAcessoriosLayout);
+        panelAcessoriosLayout.setHorizontalGroup(
+            panelAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAcessoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAcessoriosLayout.createSequentialGroup()
+                        .addComponent(arCondLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(arSimGroup)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(arNaoGroup))
+                    .addGroup(panelAcessoriosLayout.createSequentialGroup()
+                        .addComponent(mp3LB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mp3SimGroup)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(mp3NaoGroup)))
+                .addGap(60, 60, 60)
+                .addGroup(panelAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAcessoriosLayout.createSequentialGroup()
+                        .addComponent(dvdLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dvdSimGroup)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dvdNaoGroup))
+                    .addGroup(panelAcessoriosLayout.createSequentialGroup()
+                        .addComponent(radioLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radioSimGroup)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioNaoGroup)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelAcessoriosLayout.setVerticalGroup(
+            panelAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAcessoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(arCondLB)
+                    .addComponent(arSimGroup)
+                    .addComponent(arNaoGroup)
+                    .addComponent(dvdLB)
+                    .addComponent(dvdSimGroup)
+                    .addComponent(dvdNaoGroup))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAcessoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mp3LB)
+                    .addComponent(mp3SimGroup)
+                    .addComponent(mp3NaoGroup)
+                    .addComponent(radioLB)
+                    .addComponent(radioSimGroup)
+                    .addComponent(radioNaoGroup))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        panelDisponibilidade.setBackground(new java.awt.Color(255, 255, 255));
+        panelDisponibilidade.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Disponibilidade do veículo"));
+
+        statusLB.setText("Status:");
+
+        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível", "Alugado", "Manutenção" }));
+
+        catLB.setText("Categoria:");
+
+        javax.swing.GroupLayout panelDisponibilidadeLayout = new javax.swing.GroupLayout(panelDisponibilidade);
+        panelDisponibilidade.setLayout(panelDisponibilidadeLayout);
+        panelDisponibilidadeLayout.setHorizontalGroup(
+            panelDisponibilidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDisponibilidadeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(statusLB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(catLB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(catFD, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
+        panelDisponibilidadeLayout.setVerticalGroup(
+            panelDisponibilidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDisponibilidadeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDisponibilidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(statusLB)
+                    .addComponent(comboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(catLB)
+                    .addComponent(catFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        salvarButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        salvarButton.setText("Salvar");
+
+        cancelarButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cancelarButton.setText("Cancelar");
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelcamCarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelAcessorios, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(panelDisponibilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(salvarButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cancelarButton)
+                .addGap(37, 37, 37))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelcamCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelDisponibilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelAcessorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(salvarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(cancelarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void kmAtualFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kmAtualFDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kmAtualFDActionPerformed
+
+    private void modeloFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeloFDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modeloFDActionPerformed
+
+    private void potMotorFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potMotorFDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_potMotorFDActionPerformed
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_cancelarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +550,67 @@ public class CadastroCamioneteCarga extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField acionEmbFD;
+    private javax.swing.JLabel acionEmbLB;
+    private javax.swing.JTextField anoFabFD;
+    private javax.swing.JLabel anoFabLB;
+    private javax.swing.JTextField anoModFD;
+    private javax.swing.JLabel anoModLB;
+    private javax.swing.JLabel arCondLB;
+    private javax.swing.ButtonGroup arGrupo;
+    private javax.swing.JRadioButton arNaoGroup;
+    private javax.swing.JRadioButton arSimGroup;
+    private javax.swing.JButton cancelarButton;
+    private javax.swing.JTextField capCargaFD;
+    private javax.swing.JLabel capCargaLB;
+    private javax.swing.JTextField catFD;
+    private javax.swing.JLabel catLB;
+    private javax.swing.JTextField chassiFD;
+    private javax.swing.JLabel chassiLB;
+    private javax.swing.JLabel combLB;
+    private javax.swing.JComboBox<String> comboStatus;
+    private javax.swing.JComboBox<String> comboTamFD;
+    private javax.swing.JComboBox<String> combusFD;
+    private javax.swing.JTextField consumoFD;
+    private javax.swing.JLabel consumoLB;
+    private javax.swing.JTextField corFD;
+    private javax.swing.JLabel corLB;
+    private javax.swing.JTextField distEixosFD;
+    private javax.swing.ButtonGroup dvdGrupo;
+    private javax.swing.JLabel dvdLB;
+    private javax.swing.JRadioButton dvdNaoGroup;
+    private javax.swing.JRadioButton dvdSimGroup;
+    private javax.swing.JTextField fabFD;
+    private javax.swing.JLabel fabLB;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField kmAtualFD;
+    private javax.swing.JLabel kmAtualLB;
+    private javax.swing.JTextField modeloFD;
+    private javax.swing.JLabel modeloLB;
+    private javax.swing.JTextField motorFD;
+    private javax.swing.JLabel motorLB;
+    private javax.swing.ButtonGroup mp3Grupo;
+    private javax.swing.JLabel mp3LB;
+    private javax.swing.JRadioButton mp3NaoGroup;
+    private javax.swing.JRadioButton mp3SimGroup;
+    private javax.swing.JPanel panelAcessorios;
+    private javax.swing.JPanel panelDisponibilidade;
+    private javax.swing.JPanel panelcamCarga;
+    private javax.swing.JTextField placaFD;
+    private javax.swing.JLabel placaLB;
+    private javax.swing.JTextField potMotorFD;
+    private javax.swing.JLabel potMotorLB;
+    private javax.swing.ButtonGroup radioGrupo;
+    private javax.swing.JLabel radioLB;
+    private javax.swing.JRadioButton radioNaoGroup;
+    private javax.swing.JRadioButton radioSimGroup;
+    private javax.swing.JButton salvarButton;
+    private javax.swing.JLabel statusLB;
+    private javax.swing.JLabel tamLB;
+    private javax.swing.JTextField torqueMotorFD;
+    private javax.swing.JLabel torqueMotorLB;
+    private javax.swing.JTextField volCombFD;
+    private javax.swing.JLabel volCombLB;
     // End of variables declaration//GEN-END:variables
 }
