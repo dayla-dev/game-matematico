@@ -28,21 +28,297 @@ public class CadastroVeiculo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fundo = new javax.swing.JPanel();
+        panelInfVeiculo = new javax.swing.JPanel();
+        modeloLB = new javax.swing.JLabel();
+        modeloFD = new javax.swing.JTextField();
+        fabLB = new javax.swing.JLabel();
+        fabFD = new javax.swing.JTextField();
+        anoFabLB = new javax.swing.JLabel();
+        anoFabFD = new javax.swing.JTextField();
+        anoModLB = new javax.swing.JLabel();
+        anoModFD = new javax.swing.JTextField();
+        tamLB = new javax.swing.JLabel();
+        numPortasLB = new javax.swing.JLabel();
+        comboTamFD = new javax.swing.JComboBox<>();
+        numPortasFD = new javax.swing.JTextField();
+        numPassLB = new javax.swing.JLabel();
+        numPassFD = new javax.swing.JTextField();
+        corLB = new javax.swing.JLabel();
+        corFD = new javax.swing.JTextField();
+        kmAtualLB = new javax.swing.JLabel();
+        kmAtualFD = new javax.swing.JTextField();
+        motorLB = new javax.swing.JLabel();
+        motorFD = new javax.swing.JTextField();
+        chassiLB = new javax.swing.JLabel();
+        chassiFD = new javax.swing.JTextField();
+        torqueMotorLB = new javax.swing.JLabel();
+        torqueMotorFD = new javax.swing.JTextField();
+        combLB = new javax.swing.JLabel();
+        combusFD = new javax.swing.JComboBox<>();
+        placaLB = new javax.swing.JLabel();
+        placaFD = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        fundo.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelInfVeiculo.setBackground(new java.awt.Color(255, 255, 255));
+        panelInfVeiculo.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Informações do veículo"));
+
+        modeloLB.setText("Modelo:");
+
+        modeloFD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modeloFDActionPerformed(evt);
+            }
+        });
+
+        fabLB.setText("Fabricante:");
+
+        anoFabLB.setText("Ano fabricação:");
+
+        anoModLB.setText("Ano do modelo:");
+
+        tamLB.setText("Tamanho:");
+
+        numPortasLB.setText("Nº de portas:");
+
+        comboTamFD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Mini", "Pequeno", "Médio", "Grande" }));
+
+        numPassLB.setText("Nº de passageiros:");
+
+        corLB.setText("Cor:");
+
+        kmAtualLB.setText("Km atual:");
+
+        kmAtualFD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kmAtualFDActionPerformed(evt);
+            }
+        });
+
+        motorLB.setText("Motor:");
+
+        chassiLB.setText("Chassi:");
+
+        torqueMotorLB.setText("Torque do motor:");
+
+        combLB.setText("Tipo de combustível:");
+
+        combusFD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Gasolina", "Etanol", "Diesel" }));
+
+        placaLB.setText("Placa:");
+
+        javax.swing.GroupLayout panelInfVeiculoLayout = new javax.swing.GroupLayout(panelInfVeiculo);
+        panelInfVeiculo.setLayout(panelInfVeiculoLayout);
+        panelInfVeiculoLayout.setHorizontalGroup(
+            panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfVeiculoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInfVeiculoLayout.createSequentialGroup()
+                        .addComponent(torqueMotorLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(torqueMotorFD, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(combLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(combusFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(placaLB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(placaFD, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
+                    .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelInfVeiculoLayout.createSequentialGroup()
+                            .addComponent(motorLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(motorFD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(chassiLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(chassiFD, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(kmAtualLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(kmAtualFD))
+                        .addGroup(panelInfVeiculoLayout.createSequentialGroup()
+                            .addComponent(modeloLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(modeloFD)
+                            .addGap(18, 18, 18)
+                            .addComponent(fabLB)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(fabFD, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelInfVeiculoLayout.createSequentialGroup()
+                            .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelInfVeiculoLayout.createSequentialGroup()
+                                    .addComponent(anoFabLB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(anoFabFD, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(anoModLB)
+                                    .addGap(2, 2, 2)
+                                    .addComponent(anoModFD, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panelInfVeiculoLayout.createSequentialGroup()
+                                    .addComponent(numPortasLB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(numPortasFD, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(numPassLB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(numPassFD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(corLB)
+                                    .addGap(6, 6, 6)))
+                            .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelInfVeiculoLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(corFD, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfVeiculoLayout.createSequentialGroup()
+                                    .addGap(27, 27, 27)
+                                    .addComponent(tamLB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(comboTamFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap())
+        );
+        panelInfVeiculoLayout.setVerticalGroup(
+            panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfVeiculoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modeloLB)
+                    .addComponent(modeloFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fabLB)
+                    .addComponent(fabFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(anoFabLB)
+                    .addComponent(anoFabFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anoModLB)
+                    .addComponent(anoModFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tamLB)
+                    .addComponent(comboTamFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numPortasLB)
+                    .addComponent(numPortasFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numPassLB)
+                    .addComponent(numPassFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(corLB)
+                    .addComponent(corFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kmAtualLB)
+                    .addComponent(kmAtualFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(motorLB)
+                    .addComponent(motorFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chassiLB)
+                    .addComponent(chassiFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(torqueMotorLB)
+                    .addComponent(torqueMotorFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combLB)
+                    .addComponent(combusFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placaLB)
+                    .addComponent(placaFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Disponibilidade do veículo"));
+
+        jLabel1.setText("Status:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível", "Alugado", "Manutenção" }));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(310, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Acessórios"));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 51, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout fundoLayout = new javax.swing.GroupLayout(fundo);
+        fundo.setLayout(fundoLayout);
+        fundoLayout.setHorizontalGroup(
+            fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fundoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelInfVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(fundoLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        fundoLayout.setVerticalGroup(
+            fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fundoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelInfVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void modeloFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeloFDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modeloFDActionPerformed
+
+    private void kmAtualFDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kmAtualFDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kmAtualFDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -87,5 +363,39 @@ public class CadastroVeiculo extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField anoFabFD;
+    private javax.swing.JLabel anoFabLB;
+    private javax.swing.JTextField anoModFD;
+    private javax.swing.JLabel anoModLB;
+    private javax.swing.JTextField chassiFD;
+    private javax.swing.JLabel chassiLB;
+    private javax.swing.JLabel combLB;
+    private javax.swing.JComboBox<String> comboTamFD;
+    private javax.swing.JComboBox<String> combusFD;
+    private javax.swing.JTextField corFD;
+    private javax.swing.JLabel corLB;
+    private javax.swing.JTextField fabFD;
+    private javax.swing.JLabel fabLB;
+    private javax.swing.JPanel fundo;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField kmAtualFD;
+    private javax.swing.JLabel kmAtualLB;
+    private javax.swing.JTextField modeloFD;
+    private javax.swing.JLabel modeloLB;
+    private javax.swing.JTextField motorFD;
+    private javax.swing.JLabel motorLB;
+    private javax.swing.JTextField numPassFD;
+    private javax.swing.JLabel numPassLB;
+    private javax.swing.JTextField numPortasFD;
+    private javax.swing.JLabel numPortasLB;
+    private javax.swing.JPanel panelInfVeiculo;
+    private javax.swing.JTextField placaFD;
+    private javax.swing.JLabel placaLB;
+    private javax.swing.JLabel tamLB;
+    private javax.swing.JTextField torqueMotorFD;
+    private javax.swing.JLabel torqueMotorLB;
     // End of variables declaration//GEN-END:variables
 }

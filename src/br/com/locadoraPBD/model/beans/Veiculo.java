@@ -49,7 +49,7 @@ public class Veiculo implements Serializable {
     @Column(name="combustivel", nullable=false, length=50)
     private String tipoCombustivel;
     @Column(name="km_atual", nullable=false, length=30)
-    private String kmAtual;
+    private Double kmAtual;
     @Column(name="fabricante", nullable=false, length=50)
     private String fabricante;    
     @Column(name = "ar_cond")
@@ -67,53 +67,53 @@ public class Veiculo implements Serializable {
     public Veiculo() {
     }
 
-    public Veiculo(String modelo, boolean status, int numPassageiros, int numeroPortas, String anoFabricacao, String anoModelo, String tamanho, String placa, String chassi, String motor, String cor, String torqueMotor, String tipoCombustivel, String kmAtual, String fabricante, boolean arCondicionado, boolean radio, boolean dvd, boolean mp3) {
-        this.modelo = modelo;
-        this.status = status;
-        this.numPassageiros = numPassageiros;
-        this.numeroPortas = numeroPortas;
-        this.anoFabricacao = anoFabricacao;
-        this.anoModelo = anoModelo;
-        this.tamanho = tamanho;
-        this.placa = placa;
-        this.chassi = chassi;
-        this.motor = motor;
-        this.cor = cor;
-        this.torqueMotor = torqueMotor;
-        this.tipoCombustivel = tipoCombustivel;
-        this.kmAtual = kmAtual;
-        this.fabricante = fabricante;
-        this.arCondicionado = arCondicionado;
-        this.radio = radio;
-        this.dvd = dvd;
-        this.mp3 = mp3;
-    }
-
-    public Veiculo(String modelo, boolean status, int numPassageiros, int numeroPortas, String anoFabricacao, String anoModelo, String tamanho, String placa, String chassi, String motor, String cor, String torqueMotor, String tipoCombustivel, String kmAtual, String fabricante, boolean arCondicionado, boolean radio, boolean dvd, boolean mp3, Categoria categoria) {
-        this.modelo = modelo;
-        this.status = status;
-        this.numPassageiros = numPassageiros;
-        this.numeroPortas = numeroPortas;
-        this.anoFabricacao = anoFabricacao;
-        this.anoModelo = anoModelo;
-        this.tamanho = tamanho;
-        this.placa = placa;
-        this.chassi = chassi;
-        this.motor = motor;
-        this.cor = cor;
-        this.torqueMotor = torqueMotor;
-        this.tipoCombustivel = tipoCombustivel;
-        this.kmAtual = kmAtual;
-        this.fabricante = fabricante;
-        this.arCondicionado = arCondicionado;
-        this.radio = radio;
-        this.dvd = dvd;
-        this.mp3 = mp3;
-        this.categoria = categoria;
-    }
-
-    public Veiculo(Long id, String modelo, boolean status, int numPassageiros, int numeroPortas, String anoFabricacao, String anoModelo, String tamanho, String placa, String chassi, String motor, String cor, String torqueMotor, String tipoCombustivel, String kmAtual, String fabricante, boolean arCondicionado, boolean radio, boolean dvd, boolean mp3, Categoria categoria) {
+    public Veiculo(Long id, String modelo, boolean status, int numPassageiros, int numeroPortas, String anoFabricacao, String anoModelo, String tamanho, String placa, String chassi, String motor, String cor, String torqueMotor, String tipoCombustivel, Double kmAtual, String fabricante, boolean arCondicionado, boolean radio, boolean dvd, boolean mp3) {
         this.id = id;
+        this.modelo = modelo;
+        this.status = status;
+        this.numPassageiros = numPassageiros;
+        this.numeroPortas = numeroPortas;
+        this.anoFabricacao = anoFabricacao;
+        this.anoModelo = anoModelo;
+        this.tamanho = tamanho;
+        this.placa = placa;
+        this.chassi = chassi;
+        this.motor = motor;
+        this.cor = cor;
+        this.torqueMotor = torqueMotor;
+        this.tipoCombustivel = tipoCombustivel;
+        this.kmAtual = kmAtual;
+        this.fabricante = fabricante;
+        this.arCondicionado = arCondicionado;
+        this.radio = radio;
+        this.dvd = dvd;
+        this.mp3 = mp3;
+    }
+
+    public Veiculo(String modelo, boolean status, int numPassageiros, int numeroPortas, String anoFabricacao, String anoModelo, String tamanho, String placa, String chassi, String motor, String cor, String torqueMotor, String tipoCombustivel, Double kmAtual, String fabricante, boolean arCondicionado, boolean radio, boolean dvd, boolean mp3) {
+        this.modelo = modelo;
+        this.status = status;
+        this.numPassageiros = numPassageiros;
+        this.numeroPortas = numeroPortas;
+        this.anoFabricacao = anoFabricacao;
+        this.anoModelo = anoModelo;
+        this.tamanho = tamanho;
+        this.placa = placa;
+        this.chassi = chassi;
+        this.motor = motor;
+        this.cor = cor;
+        this.torqueMotor = torqueMotor;
+        this.tipoCombustivel = tipoCombustivel;
+        this.kmAtual = kmAtual;
+        this.fabricante = fabricante;
+        this.arCondicionado = arCondicionado;
+        this.radio = radio;
+        this.dvd = dvd;
+        this.mp3 = mp3;
+    }
+
+    public Veiculo(String modelo, boolean status, int numPassageiros, int numeroPortas, String anoFabricacao, String anoModelo, String tamanho, String placa, String chassi, String motor, String cor, String torqueMotor, String tipoCombustivel, Double kmAtual, String fabricante, boolean arCondicionado, boolean radio, boolean dvd, boolean mp3, Categoria categoria) {
+       
         this.modelo = modelo;
         this.status = status;
         this.numPassageiros = numPassageiros;
@@ -139,27 +139,27 @@ public class Veiculo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.modelo);
-        hash = 97 * hash + (this.status ? 1 : 0);
-        hash = 97 * hash + this.numPassageiros;
-        hash = 97 * hash + this.numeroPortas;
-        hash = 97 * hash + Objects.hashCode(this.anoFabricacao);
-        hash = 97 * hash + Objects.hashCode(this.anoModelo);
-        hash = 97 * hash + Objects.hashCode(this.tamanho);
-        hash = 97 * hash + Objects.hashCode(this.placa);
-        hash = 97 * hash + Objects.hashCode(this.chassi);
-        hash = 97 * hash + Objects.hashCode(this.motor);
-        hash = 97 * hash + Objects.hashCode(this.cor);
-        hash = 97 * hash + Objects.hashCode(this.torqueMotor);
-        hash = 97 * hash + Objects.hashCode(this.tipoCombustivel);
-        hash = 97 * hash + Objects.hashCode(this.kmAtual);
-        hash = 97 * hash + Objects.hashCode(this.fabricante);
-        hash = 97 * hash + (this.arCondicionado ? 1 : 0);
-        hash = 97 * hash + (this.radio ? 1 : 0);
-        hash = 97 * hash + (this.dvd ? 1 : 0);
-        hash = 97 * hash + (this.mp3 ? 1 : 0);
-        hash = 97 * hash + Objects.hashCode(this.categoria);
+        hash = 17 * hash + Objects.hashCode(this.id);
+        hash = 17 * hash + Objects.hashCode(this.modelo);
+        hash = 17 * hash + (this.status ? 1 : 0);
+        hash = 17 * hash + this.numPassageiros;
+        hash = 17 * hash + this.numeroPortas;
+        hash = 17 * hash + Objects.hashCode(this.anoFabricacao);
+        hash = 17 * hash + Objects.hashCode(this.anoModelo);
+        hash = 17 * hash + Objects.hashCode(this.tamanho);
+        hash = 17 * hash + Objects.hashCode(this.placa);
+        hash = 17 * hash + Objects.hashCode(this.chassi);
+        hash = 17 * hash + Objects.hashCode(this.motor);
+        hash = 17 * hash + Objects.hashCode(this.cor);
+        hash = 17 * hash + Objects.hashCode(this.torqueMotor);
+        hash = 17 * hash + Objects.hashCode(this.tipoCombustivel);
+        hash = 17 * hash + Objects.hashCode(this.kmAtual);
+        hash = 17 * hash + Objects.hashCode(this.fabricante);
+        hash = 17 * hash + (this.arCondicionado ? 1 : 0);
+        hash = 17 * hash + (this.radio ? 1 : 0);
+        hash = 17 * hash + (this.dvd ? 1 : 0);
+        hash = 17 * hash + (this.mp3 ? 1 : 0);
+        hash = 17 * hash + Objects.hashCode(this.categoria);
         return hash;
     }
 
@@ -226,24 +226,19 @@ public class Veiculo implements Serializable {
         if (!Objects.equals(this.tipoCombustivel, other.tipoCombustivel)) {
             return false;
         }
-        if (!Objects.equals(this.kmAtual, other.kmAtual)) {
-            return false;
-        }
         if (!Objects.equals(this.fabricante, other.fabricante)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
+        if (!Objects.equals(this.kmAtual, other.kmAtual)) {
+            return false;
+        }
         if (!Objects.equals(this.categoria, other.categoria)) {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Veiculo{" + "id=" + id + ", modelo=" + modelo + ", status=" + status + ", numPassageiros=" + numPassageiros + ", numeroPortas=" + numeroPortas + ", anoFabricacao=" + anoFabricacao + ", anoModelo=" + anoModelo + ", tamanho=" + tamanho + ", placa=" + placa + ", chassi=" + chassi + ", motor=" + motor + ", cor=" + cor + ", torqueMotor=" + torqueMotor + ", tipoCombustivel=" + tipoCombustivel + ", kmAtual=" + kmAtual + ", fabricante=" + fabricante + ", arCondicionado=" + arCondicionado + ", radio=" + radio + ", dvd=" + dvd + ", mp3=" + mp3 + ", categoria=" + categoria + '}';
     }
 
     public Long getId() {
@@ -358,11 +353,11 @@ public class Veiculo implements Serializable {
         this.tipoCombustivel = tipoCombustivel;
     }
 
-    public String getKmAtual() {
+    public Double getKmAtual() {
         return kmAtual;
     }
 
-    public void setKmAtual(String kmAtual) {
+    public void setKmAtual(Double kmAtual) {
         this.kmAtual = kmAtual;
     }
 
@@ -413,6 +408,8 @@ public class Veiculo implements Serializable {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+    
+    
 
    
 }

@@ -35,7 +35,7 @@ public class TestePerVeiculo {
         veiculo.setCor("Preto");
         veiculo.setTorqueMotor("xxx");
         veiculo.setTipoCombustivel("Gasolina");
-        veiculo.setKmAtual("30.016 km");
+        veiculo.setKmAtual(300.0);
         veiculo.setFabricante("audi");
         veiculo.setArCondicionado(true);
         veiculo.setRadio(true);
