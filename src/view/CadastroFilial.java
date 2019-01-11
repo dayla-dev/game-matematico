@@ -5,6 +5,13 @@
  */
 package view;
 
+import br.com.locadoraPBD.JPAUtil.Conexao;
+import br.com.locadoraPBD.model.DAO.EnderecoDAO;
+import br.com.locadoraPBD.model.DAO.FilialDAO;
+import br.com.locadoraPBD.model.beans.Endereco;
+import br.com.locadoraPBD.model.beans.Filial;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dayla
@@ -155,10 +162,20 @@ public class CadastroFilial extends javax.swing.JDialog {
         salvarButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         salvarButton.setText("Salvar");
         salvarButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        salvarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarButtonActionPerformed(evt);
+            }
+        });
 
         cancelarButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cancelarButton.setText("Cancelar");
         cancelarButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fundoLayout = new javax.swing.GroupLayout(fundo);
         fundo.setLayout(fundoLayout);
@@ -202,47 +219,33 @@ public class CadastroFilial extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroFilial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroFilial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroFilial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroFilial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
+       EnderecoDAO endDAO = new EnderecoDAO(Conexao.conexao());
+       FilialDAO filialDAO = new FilialDAO(Conexao.conexao());
+       
+       Endereco endereco = new Endereco();        
+        endereco.setLogradouro(lograField.getText().toUpperCase());
+        endereco.setNumero(numField.getText().toUpperCase());
+        endereco.setBairro(bairroField.getText().toUpperCase());
+        endereco.setCep(cepField.getText().toUpperCase());
+        endereco.setEstado(comboEstado.getSelectedItem().toString().toUpperCase());
+        endereco.setCidade(cidadeField.getText().toUpperCase());
+        
+        endDAO.create(endereco);
+        
+        Filial filial = new Filial();
+        filial.setNome(nomeField.getText().toUpperCase());
+        
+        filialDAO.Salvar(filial);
+        JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
+        limparCampo();
+        
+    }//GEN-LAST:event_salvarButtonActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CadastroFilial dialog = new CadastroFilial(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelarButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairroField;
@@ -264,4 +267,18 @@ public class CadastroFilial extends javax.swing.JDialog {
     private javax.swing.JPanel panelDadosFilial;
     private javax.swing.JButton salvarButton;
     // End of variables declaration//GEN-END:variables
+
+public void limparCampo(){
+    nomeField.setText("");
+    lograField.setText("");
+    numField.setText("");
+    bairroField.setText("");
+    cepField.setText("");
+    if(!comboEstado.getSelectedItem().equals("Selecione")){
+        comboEstado.setSelectedIndex(0);
+    }
+    cidadeField.setText("");
+            
+}
+    
 }

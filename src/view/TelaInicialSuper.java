@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 
 /**
  *
@@ -10,11 +11,13 @@ public class TelaInicialSuper extends javax.swing.JFrame {
 
     public TelaInicialSuper() {
         initComponents();
+        setIcon();
         panelAcessoRapido.setBackground(new Color(0,0,0,50));
         panelCadReserva.setBackground(new Color(0,0,0,100));
         panelBusReserva.setBackground(new Color(0,0,0,100));
         panelCadLocacao.setBackground(new Color(0,0,0,100));
         panelBusLocacao.setBackground(new Color(0,0,0,100));
+        
     }
 
     public static void main(String args[]) {
@@ -426,7 +429,9 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         busLoc.setVisible(true);
     }//GEN-LAST:event_panelBusLocacaoMouseClicked
 
-    
+    private void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/car.png")));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CamionteCargaCad;
@@ -466,5 +471,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     private javax.swing.JMenuItem usuariosCad;
     private javax.swing.JMenuItem veiculoCad;
     // End of variables declaration//GEN-END:variables
+
+   
 
 }
