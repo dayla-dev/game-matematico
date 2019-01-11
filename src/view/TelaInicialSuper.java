@@ -440,6 +440,11 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         buscas.add(bPessoaFis);
 
         bPessoaJur.setText("Pessoa Jurídica");
+        bPessoaJur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPessoaJurActionPerformed(evt);
+            }
+        });
         buscas.add(bPessoaJur);
 
         bFilial.setText("Filial");
@@ -502,7 +507,8 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_bUsuarioActionPerformed
 
     private void bCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCategoriaActionPerformed
-        // TODO add your handling code here:
+        BuscarCategoria buscarCat = new BuscarCategoria(this, true);
+        buscarCat.setVisible(true);
     }//GEN-LAST:event_bCategoriaActionPerformed
 
     private void usuariosCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosCadActionPerformed
@@ -572,6 +578,11 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         BuscarPessoaFisica buscarPF = new BuscarPessoaFisica(this, true);
         buscarPF.setVisible(true);
     }//GEN-LAST:event_bPessoaFisActionPerformed
+
+    private void bPessoaJurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPessoaJurActionPerformed
+        BuscarPessoaJuridica buscarPJ = new BuscarPessoaJuridica(this, true);
+        buscarPJ.setVisible(true);
+    }//GEN-LAST:event_bPessoaJurActionPerformed
 
     private void setIcon(){
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/car.png")));
