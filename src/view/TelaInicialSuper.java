@@ -23,14 +23,6 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         panelBusPJ.setBackground(new Color(0,0,0,100));
     }
 
-    public static void main(String args[]) {
-       
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               new TelaInicialSuper().setVisible(true);
-            }
-        });
-    }
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -450,7 +442,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelCadPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelBusPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
+                        .addComponent(panelBusPJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelAcessoRapidoLayout.createSequentialGroup()
                         .addComponent(panelCadReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -467,7 +459,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelCadReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBusReserva, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                    .addComponent(panelBusReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelCadLocacao, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
                     .addComponent(panelBusLocacao, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -475,7 +467,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
                     .addComponent(panelCadPF, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                     .addComponent(panelBusPF, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                     .addComponent(panelCadPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                    .addComponent(panelBusPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                    .addComponent(panelBusPJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -579,6 +571,11 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         buscas.add(bPessoaJur);
 
         bFilial.setText("Filial");
+        bFilial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFilialActionPerformed(evt);
+            }
+        });
         buscas.add(bFilial);
 
         bCategoria.setText("Categoria");
@@ -608,9 +605,19 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         servicos.setText("Serviços");
 
         reservarCategoria.setText("Reservar Categoria");
+        reservarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservarCategoriaActionPerformed(evt);
+            }
+        });
         servicos.add(reservarCategoria);
 
         alocarVeiculo.setText("Alocar Veículo");
+        alocarVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alocarVeiculoActionPerformed(evt);
+            }
+        });
         servicos.add(alocarVeiculo);
 
         jMenuBar1.add(servicos);
@@ -739,8 +746,23 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         buscarPJ.setVisible(true);
     }//GEN-LAST:event_panelBusPJMouseClicked
 
+    private void bFilialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFilialActionPerformed
+        BuscarFilial buscarFilial = new BuscarFilial(this, true);
+        buscarFilial.setVisible(true);
+    }//GEN-LAST:event_bFilialActionPerformed
+
+    private void reservarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservarCategoriaActionPerformed
+        CadastroReserva  cadReserva = new CadastroReserva(this, true);
+        cadReserva.setVisible(true);
+    }//GEN-LAST:event_reservarCategoriaActionPerformed
+
+    private void alocarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alocarVeiculoActionPerformed
+        CadastroLocacao cadLocacao = new CadastroLocacao(this, true);
+        cadLocacao.setVisible(true);
+    }//GEN-LAST:event_alocarVeiculoActionPerformed
+
     private void setIcon(){
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/car.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/locadora.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

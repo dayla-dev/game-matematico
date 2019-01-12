@@ -23,48 +23,55 @@ public class TelaLogin extends javax.swing.JFrame {
    
     public TelaLogin() {
         initComponents();
+        panelLogin.setBackground(new java.awt.Color(0,0,0,150));
+        panelTituloLogin.setBackground(new java.awt.Color(109,86,0,170));
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelLogin = new javax.swing.JPanel();
         LoginLabel = new javax.swing.JLabel();
-        senhaLabel = new javax.swing.JLabel();
         loginField = new javax.swing.JTextField();
+        senhaLabel = new javax.swing.JLabel();
         senhaField = new javax.swing.JPasswordField();
         entrarButton = new javax.swing.JButton();
         sairButton = new javax.swing.JButton();
-        logomarca = new javax.swing.JLabel();
+        panelTituloLogin = new javax.swing.JPanel();
         notificacao = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LoginLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LoginLabel.setText("Login:");
-        getContentPane().add(LoginLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
+        panelLogin.setBackground(new java.awt.Color(255, 0, 51));
 
-        senhaLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        senhaLabel.setText("Senha:");
-        getContentPane().add(senhaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, -1, -1));
+        LoginLabel.setBackground(new java.awt.Color(255, 255, 255));
+        LoginLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LoginLabel.setForeground(new java.awt.Color(255, 255, 255));
+        LoginLabel.setText("Login:");
 
         loginField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(loginField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 140, -1));
+
+        senhaLabel.setBackground(new java.awt.Color(255, 255, 255));
+        senhaLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        senhaLabel.setForeground(new java.awt.Color(255, 255, 255));
+        senhaLabel.setText("Senha:");
 
         senhaField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(senhaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 140, -1));
 
         entrarButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         entrarButton.setText("Entrar");
@@ -73,7 +80,6 @@ public class TelaLogin extends javax.swing.JFrame {
                 entrarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(entrarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
 
         sairButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         sairButton.setText("Sair");
@@ -82,14 +88,63 @@ public class TelaLogin extends javax.swing.JFrame {
                 sairButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(sairButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, -1, -1));
 
-        logomarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/logo.png"))); // NOI18N
-        getContentPane().add(logomarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 90));
-        getContentPane().add(notificacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 140, 20));
+        javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
+        panelLogin.setLayout(panelLoginLayout);
+        panelLoginLayout.setHorizontalGroup(
+            panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLoginLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(senhaLabel)
+                    .addComponent(LoginLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(senhaField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelLoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(entrarButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sairButton)
+                .addGap(21, 21, 21))
+        );
+        panelLoginLayout.setVerticalGroup(
+            panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLoginLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LoginLabel)
+                    .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(senhaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senhaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(entrarButton)
+                    .addComponent(sairButton))
+                .addGap(29, 29, 29))
+        );
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/background-banner.png"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 230, 180));
+
+        panelTituloLogin.setBackground(new java.awt.Color(221, 221, 6));
+
+        notificacao.setBackground(new java.awt.Color(0, 102, 0));
+        panelTituloLogin.add(notificacao);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Dados para acesso");
+        panelTituloLogin.add(jLabel1);
+
+        getContentPane().add(panelTituloLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 230, 30));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/telaBack.jpg"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 340));
 
         pack();
         setLocationRelativeTo(null);
@@ -171,9 +226,11 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel LoginLabel;
     private javax.swing.JLabel background;
     private javax.swing.JButton entrarButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField loginField;
-    private javax.swing.JLabel logomarca;
     private javax.swing.JLabel notificacao;
+    private javax.swing.JPanel panelLogin;
+    private javax.swing.JPanel panelTituloLogin;
     private javax.swing.JButton sairButton;
     private javax.swing.JPasswordField senhaField;
     private javax.swing.JLabel senhaLabel;

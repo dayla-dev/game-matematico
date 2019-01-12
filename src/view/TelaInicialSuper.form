@@ -108,6 +108,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Filial"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bFilialActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="bCategoria">
               <Properties>
@@ -146,11 +149,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reservar Categoria"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reservarCategoriaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="alocarVeiculo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alocar Ve&#xed;culo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alocarVeiculoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -238,7 +247,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="panelCadPJ" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="panelBusPJ" pref="107" max="32767" attributes="0"/>
+                          <Component id="panelBusPJ" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="panelCadReserva" min="-2" max="-2" attributes="0"/>
@@ -260,7 +269,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="panelCadReserva" max="32767" attributes="0"/>
-                      <Component id="panelBusReserva" pref="91" max="32767" attributes="0"/>
+                      <Component id="panelBusReserva" max="32767" attributes="0"/>
                       <Component id="panelCadLocacao" pref="91" max="32767" attributes="0"/>
                       <Component id="panelBusLocacao" pref="91" max="32767" attributes="0"/>
                   </Group>
@@ -269,7 +278,7 @@
                       <Component id="panelCadPF" pref="97" max="32767" attributes="0"/>
                       <Component id="panelBusPF" pref="97" max="32767" attributes="0"/>
                       <Component id="panelCadPJ" pref="97" max="32767" attributes="0"/>
-                      <Component id="panelBusPJ" alignment="0" pref="97" max="32767" attributes="0"/>
+                      <Component id="panelBusPJ" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
