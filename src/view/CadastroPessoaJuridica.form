@@ -157,6 +157,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nomeFieldKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="cnpjLabel">
               <Properties>
@@ -171,6 +174,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cnpjFieldKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="inscEstLabel">
               <Properties>
@@ -185,6 +191,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="inscEstFieldKeyPressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -264,6 +273,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="emailFieldKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="telLabel">
               <Properties>
@@ -281,6 +293,9 @@
                   <Format format="(##)####-####" subtype="-1" type="5"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="telFieldKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="celLabel">
               <Properties>
@@ -298,6 +313,9 @@
                   <Format format="(##)#.####-####" subtype="-1" type="5"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="celFieldKeyPressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -423,6 +441,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="lograFieldKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="numField">
               <Properties>
@@ -432,6 +453,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="numFieldKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="bairroField">
               <Properties>
@@ -441,6 +465,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="bairroFieldKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="cepField">
               <Properties>
@@ -453,6 +480,9 @@
                   <Format format="##.###-###" subtype="-1" type="5"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cepFieldKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="comboEstado">
               <Properties>
@@ -476,6 +506,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="comboEstadoKeyPressed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -488,6 +521,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cidadeFieldKeyPressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -500,6 +536,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvarButtonActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="salvarButtonKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="cancelarButton">

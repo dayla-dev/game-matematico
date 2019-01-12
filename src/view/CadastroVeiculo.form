@@ -178,10 +178,7 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="corFD" pref="149" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="corFD" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                           <Component id="tamLB" min="-2" max="-2" attributes="0"/>
@@ -256,6 +253,7 @@
             <Component class="javax.swing.JTextField" name="modeloFD">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modeloFDActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="modeloFDKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="fabLB">
@@ -264,6 +262,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="fabFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fabFDKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="anoFabLB">
               <Properties>
@@ -271,6 +272,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="anoFabFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="anoFabFDKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="anoModLB">
               <Properties>
@@ -278,6 +282,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="anoModFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="anoModFDKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="tamLB">
               <Properties>
@@ -301,11 +308,17 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="comboTamFDKeyPressed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="numPortasFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="numPortasFDKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="numPassLB">
               <Properties>
@@ -313,6 +326,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="numPassFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="numPassFDKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="corLB">
               <Properties>
@@ -320,6 +336,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="corFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="corFDKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="kmAtualLB">
               <Properties>
@@ -329,6 +348,7 @@
             <Component class="javax.swing.JTextField" name="kmAtualFD">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kmAtualFDActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kmAtualFDKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="motorLB">
@@ -337,6 +357,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="motorFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="motorFDKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="chassiLB">
               <Properties>
@@ -344,6 +367,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="chassiFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="chassiFDKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="torqueMotorLB">
               <Properties>
@@ -351,6 +377,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="torqueMotorFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="torqueMotorFDKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="combLB">
               <Properties>
@@ -368,6 +397,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="combusFDKeyPressed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -378,6 +410,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="placaFD">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="placaFDKeyPressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -444,6 +479,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="comboStatusKeyPressed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>

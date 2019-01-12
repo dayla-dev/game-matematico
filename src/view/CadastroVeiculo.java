@@ -98,22 +98,68 @@ public class CadastroVeiculo extends javax.swing.JDialog {
                 modeloFDActionPerformed(evt);
             }
         });
+        modeloFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                modeloFDKeyPressed(evt);
+            }
+        });
 
         fabLB.setText("Fabricante:");
 
+        fabFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fabFDKeyPressed(evt);
+            }
+        });
+
         anoFabLB.setText("Ano fabricação:");
 
+        anoFabFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                anoFabFDKeyPressed(evt);
+            }
+        });
+
         anoModLB.setText("Ano do modelo:");
+
+        anoModFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                anoModFDKeyPressed(evt);
+            }
+        });
 
         tamLB.setText("Tamanho:");
 
         numPortasLB.setText("Nº de portas:");
 
         comboTamFD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Mini", "Pequeno", "Médio", "Grande" }));
+        comboTamFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboTamFDKeyPressed(evt);
+            }
+        });
+
+        numPortasFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                numPortasFDKeyPressed(evt);
+            }
+        });
 
         numPassLB.setText("Nº de passageiros:");
 
+        numPassFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                numPassFDKeyPressed(evt);
+            }
+        });
+
         corLB.setText("Cor:");
+
+        corFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                corFDKeyPressed(evt);
+            }
+        });
 
         kmAtualLB.setText("Km atual:");
 
@@ -122,18 +168,52 @@ public class CadastroVeiculo extends javax.swing.JDialog {
                 kmAtualFDActionPerformed(evt);
             }
         });
+        kmAtualFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kmAtualFDKeyPressed(evt);
+            }
+        });
 
         motorLB.setText("Motor:");
 
+        motorFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                motorFDKeyPressed(evt);
+            }
+        });
+
         chassiLB.setText("Chassi:");
 
+        chassiFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                chassiFDKeyPressed(evt);
+            }
+        });
+
         torqueMotorLB.setText("Torque do motor:");
+
+        torqueMotorFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                torqueMotorFDKeyPressed(evt);
+            }
+        });
 
         combLB.setText("Tipo de combustível:");
 
         combusFD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Gasolina", "Etanol", "Diesel" }));
+        combusFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                combusFDKeyPressed(evt);
+            }
+        });
 
         placaLB.setText("Placa:");
+
+        placaFD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                placaFDKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelInfVeiculoLayout = new javax.swing.GroupLayout(panelInfVeiculo);
         panelInfVeiculo.setLayout(panelInfVeiculoLayout);
@@ -197,9 +277,7 @@ public class CadastroVeiculo extends javax.swing.JDialog {
                                     .addComponent(corLB)
                                     .addGap(6, 6, 6)))
                             .addGroup(panelInfVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panelInfVeiculoLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(corFD, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                                .addComponent(corFD)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfVeiculoLayout.createSequentialGroup()
                                     .addGap(27, 27, 27)
                                     .addComponent(tamLB)
@@ -257,6 +335,11 @@ public class CadastroVeiculo extends javax.swing.JDialog {
         statusLB.setText("Status:");
 
         comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível", "Alugado", "Manutenção" }));
+        comboStatus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboStatusKeyPressed(evt);
+            }
+        });
 
         catLB.setText("Categoria:");
 
@@ -453,47 +536,96 @@ public class CadastroVeiculo extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroVeiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroVeiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroVeiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroVeiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void modeloFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_modeloFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            fabFD.requestFocus();
         }
-        //</editor-fold>
+    }//GEN-LAST:event_modeloFDKeyPressed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CadastroVeiculo dialog = new CadastroVeiculo(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void fabFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fabFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+          anoFabFD.requestFocus();
+        }
+    }//GEN-LAST:event_fabFDKeyPressed
+
+    private void anoFabFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_anoFabFDKeyPressed
+       if(evt.getKeyCode() == evt.VK_ENTER){
+            anoModFD.requestFocus();
+        }
+    }//GEN-LAST:event_anoFabFDKeyPressed
+
+    private void anoModFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_anoModFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            comboTamFD.requestFocus();
+        }
+    }//GEN-LAST:event_anoModFDKeyPressed
+
+    private void comboTamFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboTamFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            numPortasFD.requestFocus();
+        }
+    }//GEN-LAST:event_comboTamFDKeyPressed
+
+    private void numPortasFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numPortasFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            numPassFD.requestFocus();
+        }
+    }//GEN-LAST:event_numPortasFDKeyPressed
+
+    private void corFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_corFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            motorFD.requestFocus();
+        }
+    }//GEN-LAST:event_corFDKeyPressed
+
+    private void motorFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_motorFDKeyPressed
+       if(evt.getKeyCode() == evt.VK_ENTER){
+            chassiFD.requestFocus();
+        }
+    }//GEN-LAST:event_motorFDKeyPressed
+
+    private void chassiFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_chassiFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            kmAtualFD.requestFocus();
+        }
+    }//GEN-LAST:event_chassiFDKeyPressed
+
+    private void kmAtualFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kmAtualFDKeyPressed
+       if(evt.getKeyCode() == evt.VK_ENTER){
+            torqueMotorFD.requestFocus();
+        }
+    }//GEN-LAST:event_kmAtualFDKeyPressed
+
+    private void torqueMotorFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_torqueMotorFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            combusFD.requestFocus();
+        }
+    }//GEN-LAST:event_torqueMotorFDKeyPressed
+
+    private void combusFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_combusFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            placaFD.requestFocus();
+        }
+    }//GEN-LAST:event_combusFDKeyPressed
+
+    private void comboStatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboStatusKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            catFD.requestFocus();
+        }
+    }//GEN-LAST:event_comboStatusKeyPressed
+
+    private void numPassFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numPassFDKeyPressed
+       if(evt.getKeyCode() == evt.VK_ENTER){
+            corFD.requestFocus();
+        }
+    }//GEN-LAST:event_numPassFDKeyPressed
+
+    private void placaFDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placaFDKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            comboStatus.requestFocus();
+        }
+    }//GEN-LAST:event_placaFDKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField anoFabFD;

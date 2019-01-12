@@ -48,12 +48,23 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         panelBusLocacao = new javax.swing.JPanel();
         busLocLabel = new javax.swing.JLabel();
+        imageBusLoc = new javax.swing.JLabel();
         panelCadPF = new javax.swing.JPanel();
         cadPFjl = new javax.swing.JLabel();
         cadPFlb1 = new javax.swing.JLabel();
+        imageAddPF = new javax.swing.JLabel();
         panelBusPF = new javax.swing.JPanel();
+        busPfLB = new javax.swing.JLabel();
+        busPfLB1 = new javax.swing.JLabel();
+        imageBuscaPF = new javax.swing.JLabel();
         panelCadPJ = new javax.swing.JPanel();
+        cadPjLB = new javax.swing.JLabel();
+        cadPjLB1 = new javax.swing.JLabel();
+        imageAddPJ = new javax.swing.JLabel();
         panelBusPJ = new javax.swing.JPanel();
+        busPjLB = new javax.swing.JLabel();
+        busPjLB1 = new javax.swing.JLabel();
+        imageBusPJ = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         cadastro = new javax.swing.JMenu();
@@ -76,8 +87,9 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         bCamionetePas = new javax.swing.JMenuItem();
         servicos = new javax.swing.JMenu();
         reservarCategoria = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        alocarVeiculo = new javax.swing.JMenuItem();
         configuracoes = new javax.swing.JMenu();
+        sair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Super usuário");
@@ -118,19 +130,19 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         panelCadReservaLayout.setHorizontalGroup(
             panelCadReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(realizarResLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadReservaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(iconeReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(panelCadReservaLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(iconeReserva)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCadReservaLayout.setVerticalGroup(
             panelCadReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadReservaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(iconeReserva)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(realizarResLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(realizarResLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         panelBusReserva.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -153,7 +165,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
             panelBusReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(busReservaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
             .addGroup(panelBusReservaLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -161,10 +173,10 @@ public class TelaInicialSuper extends javax.swing.JFrame {
             panelBusReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusReservaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(busReservaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(busReservaLabel)
+                .addGap(21, 21, 21))
         );
 
         panelCadLocacao.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -215,6 +227,8 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         busLocLabel.setForeground(new java.awt.Color(255, 255, 255));
         busLocLabel.setText("  Buscar Locação");
 
+        imageBusLoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buscarLoc.png"))); // NOI18N
+
         javax.swing.GroupLayout panelBusLocacaoLayout = new javax.swing.GroupLayout(panelBusLocacao);
         panelBusLocacao.setLayout(panelBusLocacaoLayout);
         panelBusLocacaoLayout.setHorizontalGroup(
@@ -222,43 +236,62 @@ public class TelaInicialSuper extends javax.swing.JFrame {
             .addGroup(panelBusLocacaoLayout.createSequentialGroup()
                 .addComponent(busLocLabel)
                 .addGap(0, 25, Short.MAX_VALUE))
+            .addGroup(panelBusLocacaoLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(imageBusLoc)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelBusLocacaoLayout.setVerticalGroup(
             panelBusLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusLocacaoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imageBusLoc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(busLocLabel)
                 .addGap(21, 21, 21))
         );
 
         panelCadPF.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelCadPF.setPreferredSize(new java.awt.Dimension(109, 86));
+        panelCadPF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelCadPFMouseClicked(evt);
+            }
+        });
 
         cadPFjl.setBackground(new java.awt.Color(255, 255, 255));
         cadPFjl.setForeground(new java.awt.Color(255, 255, 255));
-        cadPFjl.setText("Cadastrar pessoa");
+        cadPFjl.setText(" Cadastrar pessoa");
 
         cadPFlb1.setBackground(new java.awt.Color(255, 255, 255));
         cadPFlb1.setForeground(new java.awt.Color(255, 255, 255));
         cadPFlb1.setText("física");
+
+        imageAddPF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/addPf.png"))); // NOI18N
 
         javax.swing.GroupLayout panelCadPFLayout = new javax.swing.GroupLayout(panelCadPF);
         panelCadPF.setLayout(panelCadPFLayout);
         panelCadPFLayout.setHorizontalGroup(
             panelCadPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCadPFLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(cadPFlb1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadPFLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cadPFjl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelCadPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cadPFjl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                    .addGroup(panelCadPFLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(cadPFlb1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(panelCadPFLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(imageAddPF, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCadPFLayout.setVerticalGroup(
             panelCadPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadPFLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(imageAddPF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cadPFjl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cadPFlb1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,42 +300,140 @@ public class TelaInicialSuper extends javax.swing.JFrame {
 
         panelBusPF.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelBusPF.setPreferredSize(new java.awt.Dimension(109, 86));
+        panelBusPF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBusPFMouseClicked(evt);
+            }
+        });
+
+        busPfLB.setBackground(new java.awt.Color(255, 255, 255));
+        busPfLB.setForeground(new java.awt.Color(255, 255, 255));
+        busPfLB.setText("Buscar pessoa ");
+
+        busPfLB1.setBackground(new java.awt.Color(255, 255, 255));
+        busPfLB1.setForeground(new java.awt.Color(255, 255, 255));
+        busPfLB1.setText("física");
+
+        imageBuscaPF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buscarPF.png"))); // NOI18N
 
         javax.swing.GroupLayout panelBusPFLayout = new javax.swing.GroupLayout(panelBusPF);
         panelBusPF.setLayout(panelBusPFLayout);
         panelBusPFLayout.setHorizontalGroup(
             panelBusPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 105, Short.MAX_VALUE)
+            .addGroup(panelBusPFLayout.createSequentialGroup()
+                .addGroup(panelBusPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBusPFLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(busPfLB, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                    .addGroup(panelBusPFLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(busPfLB1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(panelBusPFLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(imageBuscaPF)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelBusPFLayout.setVerticalGroup(
             panelBusPFLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 82, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusPFLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imageBuscaPF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(busPfLB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(busPfLB1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         panelCadPJ.setPreferredSize(new java.awt.Dimension(109, 86));
+        panelCadPJ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelCadPJMouseClicked(evt);
+            }
+        });
+
+        cadPjLB.setBackground(new java.awt.Color(255, 255, 255));
+        cadPjLB.setForeground(new java.awt.Color(255, 255, 255));
+        cadPjLB.setText(" Cadastrar pessoa");
+
+        cadPjLB1.setBackground(new java.awt.Color(255, 255, 255));
+        cadPjLB1.setForeground(new java.awt.Color(255, 255, 255));
+        cadPjLB1.setText("jurídica");
+
+        imageAddPJ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/addPJ.png"))); // NOI18N
 
         javax.swing.GroupLayout panelCadPJLayout = new javax.swing.GroupLayout(panelCadPJ);
         panelCadPJ.setLayout(panelCadPJLayout);
         panelCadPJLayout.setHorizontalGroup(
             panelCadPJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 109, Short.MAX_VALUE)
+            .addComponent(cadPjLB, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+            .addGroup(panelCadPJLayout.createSequentialGroup()
+                .addGroup(panelCadPJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadPJLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(cadPjLB1))
+                    .addGroup(panelCadPJLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(imageAddPJ)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCadPJLayout.setVerticalGroup(
             panelCadPJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 86, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadPJLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imageAddPJ)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cadPjLB)
+                .addGap(1, 1, 1)
+                .addComponent(cadPjLB1)
+                .addContainerGap())
         );
 
         panelBusPJ.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelBusPJ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBusPJMouseClicked(evt);
+            }
+        });
+
+        busPjLB.setBackground(new java.awt.Color(255, 255, 255));
+        busPjLB.setForeground(new java.awt.Color(255, 255, 255));
+        busPjLB.setText("  Buscar pessoa");
+
+        busPjLB1.setBackground(new java.awt.Color(255, 255, 255));
+        busPjLB1.setForeground(new java.awt.Color(255, 255, 255));
+        busPjLB1.setText("jurídica");
+
+        imageBusPJ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buscarPJ.png"))); // NOI18N
 
         javax.swing.GroupLayout panelBusPJLayout = new javax.swing.GroupLayout(panelBusPJ);
         panelBusPJ.setLayout(panelBusPJLayout);
         panelBusPJLayout.setHorizontalGroup(
             panelBusPJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 105, Short.MAX_VALUE)
+            .addGroup(panelBusPJLayout.createSequentialGroup()
+                .addGroup(panelBusPJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(busPjLB)
+                    .addGroup(panelBusPJLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(busPjLB1)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelBusPJLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(imageBusPJ)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelBusPJLayout.setVerticalGroup(
             panelBusPJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 82, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusPJLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imageBusPJ)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(busPjLB)
+                .addGap(1, 1, 1)
+                .addComponent(busPjLB1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout panelAcessoRapidoLayout = new javax.swing.GroupLayout(panelAcessoRapido);
@@ -311,7 +442,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
             panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAcessoRapidoLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelAcessoRapidoLayout.createSequentialGroup()
                         .addComponent(panelCadPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -319,7 +450,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelCadPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelBusPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelBusPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
                     .addGroup(panelAcessoRapidoLayout.createSequentialGroup()
                         .addComponent(panelCadReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -328,7 +459,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
                         .addComponent(panelCadLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelBusLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         panelAcessoRapidoLayout.setVerticalGroup(
             panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,15 +467,15 @@ public class TelaInicialSuper extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelCadReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelBusReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBusReserva, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
                     .addComponent(panelCadLocacao, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
                     .addComponent(panelBusLocacao, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelCadPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelBusPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelCadPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelBusPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelAcessoRapidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelCadPF, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(panelBusPF, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(panelCadPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(panelBusPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -479,12 +610,16 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         reservarCategoria.setText("Reservar Categoria");
         servicos.add(reservarCategoria);
 
-        jMenuItem1.setText("Alocar Veículo");
-        servicos.add(jMenuItem1);
+        alocarVeiculo.setText("Alocar Veículo");
+        servicos.add(alocarVeiculo);
 
         jMenuBar1.add(servicos);
 
         configuracoes.setText("Configurações");
+
+        sair.setText("Sair");
+        configuracoes.add(sair);
+
         jMenuBar1.add(configuracoes);
 
         setJMenuBar(jMenuBar1);
@@ -584,12 +719,33 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         buscarPJ.setVisible(true);
     }//GEN-LAST:event_bPessoaJurActionPerformed
 
+    private void panelCadPFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCadPFMouseClicked
+        CadastroPessoaFisica cadPF = new CadastroPessoaFisica(this, true);
+        cadPF.setVisible(true);
+    }//GEN-LAST:event_panelCadPFMouseClicked
+
+    private void panelBusPFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBusPFMouseClicked
+        BuscarPessoaFisica buscaPF = new BuscarPessoaFisica(this, true);
+        buscaPF.setVisible(true);
+    }//GEN-LAST:event_panelBusPFMouseClicked
+
+    private void panelCadPJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCadPJMouseClicked
+        CadastroPessoaJuridica cadPJ = new CadastroPessoaJuridica(this, true);
+        cadPJ.setVisible(true);
+    }//GEN-LAST:event_panelCadPJMouseClicked
+
+    private void panelBusPJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBusPJMouseClicked
+        BuscarPessoaJuridica buscarPJ = new BuscarPessoaJuridica(this, true);
+        buscarPJ.setVisible(true);
+    }//GEN-LAST:event_panelBusPJMouseClicked
+
     private void setIcon(){
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/car.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CamionteCargaCad;
+    private javax.swing.JMenuItem alocarVeiculo;
     private javax.swing.JMenuItem bCamioneteCar;
     private javax.swing.JMenuItem bCamionetePas;
     private javax.swing.JMenuItem bCategoria;
@@ -600,20 +756,30 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     private javax.swing.JMenuItem bVeiculo;
     private javax.swing.JLabel background;
     private javax.swing.JLabel busLocLabel;
+    private javax.swing.JLabel busPfLB;
+    private javax.swing.JLabel busPfLB1;
+    private javax.swing.JLabel busPjLB;
+    private javax.swing.JLabel busPjLB1;
     private javax.swing.JLabel busReservaLabel;
     private javax.swing.JMenu buscas;
     private javax.swing.JLabel cadPFjl;
     private javax.swing.JLabel cadPFlb1;
+    private javax.swing.JLabel cadPjLB;
+    private javax.swing.JLabel cadPjLB1;
     private javax.swing.JMenu cadastro;
     private javax.swing.JMenuItem camionetePassCad;
     private javax.swing.JMenuItem categoriaCad;
     private javax.swing.JMenu configuracoes;
     private javax.swing.JMenuItem filialCad;
     private javax.swing.JLabel iconeReserva;
+    private javax.swing.JLabel imageAddPF;
+    private javax.swing.JLabel imageAddPJ;
+    private javax.swing.JLabel imageBusLoc;
+    private javax.swing.JLabel imageBusPJ;
+    private javax.swing.JLabel imageBuscaPF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel panelAcessoRapido;
     private javax.swing.JPanel panelBusLocacao;
     private javax.swing.JPanel panelBusPF;
@@ -628,6 +794,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     private javax.swing.JLabel realizarLocacaoLb;
     private javax.swing.JLabel realizarResLabel;
     private javax.swing.JMenuItem reservarCategoria;
+    private javax.swing.JMenuItem sair;
     private javax.swing.JMenu servicos;
     private javax.swing.JMenuItem usuariosCad;
     private javax.swing.JMenuItem veiculoCad;

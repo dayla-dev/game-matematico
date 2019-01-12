@@ -70,14 +70,29 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
         nomeLabel.setText("Nome:");
 
         nomeField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        nomeField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nomeFieldKeyPressed(evt);
+            }
+        });
 
         cnpjLabel.setText("CNPJ:*");
 
         cnpjField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cnpjField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cnpjFieldKeyPressed(evt);
+            }
+        });
 
         inscEstLabel.setText("Insc. Estadual:*");
 
         inscEstField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        inscEstField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                inscEstFieldKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelDadosEmpresaLayout = new javax.swing.GroupLayout(panelDadosEmpresa);
         panelDadosEmpresa.setLayout(panelDadosEmpresaLayout);
@@ -122,6 +137,11 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
         emailLabel.setText("E-mail:");
 
         emailField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        emailField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                emailFieldKeyPressed(evt);
+            }
+        });
 
         telLabel.setText("Telefone:");
 
@@ -131,6 +151,11 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        telField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                telFieldKeyPressed(evt);
+            }
+        });
 
         celLabel.setText("Celular:");
 
@@ -140,6 +165,11 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        celField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                celFieldKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelContatoLayout = new javax.swing.GroupLayout(panelContato);
         panelContato.setLayout(panelContatoLayout);
@@ -195,10 +225,25 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
         cidadeLabel.setText("Cidade:");
 
         lograField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lograField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lograFieldKeyPressed(evt);
+            }
+        });
 
         numField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        numField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                numFieldKeyPressed(evt);
+            }
+        });
 
         bairroField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        bairroField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bairroFieldKeyPressed(evt);
+            }
+        });
 
         cepField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         try {
@@ -206,11 +251,26 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        cepField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cepFieldKeyPressed(evt);
+            }
+        });
 
         comboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Alagoas", "Bahia", "Ceará", "Maranhão", "Paraíba", "Pernambuco", "Piauí", "Rio Grande do Norte", "Sergipe" }));
         comboEstado.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        comboEstado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboEstadoKeyPressed(evt);
+            }
+        });
 
         cidadeField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cidadeField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cidadeFieldKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelEnderecoLayout = new javax.swing.GroupLayout(panelEndereco);
         panelEndereco.setLayout(panelEnderecoLayout);
@@ -274,6 +334,11 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
         salvarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarButtonActionPerformed(evt);
+            }
+        });
+        salvarButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                salvarButtonKeyPressed(evt);
             }
         });
 
@@ -366,47 +431,81 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroPessoaJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroPessoaJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroPessoaJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroPessoaJuridica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void nomeFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeFieldKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            cnpjField.requestFocus();
         }
-        //</editor-fold>
+    }//GEN-LAST:event_nomeFieldKeyPressed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CadastroPessoaJuridica dialog = new CadastroPessoaJuridica(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void cnpjFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cnpjFieldKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            inscEstField.requestFocus();
+        }
+    }//GEN-LAST:event_cnpjFieldKeyPressed
+
+    private void inscEstFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inscEstFieldKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            emailField.requestFocus();
+        }
+    }//GEN-LAST:event_inscEstFieldKeyPressed
+
+    private void emailFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFieldKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            telField.requestFocus();
+        }
+    }//GEN-LAST:event_emailFieldKeyPressed
+
+    private void telFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telFieldKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            celField.requestFocus();
+        }
+    }//GEN-LAST:event_telFieldKeyPressed
+
+    private void celFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_celFieldKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            lograField.requestFocus();
+        }
+    }//GEN-LAST:event_celFieldKeyPressed
+
+    private void lograFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lograFieldKeyPressed
+       if(evt.getKeyCode() == evt.VK_ENTER){
+            numField.requestFocus();
+        }
+    }//GEN-LAST:event_lograFieldKeyPressed
+
+    private void numFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numFieldKeyPressed
+       if(evt.getKeyCode() == evt.VK_ENTER){
+            bairroField.requestFocus();
+        }
+    }//GEN-LAST:event_numFieldKeyPressed
+
+    private void bairroFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bairroFieldKeyPressed
+       if(evt.getKeyCode() == evt.VK_ENTER){
+            cepField.requestFocus();
+        }
+    }//GEN-LAST:event_bairroFieldKeyPressed
+
+    private void cepFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cepFieldKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            comboEstado.requestFocus();
+        }
+    }//GEN-LAST:event_cepFieldKeyPressed
+
+    private void comboEstadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboEstadoKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            cidadeField.requestFocus();
+        }
+    }//GEN-LAST:event_comboEstadoKeyPressed
+
+    private void cidadeFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cidadeFieldKeyPressed
+        if(evt.getKeyCode() == evt.VK_ENTER){
+            salvarButton.requestFocus();
+        }
+    }//GEN-LAST:event_cidadeFieldKeyPressed
+
+    private void salvarButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salvarButtonKeyPressed
+        
+    }//GEN-LAST:event_salvarButtonKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairroField;
