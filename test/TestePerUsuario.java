@@ -19,25 +19,23 @@ public class TestePerUsuario {
         EnderecoDAO enderecoDAO = new EnderecoDAO(Conexao.conexao());
        
         Endereco end = new Endereco();
-        end.setLogradouro("Rua 1");
+        end.setLogradouro("Rua principal");
         end.setNumero("502  - ap 1");
         end.setBairro("Centro");
-        end.setCep("55.750-000");
+        end.setCep("54.722-000");
         end.setCidade("Serra Talhada");
         end.setEstado("Pernambuco");
         enderecoDAO.create(end);
         
          
         Usuario user = new Usuario();
-        user.setNome("Luana");
-        user.setLogin("atendente");
-        user.setSenha("54321");
+        user.setNome("Joana");
+        user.setLogin("admistracao");
+        user.setSenha("joana123");
         user.setSenha(Criptografia.encriptografar(user.getSenha()));
         
         System.out.println(user.getSenha());
-        
-        user.setSenha(Criptografia.descriptografar(user.getSenha()));
-        System.out.println(user.getSenha());
+      
         
         user.setTipoUsuario("super usuario");
         user.setEndereco(end);

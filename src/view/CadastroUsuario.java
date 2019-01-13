@@ -1,6 +1,7 @@
 package view;
 
 import br.com.locadoraPBD.JPAUtil.Conexao;
+import br.com.locadoraPBD.JPAUtil.Criptografia;
 import br.com.locadoraPBD.model.DAO.EnderecoDAO;
 import br.com.locadoraPBD.model.DAO.UsuarioDAO;
 import br.com.locadoraPBD.model.beans.Endereco;
@@ -431,11 +432,15 @@ public class CadastroUsuario extends javax.swing.JDialog {
         
         enderecoDAO.create(endereco);
         
+        
+        
         Usuario user = new Usuario();
         user.setNome(nomeUserFd.getText().toUpperCase());
         user.setTipoUsuario(comboUsuarios.getSelectedItem().toString().toUpperCase());
         user.setLogin(loginField.getText().toUpperCase());
-        user.setSenha(senhaField.getText().toUpperCase());
+        String senha= senhaField.getText().toUpperCase();
+        user.setSenha(Criptografia.encriptografar(senha));
+
         user.setEmail(emailField.getText().toUpperCase());
         user.setTelefone(telField.getText().toUpperCase());
         user.setCelular(celField.getText().toUpperCase());

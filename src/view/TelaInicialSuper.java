@@ -8,6 +8,7 @@ import java.awt.Toolkit;
  * @author Dayla
  */
 public class TelaInicialSuper extends javax.swing.JFrame {
+   
 
     public TelaInicialSuper() {
         initComponents();
@@ -87,6 +88,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         setTitle("Super usuário");
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(640, 460));
+        setPreferredSize(new java.awt.Dimension(640, 460));
         setResizable(false);
         setSize(new java.awt.Dimension(640, 470));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -165,10 +167,10 @@ public class TelaInicialSuper extends javax.swing.JFrame {
             panelBusReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBusReservaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(busReservaLabel)
-                .addGap(21, 21, 21))
+                .addGap(23, 23, 23))
         );
 
         panelCadLocacao.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -471,7 +473,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panelAcessoRapido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 540, 240));
+        getContentPane().add(panelAcessoRapido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 540, 240));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/telaBack.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 640, 490));
@@ -625,6 +627,11 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         configuracoes.setText("Configurações");
 
         sair.setText("Sair");
+        sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairActionPerformed(evt);
+            }
+        });
         configuracoes.add(sair);
 
         jMenuBar1.add(configuracoes);
@@ -760,6 +767,12 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         CadastroLocacao cadLocacao = new CadastroLocacao(this, true);
         cadLocacao.setVisible(true);
     }//GEN-LAST:event_alocarVeiculoActionPerformed
+
+    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
+        TelaLogin tl = new TelaLogin();
+        tl.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_sairActionPerformed
 
     private void setIcon(){
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/locadora.png")));

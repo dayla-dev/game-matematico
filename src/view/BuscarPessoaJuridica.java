@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.Color;
@@ -13,13 +8,12 @@ import java.awt.Color;
  */
 public class BuscarPessoaJuridica extends javax.swing.JDialog {
 
-    /**
-     * Creates new form BuscarPessoaJuridica
-     */
+    
     public BuscarPessoaJuridica(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         panelCadPJ.setBackground(new Color(0,0,0,0));
+        init();
     }
 
     @SuppressWarnings("unchecked")
@@ -36,6 +30,8 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
         panelCadPJ = new javax.swing.JPanel();
         labelNovoCad = new javax.swing.JLabel();
         scrollPane1 = new java.awt.ScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         editbutton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
@@ -44,7 +40,7 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
 
         fundo.setBackground(new java.awt.Color(255, 255, 255));
 
-        panelPesquisa.setBackground(new java.awt.Color(239, 251, 251));
+        panelPesquisa.setBackground(new java.awt.Color(242, 242, 198));
 
         pesqLabel.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         pesqLabel.setText("Pesquisar:");
@@ -98,7 +94,7 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
                     .addGroup(panelPesquisaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pesqField, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPesquisaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelCadPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,6 +116,26 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        scrollPane1.setBackground(new java.awt.Color(242, 251, 251));
+
+        jScrollPane1.setBackground(new java.awt.Color(243, 252, 252));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "CNPJ", "Inscrição estadual"
+            }
+        ));
+        jTable1.setPreferredSize(new java.awt.Dimension(50, 64));
+        jScrollPane1.setViewportView(jTable1);
+
+        scrollPane1.add(jScrollPane1);
+
         editbutton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         editbutton.setText("Editar");
 
@@ -135,10 +151,6 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
         fundo.setLayout(fundoLayout);
         fundoLayout.setHorizontalGroup(
             fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fundoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fundoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editbutton)
@@ -146,9 +158,11 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
                 .addComponent(cancelButton)
                 .addGap(48, 48, 48))
             .addGroup(fundoLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(scrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         fundoLayout.setVerticalGroup(
             fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,19 +170,21 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(panelPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(fundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,6 +211,8 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
     private javax.swing.JButton editbutton;
     private javax.swing.JPanel fundo;
     private javax.swing.ButtonGroup grupoPesq;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelNovoCad;
     private javax.swing.JPanel panelCadPJ;
     private javax.swing.JPanel panelPesquisa;
@@ -204,4 +222,10 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
     private javax.swing.JRadioButton pesqNome;
     private java.awt.ScrollPane scrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        
+        
+    
+    }
 }
