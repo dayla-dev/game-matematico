@@ -1,6 +1,15 @@
 package view;
 
+import br.com.locadoraPBD.JPAUtil.Conexao;
+import br.com.locadoraPBD.model.DAO.PessoaJuridicaDAO;
+import br.com.locadoraPBD.model.beans.PessoaFisica;
+import br.com.locadoraPBD.model.beans.PessoaJuridica;
+import br.com.locadoraPBD.model.business.ModeloTabela;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -8,12 +17,14 @@ import java.awt.Color;
  */
 public class BuscarPessoaJuridica extends javax.swing.JDialog {
 
+    PessoaJuridicaDAO pessoaJDAO = new PessoaJuridicaDAO(Conexao.conexao());
     
     public BuscarPessoaJuridica(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+        super(parent, modal);       
         initComponents();
         panelCadPJ.setBackground(new Color(0,0,0,0));
-        init();
+         preencherTabela(2);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -29,11 +40,10 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
         pesqCNPJ = new javax.swing.JRadioButton();
         panelCadPJ = new javax.swing.JPanel();
         labelNovoCad = new javax.swing.JLabel();
-        scrollPane1 = new java.awt.ScrollPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         editbutton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar pessoa jurídica");
@@ -44,6 +54,12 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
 
         pesqLabel.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         pesqLabel.setText("Pesquisar:");
+
+        pesqField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesqFieldKeyReleased(evt);
+            }
+        });
 
         grupoPesq.add(pesqNome);
         pesqNome.setText("Buscar por nome");
@@ -116,26 +132,6 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        scrollPane1.setBackground(new java.awt.Color(242, 251, 251));
-
-        jScrollPane1.setBackground(new java.awt.Color(243, 252, 252));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nome", "CNPJ", "Inscrição estadual"
-            }
-        ));
-        jTable1.setPreferredSize(new java.awt.Dimension(50, 64));
-        jScrollPane1.setViewportView(jTable1);
-
-        scrollPane1.add(jScrollPane1);
-
         editbutton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         editbutton.setText("Editar");
 
@@ -147,31 +143,42 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
             }
         });
 
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tabela);
+
         javax.swing.GroupLayout fundoLayout = new javax.swing.GroupLayout(fundo);
         fundo.setLayout(fundoLayout);
         fundoLayout.setHorizontalGroup(
             fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fundoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(editbutton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cancelButton)
-                .addGap(48, 48, 48))
             .addGroup(fundoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(fundoLayout.createSequentialGroup()
+                        .addComponent(panelPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fundoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(editbutton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelButton)
+                        .addGap(48, 48, 48))))
+            .addComponent(jScrollPane2)
         );
         fundoLayout.setVerticalGroup(
             fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fundoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
@@ -205,14 +212,17 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    private void pesqFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesqFieldKeyReleased
+        preencherTabela(1);
+    }//GEN-LAST:event_pesqFieldKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton editbutton;
     private javax.swing.JPanel fundo;
     private javax.swing.ButtonGroup grupoPesq;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelNovoCad;
     private javax.swing.JPanel panelCadPJ;
     private javax.swing.JPanel panelPesquisa;
@@ -220,12 +230,55 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
     private javax.swing.JTextField pesqField;
     private javax.swing.JLabel pesqLabel;
     private javax.swing.JRadioButton pesqNome;
-    private java.awt.ScrollPane scrollPane1;
+    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 
-    private void init() {
-        
-        
     
+    private void preencherTabela(int tipo) {
+      
+        List<PessoaJuridica> pessoasJuridicas = new ArrayList<>();
+        ArrayList dados = new ArrayList();
+        String[] coluna = new String[]{"ID","NOME","CNPJ", "INSCRICAO"};
+        
+        try{
+            if(tipo==1){
+                if(pesqNome.isSelected()){
+                    pessoasJuridicas = pessoaJDAO.getPessoaJuridicaPorNome(pesqField.getText().toUpperCase());
+                    for(PessoaJuridica pj : pessoasJuridicas){
+                        dados.add(new Object[]{pj.getId(), pj.getNome(), pj.getCnpj(), pj.getInscricaoEstadual()});
+                    }
+                }
+                else if(pesqCNPJ.isSelected()){
+                    pessoasJuridicas = pessoaJDAO.getPessoaJuridicaPorCnpj(pesqField.getText().toUpperCase());
+                    for(PessoaJuridica pj : pessoasJuridicas){
+                        dados.add(new Object[]{pj.getId(), pj.getNome(), pj.getCnpj(), pj.getInscricaoEstadual()});
+                    }
+                }
+            }
+            else if(tipo==2){
+                pessoasJuridicas = pessoaJDAO.getTodasPessoasJuridicas();
+                    for(PessoaJuridica pj : pessoasJuridicas){
+                         dados.add(new Object[]{pj.getId(), pj.getNome(), pj.getCnpj(), pj.getInscricaoEstadual()});
+                    }
+            }
+            
+        }catch(Exception e){
+            
+        }
+        
+        
+        ModeloTabela modelo = new ModeloTabela(dados, coluna);
+        tabela.setModel(modelo);
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(25);
+        tabela.getColumnModel().getColumn(0).setResizable(false);
+        tabela.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tabela.getColumnModel().getColumn(1).setResizable(false);
+        tabela.getColumnModel().getColumn(2).setPreferredWidth(130);
+        tabela.getColumnModel().getColumn(2).setResizable(false);
+        tabela.getColumnModel().getColumn(3).setPreferredWidth(130);
+        tabela.getColumnModel().getColumn(3).setResizable(false);
+        tabela.getTableHeader().setReorderingAllowed(false);
+        tabela.setAutoResizeMode(tabela.AUTO_RESIZE_OFF);
+        tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 }

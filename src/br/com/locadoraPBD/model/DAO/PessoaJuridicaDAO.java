@@ -88,7 +88,25 @@ public class PessoaJuridicaDAO implements IcorePessoaJuridicaDAO ,Serializable {
         }
     }
     
-   
+     public List<PessoaJuridica> getPessoaJuridicaPorNome(String nome) {
+       EntityManager em = getEntityManager();
+       List<PessoaJuridica> pessoasJuridicas=null;
+       
+       try{
+           String consulta = "select pj from PessoaJuridica pj where pj.nome like :nome";
+           TypedQuery<PessoaJuridica> query = em.createQuery(consulta, PessoaJuridica.class);
+           query.setParameter("nome", "%" + nome + "%");
+           pessoasJuridicas = query.getResultList();
+       }
+       catch(Exception e){
+           e.printStackTrace();
+       }
+       finally{
+           em.close();
+       }        
+        return pessoasJuridicas;
+    }
+     
     @Override
     public List<PessoaJuridica> getPessoaJuridicaPorCnpj(String cnpj) {
        EntityManager em = getEntityManager();
@@ -140,6 +158,7 @@ public class PessoaJuridicaDAO implements IcorePessoaJuridicaDAO ,Serializable {
         }
     }
     
+    @Override
      public List<PessoaJuridica> getTodasPessoasJuridicas() {
         return getTodasPessoasJuridicas(true, -1, -1);
     }
