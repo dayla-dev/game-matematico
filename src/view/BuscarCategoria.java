@@ -1,6 +1,14 @@
 package view;
 
+import br.com.locadoraPBD.JPAUtil.Conexao;
+import br.com.locadoraPBD.model.DAO.CategoriaDAO;
+import br.com.locadoraPBD.model.beans.Categoria;
+import br.com.locadoraPBD.model.beans.PessoaJuridica;
+import br.com.locadoraPBD.model.business.ModeloTabela;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -12,7 +20,7 @@ public class BuscarCategoria extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         panelCadCateg.setBackground(new Color(0,0,0,0));
-        pesqField.setText("Digite aqui o nome da categoria");
+        preencherTabela(2);
     }
 
     @SuppressWarnings("unchecked")
@@ -25,21 +33,27 @@ public class BuscarCategoria extends javax.swing.JDialog {
         pesqField = new javax.swing.JTextField();
         panelCadCateg = new javax.swing.JPanel();
         cadCatLabel = new javax.swing.JLabel();
-        scrollPane1 = new java.awt.ScrollPane();
         editButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar categoria");
 
         fundo.setBackground(new java.awt.Color(255, 255, 255));
 
-        panelPesq.setBackground(new java.awt.Color(240, 252, 252));
+        panelPesq.setBackground(new java.awt.Color(241, 242, 198));
 
         pesqLabel.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         pesqLabel.setText("Pesquisar:");
 
         pesqField.setName("Digite o nome da categoria"); // NOI18N
+        pesqField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesqFieldKeyReleased(evt);
+            }
+        });
 
         cadCatLabel.setBackground(new java.awt.Color(0, 51, 204));
         cadCatLabel.setForeground(new java.awt.Color(0, 51, 204));
@@ -92,6 +106,24 @@ public class BuscarCategoria extends javax.swing.JDialog {
 
         cancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cancelButton.setText("Cancelar");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout fundoLayout = new javax.swing.GroupLayout(fundo);
         fundo.setLayout(fundoLayout);
@@ -101,25 +133,22 @@ public class BuscarCategoria extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(panelPesq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(fundoLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fundoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelButton)
                 .addGap(57, 57, 57))
+            .addComponent(jScrollPane1)
         );
         fundoLayout.setVerticalGroup(
             fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fundoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editButton)
                     .addComponent(cancelButton))
@@ -141,16 +170,63 @@ public class BuscarCategoria extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void pesqFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesqFieldKeyReleased
+        preencherTabela(1);
+    }//GEN-LAST:event_pesqFieldKeyReleased
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void preencherTabela(int tipo){
+        CategoriaDAO categoriaDAO = new CategoriaDAO(Conexao.conexao());
+        List<Categoria> categorias = new ArrayList<>();
+        ArrayList dados = new ArrayList();
+        String[] coluna = new String[]{"NOME", "TIPO DE CATEGORIA", "PREÇO"};
+        
+        try{
+            if(tipo==1){
+                categorias = categoriaDAO.getCategoriaPorNomeCat(pesqField.getText().toUpperCase());
+                for(Categoria cat: categorias){
+                    dados.add(new Object[]{cat.getNomeCategoria(), cat.getTipoCategoria(), cat.getPrecoCat()});
+
+                }
+            }
+            else if(tipo==2){
+                categorias = categoriaDAO.getTodasCategorias();
+                for(Categoria cat: categorias){
+                    dados.add(new Object[]{cat.getNomeCategoria(), cat.getTipoCategoria(), cat.getPrecoCat()});
+
+                }
+            }
+        }
+        catch(Exception e){
+            
+        }
+        ModeloTabela modelo = new ModeloTabela(dados, coluna);
+        tabela.setModel(modelo);
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(150);
+        tabela.getColumnModel().getColumn(0).setResizable(false);
+        tabela.getColumnModel().getColumn(1).setPreferredWidth(210);
+        tabela.getColumnModel().getColumn(1).setResizable(false);
+        tabela.getColumnModel().getColumn(2).setPreferredWidth(130);
+        tabela.getColumnModel().getColumn(2).setResizable(false);
+        tabela.getTableHeader().setReorderingAllowed(false);
+        tabela.setAutoResizeMode(tabela.AUTO_RESIZE_OFF);
+        tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cadCatLabel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton editButton;
     private javax.swing.JPanel fundo;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelCadCateg;
     private javax.swing.JPanel panelPesq;
     private javax.swing.JTextField pesqField;
     private javax.swing.JLabel pesqLabel;
-    private java.awt.ScrollPane scrollPane1;
+    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }

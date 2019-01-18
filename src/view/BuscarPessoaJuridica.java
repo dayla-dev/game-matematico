@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class BuscarPessoaJuridica extends javax.swing.JDialog {
 
     PessoaJuridicaDAO pessoaJDAO = new PessoaJuridicaDAO(Conexao.conexao());
+    private int linha;
     
     public BuscarPessoaJuridica(java.awt.Frame parent, boolean modal) {
         super(parent, modal);       
@@ -134,6 +135,11 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
 
         editbutton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         editbutton.setText("Editar");
+        editbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editbuttonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cancelButton.setText("Cancelar");
@@ -151,6 +157,11 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
 
             }
         ));
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabela);
 
         javax.swing.GroupLayout fundoLayout = new javax.swing.GroupLayout(fundo);
@@ -215,6 +226,19 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
     private void pesqFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesqFieldKeyReleased
         preencherTabela(1);
     }//GEN-LAST:event_pesqFieldKeyReleased
+
+    private void editbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbuttonActionPerformed
+        AlterarPessoaJur alterarPJ = new AlterarPessoaJur(new TelaInicialSuper(), true, 
+                pessoaJDAO.getPessoaJuridicaPorId((Long) tabela.getValueAt(linha, 0)));
+
+       alterarPJ.setVisible(true);
+       this.dispose();
+        
+    }//GEN-LAST:event_editbuttonActionPerformed
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        linha = tabela.getSelectedRow();
+    }//GEN-LAST:event_tabelaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

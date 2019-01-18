@@ -121,6 +121,16 @@ public class EnderecoDAO implements Serializable {
             em.close();
         }
     }
+    
+     public Endereco getEnderecoPorId(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+           return em.find(Endereco.class, id);
+           
+        } finally {
+            em.close();
+        }
+    }
 
     public int getEnderecoCount() {
         EntityManager em = getEntityManager();
