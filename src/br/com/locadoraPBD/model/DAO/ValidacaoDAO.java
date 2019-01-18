@@ -6,36 +6,41 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
+
 /**
  *
  * @author Dayla
  */
-public class ValidacaoDAO {
+public class ValidacaoDAO implements IcoreValidacaoDAO{
     
     private EntityManagerFactory emf = null;
     
     public ValidacaoDAO(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    
+
+    @Override
+    public List<Usuario> ValidarLogin(String login, String senha) {
+ 
+        EntityManager em = getEntityManager();
+        
+        try{
+            List<Usuario> usuarios = null;
+            String consulta = "select u from Usuario u where u.login = :login";
+            TypedQuery<Usuario> query = em.createQuery(consulta, Usuario.class);
+            query.setParameter("login", login);
+            usuarios = query.getResultList();
+            
+            return usuarios;
+        }
+        finally{
+            em.close();
+        }        
+    }
+    
      public EntityManager getEntityManager() {
         return emf.createEntityManager();
-    }
-     
-    public List<Usuario> ValidarLogin(String login){
-           EntityManager em = getEntityManager();
-    try{
-        List<Usuario> usuarios = null;
-        String consulta = "select u from Usuario u where u.login = :login";
-        TypedQuery<Usuario> query = em.createQuery(consulta,Usuario.class);
-        query.setParameter("login", login);
-        usuarios = query.getResultList();
-        
-        return usuarios;
-        
-    }finally{
-          em.close();
-    }
-          
-      }
-    
+    } 
+   
 }

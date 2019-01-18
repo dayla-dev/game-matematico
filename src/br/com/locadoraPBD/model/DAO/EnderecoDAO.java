@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.locadoraPBD.model.DAO;
 
 import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
@@ -20,7 +15,7 @@ import javax.persistence.criteria.Root;
  *
  * @author Dayla
  */
-public class EnderecoDAO implements Serializable {
+public class EnderecoDAO implements IcoreEnderecoDAO,Serializable {
 
     public EnderecoDAO(EntityManagerFactory emf) {
         this.emf = emf;
@@ -31,7 +26,7 @@ public class EnderecoDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Endereco endereco) {
+    public void Salvar(Endereco endereco) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -45,7 +40,7 @@ public class EnderecoDAO implements Serializable {
         }
     }
 
-    public void edit(Endereco endereco) throws NonexistentEntityException, Exception {
+    public void Editar(Endereco endereco) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -68,7 +63,7 @@ public class EnderecoDAO implements Serializable {
         }
     }
 
-    public void destroy(Long id) throws NonexistentEntityException {
+    public void Remover(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();

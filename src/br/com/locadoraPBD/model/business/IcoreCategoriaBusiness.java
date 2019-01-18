@@ -1,4 +1,4 @@
-package br.com.locadoraPBD.model.DAO;
+package br.com.locadoraPBD.model.business;
 
 import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
 import br.com.locadoraPBD.model.beans.Categoria;
@@ -8,11 +8,12 @@ import java.util.List;
  *
  * @author Dayla
  */
-public interface IcoreCategoriaDAO {
+public interface IcoreCategoriaBusiness {
+    
     
     public void Salvar(Categoria categoria);
     public void Editar(Categoria categoria) throws  NonexistentEntityException, Exception ;
-    public void Remover(Long id) throws  NonexistentEntityException;
+    public void Remover(Categoria categoria) throws  NonexistentEntityException;
 
     public List<Categoria> getCategoriaPorNomeCat(String nomeCategoria);
 
@@ -21,5 +22,4 @@ public interface IcoreCategoriaDAO {
     public Categoria getPessoaCategoriaPorId(Long id);
     
     public List<Categoria> getTodasCategorias();
-    
 }

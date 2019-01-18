@@ -50,7 +50,7 @@ public class CamioneteCargaDAO implements IcoreCamioneteCarga ,Serializable {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Long id = camioneteCarga.getId();
-                if (getVeiculoPorId(id) == null) {
+                if (getCamioneteCargaPorId(id) == null) {
                     throw new NonexistentEntityException("The camioneteCarga with id " + id + " no longer exists.");
                 }
             }
@@ -85,7 +85,7 @@ public class CamioneteCargaDAO implements IcoreCamioneteCarga ,Serializable {
     }
 
     @Override
-    public CamioneteCarga getVeiculoPorId(Long id) {
+    public CamioneteCarga getCamioneteCargaPorId(Long id) {
     EntityManager em = getEntityManager();
         try {
             return em.find(CamioneteCarga.class, id);
