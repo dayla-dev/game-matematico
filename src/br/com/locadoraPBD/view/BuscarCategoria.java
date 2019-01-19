@@ -192,14 +192,14 @@ public class BuscarCategoria extends javax.swing.JDialog {
         
         try{
             if(tipo==1){
-                categorias = fachada.getCategoriaPorNomeCat(pesqField.getText().toUpperCase());
+                categorias = this.fachada.getCategoriaPorNomeCat(pesqField.getText().toUpperCase());
                 for(Categoria cat: categorias){
                     dados.add(new Object[]{cat.getNomeCategoria(), cat.getTipoCategoria(), cat.getPrecoCat()});
 
                 }
             }
             else if(tipo==2){
-                categorias = fachada.getTodasCategorias();
+                categorias = this.fachada.getTodasCategorias();
                 for(Categoria cat: categorias){
                     dados.add(new Object[]{cat.getNomeCategoria(), cat.getTipoCategoria(), cat.getPrecoCat()});
 

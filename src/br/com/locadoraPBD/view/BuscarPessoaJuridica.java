@@ -26,6 +26,7 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
         super(parent, modal);       
         initComponents();
         panelCadPJ.setBackground(new Color(0,0,0,0));
+        this.fachada=fachada;
          preencherTabela(2);
         
     }
@@ -269,20 +270,20 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
         try{
             if(tipo==1){
                 if(pesqNome.isSelected()){
-                    pessoasJuridicas = fachada.getPessoaJuridicaPorNome(pesqField.getText().toUpperCase());
+                    pessoasJuridicas = this.fachada.getPessoaJuridicaPorNome(pesqField.getText().toUpperCase());
                     for(PessoaJuridica pj : pessoasJuridicas){
                         dados.add(new Object[]{pj.getId(), pj.getNome(), pj.getCnpj(), pj.getInscricaoEstadual()});
                     }
                 }
                 else if(pesqCNPJ.isSelected()){
-                    pessoasJuridicas = fachada.getPessoaJuridicaPorCnpj(pesqField.getText().toUpperCase());
+                    pessoasJuridicas = this.fachada.getPessoaJuridicaPorCnpj(pesqField.getText().toUpperCase());
                     for(PessoaJuridica pj : pessoasJuridicas){
                         dados.add(new Object[]{pj.getId(), pj.getNome(), pj.getCnpj(), pj.getInscricaoEstadual()});
                     }
                 }
             }
             else if(tipo==2){
-                pessoasJuridicas = fachada.getTodasPessoasJuridicas();
+                pessoasJuridicas = this.fachada.getTodasPessoasJuridicas();
                     for(PessoaJuridica pj : pessoasJuridicas){
                          dados.add(new Object[]{pj.getId(), pj.getNome(), pj.getCnpj(), pj.getInscricaoEstadual()});
                     }

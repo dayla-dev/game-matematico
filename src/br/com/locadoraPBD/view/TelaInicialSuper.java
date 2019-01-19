@@ -675,7 +675,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_bUsuarioActionPerformed
 
     private void bCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCategoriaActionPerformed
-        BuscarCategoria buscarCat = new BuscarCategoria(this, true);
+        BuscarCategoria buscarCat = new BuscarCategoria(this, true, fachada);
         buscarCat.setVisible(true);
     }//GEN-LAST:event_bCategoriaActionPerformed
 
@@ -748,7 +748,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_bPessoaFisActionPerformed
 
     private void bPessoaJurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPessoaJurActionPerformed
-        BuscarPessoaJuridica buscarPJ = new BuscarPessoaJuridica(this, true);
+        BuscarPessoaJuridica buscarPJ = new BuscarPessoaJuridica(this, true, fachada);
         buscarPJ.setVisible(true);
     }//GEN-LAST:event_bPessoaJurActionPerformed
 
@@ -773,7 +773,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_panelBusPJMouseClicked
 
     private void bFilialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFilialActionPerformed
-        BuscarFilial buscarFilial = new BuscarFilial(this, true);
+        BuscarFilial buscarFilial = new BuscarFilial(this, true, fachada);
         buscarFilial.setVisible(true);
     }//GEN-LAST:event_bFilialActionPerformed
 

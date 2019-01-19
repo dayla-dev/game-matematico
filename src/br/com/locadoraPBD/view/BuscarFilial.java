@@ -156,14 +156,14 @@ public class BuscarFilial extends javax.swing.JDialog {
         
         try{
             if(tipo==1){
-                filiais = fachada.getFilialPorNome(pesqField.getText().toUpperCase());
+                filiais = this.fachada.getFilialPorNome(pesqField.getText().toUpperCase());
                 for(Filial f: filiais){
                     dados.add(new Object[]{f.getNome(), f.getEndereco().getLogradouro(), f.getEndereco().getNumero(), f.getEndereco().getBairro(), f.getEndereco().getCep(),f.getEndereco().getCidade(), f.getEndereco().getEstado()});
 
                 }
             }
             else if(tipo==2){
-                filiais = fachada.getTodasFiliais();
+                filiais = this.fachada.getTodasFiliais();
                 for(Filial f: filiais){
                     dados.add(new Object[]{f.getNome(), f.getEndereco().getLogradouro(), f.getEndereco().getNumero(), f.getEndereco().getBairro(), f.getEndereco().getCep(),f.getEndereco().getCidade(), f.getEndereco().getEstado()});
 
