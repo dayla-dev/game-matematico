@@ -88,6 +88,7 @@ public class PessoaJuridicaDAO implements IcorePessoaJuridicaDAO ,Serializable {
         }
     }
     
+    @Override
      public List<PessoaJuridica> getPessoaJuridicaPorNome(String nome) {
        EntityManager em = getEntityManager();
        List<PessoaJuridica> pessoasJuridicas=null;

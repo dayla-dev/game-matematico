@@ -1,10 +1,8 @@
 package br.com.locadoraPBD.view;
 
-import br.com.locadoraPBD.JPAUtil.Conexao;
-import br.com.locadoraPBD.model.DAO.CategoriaDAO;
 import br.com.locadoraPBD.model.beans.Categoria;
-import br.com.locadoraPBD.model.beans.PessoaJuridica;
 import br.com.locadoraPBD.model.business.ModeloTabela;
+import br.com.locadoraPBD.model.fachada.Fachada;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +13,18 @@ import javax.swing.ListSelectionModel;
  * @author Dayla
  */
 public class BuscarCategoria extends javax.swing.JDialog {
+    
+    private Fachada fachada;
 
     public BuscarCategoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public BuscarCategoria(java.awt.Frame parent, boolean modal, Fachada fachada) {
+        super(parent, modal);
+        initComponents();
+        this.fachada=fachada;
         panelCadCateg.setBackground(new Color(0,0,0,0));
         preencherTabela(2);
     }
@@ -179,21 +185,21 @@ public class BuscarCategoria extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void preencherTabela(int tipo){
-        CategoriaDAO categoriaDAO = new CategoriaDAO(Conexao.conexao());
+        
         List<Categoria> categorias = new ArrayList<>();
         ArrayList dados = new ArrayList();
         String[] coluna = new String[]{"NOME", "TIPO DE CATEGORIA", "PREÇO"};
         
         try{
             if(tipo==1){
-                categorias = categoriaDAO.getCategoriaPorNomeCat(pesqField.getText().toUpperCase());
+                categorias = fachada.getCategoriaPorNomeCat(pesqField.getText().toUpperCase());
                 for(Categoria cat: categorias){
                     dados.add(new Object[]{cat.getNomeCategoria(), cat.getTipoCategoria(), cat.getPrecoCat()});
 
                 }
             }
             else if(tipo==2){
-                categorias = categoriaDAO.getTodasCategorias();
+                categorias = fachada.getTodasCategorias();
                 for(Categoria cat: categorias){
                     dados.add(new Object[]{cat.getNomeCategoria(), cat.getTipoCategoria(), cat.getPrecoCat()});
 

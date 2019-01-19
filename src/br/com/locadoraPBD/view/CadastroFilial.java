@@ -1,8 +1,5 @@
 package br.com.locadoraPBD.view;
 
-import br.com.locadoraPBD.JPAUtil.Conexao;
-import br.com.locadoraPBD.model.DAO.EnderecoDAO;
-import br.com.locadoraPBD.model.DAO.FilialDAO;
 import br.com.locadoraPBD.model.beans.Endereco;
 import br.com.locadoraPBD.model.beans.Filial;
 import br.com.locadoraPBD.model.fachada.Fachada;
@@ -19,7 +16,7 @@ public class CadastroFilial extends javax.swing.JDialog {
     public CadastroFilial(java.awt.Frame parent, boolean modal, Fachada fachada) {
         super(parent, modal);
         initComponents();
-        this.fachada=new Fachada();
+        this.fachada=fachada;
     }
 
     /**
@@ -229,6 +226,7 @@ public class CadastroFilial extends javax.swing.JDialog {
         
         Filial filial = new Filial();
         filial.setNome(nomeField.getText().toUpperCase());
+        filial.setEndereco(endereco);
         
         fachada.SalvarFilial(filial);
         JOptionPane.showMessageDialog(this, "Salvo com sucesso!");

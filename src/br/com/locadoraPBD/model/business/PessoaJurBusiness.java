@@ -65,6 +65,12 @@ public class PessoaJurBusiness implements IcorePessoaJurBusiness{
         return pessoaJurDAO.getTodasPessoasJuridicas();
     }
 
+    @Override
+    public List<PessoaJuridica> getPessoaJuridicaPorNome(String nome) {
+
+        return pessoaJurDAO.getPessoaJuridicaPorNome(nome);
+    }
+
     
     
     

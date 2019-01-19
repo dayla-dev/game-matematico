@@ -144,6 +144,12 @@ public class Fachada implements IcoreFachada{
     
         pessoaJurBusiness.Remover(pessoaJuridica);
     }
+    
+     @Override
+    public List<PessoaJuridica> getPessoaJuridicaPorNome(String nome) {
+   
+        return pessoaJurBusiness.getPessoaJuridicaPorNome(nome);
+    }
 
     @Override
     public List<PessoaJuridica> getPessoaJuridicaPorCnpj(String cnpj) {
@@ -396,5 +402,7 @@ public class Fachada implements IcoreFachada{
 
         return validacaoBusiness.ValidarLogin(login, senha);
     }
+
+   
     
 }

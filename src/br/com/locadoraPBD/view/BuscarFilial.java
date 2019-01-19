@@ -1,10 +1,9 @@
 
 package br.com.locadoraPBD.view;
 
-import br.com.locadoraPBD.JPAUtil.Conexao;
-import br.com.locadoraPBD.model.DAO.FilialDAO;
 import br.com.locadoraPBD.model.beans.Filial;
 import br.com.locadoraPBD.model.business.ModeloTabela;
+import br.com.locadoraPBD.model.fachada.Fachada;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ListSelectionModel;
@@ -14,11 +13,19 @@ import javax.swing.ListSelectionModel;
  * @author Dayla
  */
 public class BuscarFilial extends javax.swing.JDialog {
+    
+    private Fachada fachada;
 
   
     public BuscarFilial(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public BuscarFilial(java.awt.Frame parent, boolean modal, Fachada fachada) {
+        super(parent, modal);
+        initComponents();
+        this.fachada=fachada;
         preencherTabela(2);
     }
 
@@ -142,21 +149,21 @@ public class BuscarFilial extends javax.swing.JDialog {
     }//GEN-LAST:event_pesqFieldKeyReleased
 
     private void preencherTabela(int tipo){
-        FilialDAO filialDAO = new FilialDAO(Conexao.conexao());
+        
         List<Filial> filiais = new ArrayList<>();
         ArrayList dados = new ArrayList();
         String[] coluna = new String[]{"NOME", "LOGRADOURO", "NÚMERO", "BAIRRO", "CEP", "CIDADE", "ESTADO"};
         
         try{
             if(tipo==1){
-                filiais = filialDAO.getFilialPorNome(pesqField.getText().toUpperCase());
+                filiais = fachada.getFilialPorNome(pesqField.getText().toUpperCase());
                 for(Filial f: filiais){
                     dados.add(new Object[]{f.getNome(), f.getEndereco().getLogradouro(), f.getEndereco().getNumero(), f.getEndereco().getBairro(), f.getEndereco().getCep(),f.getEndereco().getCidade(), f.getEndereco().getEstado()});
 
                 }
             }
             else if(tipo==2){
-                filiais = filialDAO.getTodasFiliais();
+                filiais = fachada.getTodasFiliais();
                 for(Filial f: filiais){
                     dados.add(new Object[]{f.getNome(), f.getEndereco().getLogradouro(), f.getEndereco().getNumero(), f.getEndereco().getBairro(), f.getEndereco().getCep(),f.getEndereco().getCidade(), f.getEndereco().getEstado()});
 

@@ -1,15 +1,12 @@
 package br.com.locadoraPBD.view;
 
-import br.com.locadoraPBD.JPAUtil.Conexao;
-import br.com.locadoraPBD.model.DAO.PessoaJuridicaDAO;
-import br.com.locadoraPBD.model.beans.PessoaFisica;
 import br.com.locadoraPBD.model.beans.PessoaJuridica;
 import br.com.locadoraPBD.model.business.ModeloTabela;
+import br.com.locadoraPBD.model.fachada.Fachada;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,10 +14,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BuscarPessoaJuridica extends javax.swing.JDialog {
 
-    PessoaJuridicaDAO pessoaJDAO = new PessoaJuridicaDAO(Conexao.conexao());
+    private Fachada fachada;
     private int linha;
     
     public BuscarPessoaJuridica(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);       
+        initComponents();        
+    }
+    
+     public BuscarPessoaJuridica(java.awt.Frame parent, boolean modal, Fachada fachada) {
         super(parent, modal);       
         initComponents();
         panelCadPJ.setBackground(new Color(0,0,0,0));
@@ -229,7 +231,7 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
 
     private void editbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbuttonActionPerformed
         AlterarPessoaJur alterarPJ = new AlterarPessoaJur(new TelaInicialSuper(), true, 
-                pessoaJDAO.getPessoaJuridicaPorId((Long) tabela.getValueAt(linha, 0)));
+                fachada.getPessoaJuridicaPorId((Long) tabela.getValueAt(linha, 0)));
 
        alterarPJ.setVisible(true);
        this.dispose();
@@ -267,20 +269,20 @@ public class BuscarPessoaJuridica extends javax.swing.JDialog {
         try{
             if(tipo==1){
                 if(pesqNome.isSelected()){
-                    pessoasJuridicas = pessoaJDAO.getPessoaJuridicaPorNome(pesqField.getText().toUpperCase());
+                    pessoasJuridicas = fachada.getPessoaJuridicaPorNome(pesqField.getText().toUpperCase());
                     for(PessoaJuridica pj : pessoasJuridicas){
                         dados.add(new Object[]{pj.getId(), pj.getNome(), pj.getCnpj(), pj.getInscricaoEstadual()});
                     }
                 }
                 else if(pesqCNPJ.isSelected()){
-                    pessoasJuridicas = pessoaJDAO.getPessoaJuridicaPorCnpj(pesqField.getText().toUpperCase());
+                    pessoasJuridicas = fachada.getPessoaJuridicaPorCnpj(pesqField.getText().toUpperCase());
                     for(PessoaJuridica pj : pessoasJuridicas){
                         dados.add(new Object[]{pj.getId(), pj.getNome(), pj.getCnpj(), pj.getInscricaoEstadual()});
                     }
                 }
             }
             else if(tipo==2){
-                pessoasJuridicas = pessoaJDAO.getTodasPessoasJuridicas();
+                pessoasJuridicas = fachada.getTodasPessoasJuridicas();
                     for(PessoaJuridica pj : pessoasJuridicas){
                          dados.add(new Object[]{pj.getId(), pj.getNome(), pj.getCnpj(), pj.getInscricaoEstadual()});
                     }

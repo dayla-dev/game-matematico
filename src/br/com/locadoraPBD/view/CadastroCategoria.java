@@ -4,6 +4,7 @@ package br.com.locadoraPBD.view;
 import br.com.locadoraPBD.JPAUtil.Conexao;
 import br.com.locadoraPBD.model.DAO.CategoriaDAO;
 import br.com.locadoraPBD.model.beans.Categoria;
+import br.com.locadoraPBD.model.fachada.Fachada;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,11 +12,19 @@ import javax.swing.JOptionPane;
  * @author Dayla
  */
 public class CadastroCategoria extends javax.swing.JDialog {
+    
+    private Fachada fachada;
 
     
     public CadastroCategoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public CadastroCategoria(java.awt.Frame parent, boolean modal, Fachada fachada) {
+        super(parent, modal);
+        initComponents();
+        this.fachada=fachada;
     }
 
     
@@ -148,14 +157,13 @@ public class CadastroCategoria extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
-        CategoriaDAO categoriaDAO = new CategoriaDAO(Conexao.conexao());
-        
+               
         Categoria categoria = new Categoria();
         categoria.setNomeCategoria(nomeField.getText().toUpperCase());
         categoria.setTipoCategoria(tipoCatField.getText().toUpperCase());
         categoria.setPrecoCat(Double.valueOf(valorFiel.getText().toUpperCase()));
         
-        categoriaDAO.Salvar(categoria);
+        fachada.SalvarCategoria(categoria);
         JOptionPane.showMessageDialog(this, "Categoria salva com sucesso");
         limparCampo();
     }//GEN-LAST:event_salvarButtonActionPerformed

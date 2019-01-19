@@ -425,6 +425,7 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
         pessoaJuridica.setEmail(emailField.getText().toUpperCase());
         pessoaJuridica.setTelefone(telField.getText().toUpperCase());
         pessoaJuridica.setCelular(celField.getText().toUpperCase());
+        pessoaJuridica.setEndereco(endereco);
         
         fachada.SalvarPessoaJur(pessoaJuridica);
         JOptionPane.showMessageDialog(this, "Salvo com sucesso");

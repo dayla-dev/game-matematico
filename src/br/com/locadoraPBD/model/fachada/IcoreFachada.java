@@ -35,6 +35,7 @@ public interface IcoreFachada {
     public void SalvarPessoaJur(PessoaJuridica pessoaJuridica);
     public void EditarPessoaJur(PessoaJuridica pessoaJuridica) throws  NonexistentEntityException, Exception ;
     public void RemoverPessoaJur(PessoaJuridica pessoaJuridica) throws  NonexistentEntityException;
+    public List<PessoaJuridica> getPessoaJuridicaPorNome(String nome);
     public List<PessoaJuridica> getPessoaJuridicaPorCnpj(String cnpj);
     public List<PessoaJuridica> getPessoaFisicaPorInscEstadual(String inscricaoEstadual);
     public PessoaJuridica getPessoaJuridicaPorId(Long id);

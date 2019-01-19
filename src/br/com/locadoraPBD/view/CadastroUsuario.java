@@ -21,7 +21,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
     public CadastroUsuario(java.awt.Frame parent, boolean modal, Fachada fachada) {
         super(parent, modal);
         initComponents();
-        this.fachada=new Fachada();
+        this.fachada=fachada;
     }
 
     
@@ -444,14 +444,12 @@ public class CadastroUsuario extends javax.swing.JDialog {
         user.setEmail(emailField.getText().toUpperCase());
         user.setTelefone(telField.getText().toUpperCase());
         user.setCelular(celField.getText().toUpperCase());
+        user.setEndereco(endereco);
         
         fachada.SalvarUsuario(user);
         JOptionPane.showMessageDialog(this, "Salvo com sucesso");
         this.dispose();
-        
-//        FALTA CRIPTOGRAFAR A SENHA      
-        
-        
+          
     }//GEN-LAST:event_salvarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

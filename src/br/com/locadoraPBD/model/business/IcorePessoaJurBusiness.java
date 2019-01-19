@@ -14,6 +14,8 @@ public interface IcorePessoaJurBusiness {
     public void Salvar(PessoaJuridica pessoaJuridica);
     public void Editar(PessoaJuridica pessoaJuridica) throws  NonexistentEntityException, Exception ;
     public void Remover(PessoaJuridica pessoaJuridica) throws  NonexistentEntityException;
+    
+    public List<PessoaJuridica> getPessoaJuridicaPorNome(String nome);
     public List<PessoaJuridica> getPessoaJuridicaPorCnpj(String cnpj);
     public List<PessoaJuridica> getPessoaFisicaPorInscEstadual(String inscricaoEstadual);
     public PessoaJuridica getPessoaJuridicaPorId(Long id);

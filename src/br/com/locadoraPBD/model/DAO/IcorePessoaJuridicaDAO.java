@@ -13,12 +13,10 @@ public interface IcorePessoaJuridicaDAO {
     public void Editar(PessoaJuridica pessoaJuridica) throws  NonexistentEntityException, Exception ;
     public void Remover(Long id) throws  NonexistentEntityException;
 
+    public List<PessoaJuridica> getPessoaJuridicaPorNome(String nome);
     public List<PessoaJuridica> getPessoaJuridicaPorCnpj(String cnpj);
-
     public List<PessoaJuridica> getPessoaFisicaPorInscEstadual(String inscricaoEstadual);
-
     public PessoaJuridica getPessoaJuridicaPorId(Long id);
-
     public List<PessoaJuridica> getTodasPessoasJuridicas();
     
 }
