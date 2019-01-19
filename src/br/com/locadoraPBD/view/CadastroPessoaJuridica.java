@@ -25,7 +25,7 @@ public class CadastroPessoaJuridica extends javax.swing.JDialog {
     public CadastroPessoaJuridica(java.awt.Frame parent, boolean modal, Fachada fachada) {
         super(parent, modal);
         initComponents();
-        this.fachada=new Fachada();
+        this.fachada=fachada;
     }
 
     

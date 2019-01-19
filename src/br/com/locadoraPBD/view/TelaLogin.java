@@ -4,6 +4,7 @@ package br.com.locadoraPBD.view;
 import br.com.locadoraPBD.JPAUtil.Criptografia;
 import br.com.locadoraPBD.model.DAO.ValidacaoDAO;
 import br.com.locadoraPBD.model.beans.Usuario;
+import br.com.locadoraPBD.model.fachada.Fachada;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JFrame {
 
-    ArrayList<Usuario> usuarios = new ArrayList<>();
-  
-   private ValidacaoDAO validacao;
+   private Fachada fachada;
    private JFrame tela;
    
     public TelaLogin() {
@@ -27,6 +26,14 @@ public class TelaLogin extends javax.swing.JFrame {
         setIcon();
         panelLogin.setBackground(new java.awt.Color(0,0,0,150));
         panelTituloLogin.setBackground(new java.awt.Color(109,86,0,170));
+    }
+    
+    public TelaLogin(Fachada fachada){
+        initComponents();
+        setIcon();
+        panelLogin.setBackground(new java.awt.Color(0,0,0,150));
+        panelTituloLogin.setBackground(new java.awt.Color(109,86,0,170));
+        this.fachada=fachada;
     }
 
     @SuppressWarnings("unchecked")
@@ -179,9 +186,37 @@ public class TelaLogin extends javax.swing.JFrame {
     private void entrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarButtonActionPerformed
        
         if(loginField.getText().equals("super")&&senhaField.getText().equals("super")){
-            TelaInicialSuper telaSuper = new TelaInicialSuper();
-            telaSuper.setVisible(true);
+            tela = new TelaInicialSuper(fachada, this);
+            tela.setVisible(true);
             this.dispose();            
+        }
+        else{
+            List<Usuario> usuarios = fachada.ValidarLogin(loginField.getText(), senhaField.getText());
+            if(usuarios.size()==0){
+                notificacao.setText("Campos invalidos");
+                
+            }
+            else{
+                String senha = senhaField.getText().toUpperCase();
+                for(Usuario user: usuarios){
+                    if(user.getSenha().equals(Criptografia.encriptografar(senha))){
+                        switch(user.getTipoUsuario()){
+                            case "ADMINISTRADOR":{
+                                tela = new TelaAdministrador();
+                                tela.setVisible(true);
+                                break;
+                            }
+                            case "ATENDENTE":{
+                                tela = new TelaAtendente();
+                                tela.setVisible(true);
+                                break;
+                            }
+                        }
+                    }else{
+                                notificacao.setText("Senha incorreta");
+                                }
+                }
+            }
         }
         
     }//GEN-LAST:event_entrarButtonActionPerformed

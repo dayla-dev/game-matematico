@@ -12,7 +12,7 @@ public class Aplicacao {
     public static void main(String args[]){
      
         Fachada fachada = new Fachada();
-        TelaLogin telaLogin = new TelaLogin();
+        TelaLogin telaLogin = new TelaLogin(fachada);
         telaLogin.setVisible(true);
         
     }    

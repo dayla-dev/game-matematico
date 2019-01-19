@@ -29,6 +29,8 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     
     public TelaInicialSuper(Fachada fachada, TelaLogin telaLogin) {
         initComponents();
+        this.fachada=fachada;
+        this.telaLogin=telaLogin;
         setIcon();
         panelAcessoRapido.setBackground(new Color(255,0,0,100));
         panelCadReserva.setBackground(new Color(0,0,0,100));
@@ -39,8 +41,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
         panelBusPF.setBackground(new Color(0,0,0,100));
         panelCadPJ.setBackground(new Color(0,0,0,100));
         panelBusPJ.setBackground(new Color(0,0,0,100));
-        this.fachada=fachada;
-        this.telaLogin=telaLogin;
+        
     }
 
    
