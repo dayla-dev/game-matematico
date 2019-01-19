@@ -1,17 +1,11 @@
-
 package br.com.locadoraPBD.view;
 
 import br.com.locadoraPBD.JPAUtil.Criptografia;
-import br.com.locadoraPBD.model.DAO.ValidacaoDAO;
 import br.com.locadoraPBD.model.beans.Usuario;
 import br.com.locadoraPBD.model.fachada.Fachada;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.paint.Color;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Dayla
@@ -24,8 +18,6 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
         setIcon();
-        panelLogin.setBackground(new java.awt.Color(0,0,0,150));
-        panelTituloLogin.setBackground(new java.awt.Color(109,86,0,170));
     }
     
     public TelaLogin(Fachada fachada){
@@ -47,8 +39,8 @@ public class TelaLogin extends javax.swing.JFrame {
         senhaField = new javax.swing.JPasswordField();
         entrarButton = new javax.swing.JButton();
         sairButton = new javax.swing.JButton();
-        panelTituloLogin = new javax.swing.JPanel();
         notificacao = new javax.swing.JLabel();
+        panelTituloLogin = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
@@ -113,6 +105,9 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
+        notificacao.setBackground(new java.awt.Color(255, 255, 255));
+        notificacao.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
         panelLogin.setLayout(panelLoginLayout);
         panelLoginLayout.setHorizontalGroup(
@@ -120,19 +115,21 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGroup(panelLoginLayout.createSequentialGroup()
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLoginLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(entrarButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(sairButton))
+                    .addGroup(panelLoginLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(senhaLabel)
                             .addComponent(LoginLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(senhaField, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(loginField)))
-                    .addGroup(panelLoginLayout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(entrarButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sairButton)))
+                        .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(notificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(senhaField, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                .addComponent(loginField)))))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         panelLoginLayout.setVerticalGroup(
@@ -146,7 +143,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(senhaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(senhaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(notificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entrarButton)
                     .addComponent(sairButton))
@@ -156,9 +155,6 @@ public class TelaLogin extends javax.swing.JFrame {
         getContentPane().add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 310, 210));
 
         panelTituloLogin.setBackground(new java.awt.Color(221, 221, 6));
-
-        notificacao.setBackground(new java.awt.Color(0, 102, 0));
-        panelTituloLogin.add(notificacao);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -193,7 +189,8 @@ public class TelaLogin extends javax.swing.JFrame {
         else{
             List<Usuario> usuarios = fachada.ValidarLogin(loginField.getText(), senhaField.getText());
             if(usuarios.size()==0){
-                notificacao.setText("Campos invalidos");
+                notificacao.setText("Login ou senha incorretos");
+                limparCampo();
                 
             }
             else{
@@ -241,44 +238,14 @@ public class TelaLogin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_entrarButtonKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaLogin().setVisible(true);
-            }
-        });
-    }
     
      private void setIcon(){
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Images/locadora.png")));
     }
+     
+     public void limparCampo(){
+         senhaField.setText("");
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LoginLabel;

@@ -790,6 +790,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
         
         telaLogin.setVisible(true);
+        telaLogin.limparCampo();
         this.dispose();
     }//GEN-LAST:event_sairActionPerformed
 
