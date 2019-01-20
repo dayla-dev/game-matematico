@@ -662,7 +662,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void categoriaCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaCadActionPerformed
-        CadastroCategoria cadCategoria = new CadastroCategoria(this, true);
+        CadastroCategoria cadCategoria = new CadastroCategoria(this, true, fachada);
         cadCategoria.setVisible(true);
     }//GEN-LAST:event_categoriaCadActionPerformed
 
@@ -728,7 +728,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_panelBusLocacaoMouseClicked
 
     private void veiculoCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_veiculoCadActionPerformed
-        CadastroVeiculo cadVeiculo = new CadastroVeiculo(this, true);
+        CadastroVeiculo cadVeiculo = new CadastroVeiculo(this, true, fachada);
         cadVeiculo.setVisible(true);
     }//GEN-LAST:event_veiculoCadActionPerformed
 
@@ -748,8 +748,8 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_bPessoaFisActionPerformed
 
     private void bPessoaJurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPessoaJurActionPerformed
-        BuscarPessoaJuridica buscarPJ = new BuscarPessoaJuridica(this, true, fachada);
-        buscarPJ.setVisible(true);
+//        BuscarPessoaJuridica buscarPJ = new BuscarPessoaJuridica(this, true, fachada);
+//        buscarPJ.setVisible(true);
     }//GEN-LAST:event_bPessoaJurActionPerformed
 
     private void panelCadPFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCadPFMouseClicked
@@ -768,8 +768,8 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_panelCadPJMouseClicked
 
     private void panelBusPJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBusPJMouseClicked
-        BuscarPessoaJuridica buscarPJ = new BuscarPessoaJuridica(this, true);
-        buscarPJ.setVisible(true);
+//        BuscarPessoaJuridica buscarPJ = new BuscarPessoaJuridica(this, true);
+//        buscarPJ.setVisible(true);
     }//GEN-LAST:event_panelBusPJMouseClicked
 
     private void bFilialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFilialActionPerformed

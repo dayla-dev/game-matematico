@@ -1,11 +1,14 @@
 package br.com.locadoraPBD.view;
 
+import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
 import br.com.locadoraPBD.model.beans.Categoria;
 import br.com.locadoraPBD.model.business.ModeloTabela;
 import br.com.locadoraPBD.model.fachada.Fachada;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ListSelectionModel;
 
 /**
@@ -15,6 +18,7 @@ import javax.swing.ListSelectionModel;
 public class BuscarCategoria extends javax.swing.JDialog {
     
     private Fachada fachada;
+    private int linha;
 
     public BuscarCategoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -109,6 +113,11 @@ public class BuscarCategoria extends javax.swing.JDialog {
 
         editButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         editButton.setText("Editar");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cancelButton.setText("Cancelar");
@@ -129,6 +138,11 @@ public class BuscarCategoria extends javax.swing.JDialog {
 
             }
         ));
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout fundoLayout = new javax.swing.GroupLayout(fundo);
@@ -183,6 +197,23 @@ public class BuscarCategoria extends javax.swing.JDialog {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+       linha = tabela.getSelectedRow();
+    }//GEN-LAST:event_tabelaMouseClicked
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        AlterarCategoria alterarCat = null;
+        
+        try{
+            alterarCat = new AlterarCategoria(new TelaInicialSuper(), true, fachada, fachada.getPessoaCategoriaPorId((Long) tabela.getValueAt(linha, 0)));
+        }
+        catch(Exception ex){
+          Logger.getLogger(BuscarCategoria.class.getName()).log(Level.SEVERE, null, ex);              
+        }
+        alterarCat.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_editButtonActionPerformed
 
     private void preencherTabela(int tipo){
         

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.locadoraPBD.view;
 
 import br.com.locadoraPBD.JPAUtil.Conexao;
@@ -10,6 +5,8 @@ import br.com.locadoraPBD.model.DAO.EnderecoDAO;
 import br.com.locadoraPBD.model.DAO.PessoaJuridicaDAO;
 import br.com.locadoraPBD.model.beans.Endereco;
 import br.com.locadoraPBD.model.beans.PessoaJuridica;
+import br.com.locadoraPBD.model.fachada.Fachada;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,15 +14,15 @@ import br.com.locadoraPBD.model.beans.PessoaJuridica;
  */
 public class AlterarPessoaJur extends javax.swing.JDialog {
     
+    private Fachada fachada;
     private PessoaJuridica pessoaJuridica;
     private Endereco endereco;
 
-    /**
-     * Creates new form AlterarPessoaJur
-     */
-    public AlterarPessoaJur(java.awt.Frame parent, boolean modal, PessoaJuridica pessoaJuridica) {
+    
+    public AlterarPessoaJur(java.awt.Frame parent, boolean modal, Fachada fachada, PessoaJuridica pessoaJuridica) {
         super(parent, modal);
         initComponents();
+        this.fachada=fachada;
         this.pessoaJuridica=pessoaJuridica;
         preencherFormulario();
     }
@@ -479,18 +476,15 @@ public class AlterarPessoaJur extends javax.swing.JDialog {
     private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
 
         try{
-            
-            PessoaJuridicaDAO pessoaDAO = new PessoaJuridicaDAO(Conexao.conexao());
-            EnderecoDAO endDAO = new EnderecoDAO(Conexao.conexao());
-            
-            endereco = endDAO.getEnderecoPorId(pessoaJuridica.getEndereco().getId());
+                  
+            endereco = fachada.getEnderecoPorId(pessoaJuridica.getEndereco().getId());
             endereco.setLogradouro(lograField.getText().toUpperCase());
             endereco.setNumero(numField.getText().toUpperCase());
             endereco.setBairro(bairroField.getText().toUpperCase());
             endereco.setCep(cepField.getText().toUpperCase());
             endereco.setCidade(cidadeField.getText().toUpperCase());
             endereco.setEstado(comboEstado.getSelectedItem().toString().toUpperCase());
-            endDAO.Editar(endereco);
+            fachada.EditarEndereco(endereco);
             
             pessoaJuridica.setNome(nomeField.getText().toUpperCase());
             pessoaJuridica.setCnpj(cnpjField.getText().toUpperCase());
@@ -498,12 +492,16 @@ public class AlterarPessoaJur extends javax.swing.JDialog {
             pessoaJuridica.setEmail(emailField.getText().toUpperCase());
             pessoaJuridica.setTelefone(telField.getText().toUpperCase());
             pessoaJuridica.setCelular(celField.getText().toUpperCase());
+            pessoaJuridica.setEndereco(endereco);
             
-            pessoaDAO.Editar(pessoaJuridica);   
+            fachada.EditarPessoaJur(pessoaJuridica);
         }
         catch(Exception e){
-            
+            e.printStackTrace();
         }
+        
+        JOptionPane.showMessageDialog(this, "Salvo com sucesso!!!");
+        this.dispose();
         
         
     }//GEN-LAST:event_salvarButtonActionPerformed
