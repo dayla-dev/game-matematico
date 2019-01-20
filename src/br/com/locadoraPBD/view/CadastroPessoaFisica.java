@@ -1,14 +1,27 @@
 package br.com.locadoraPBD.view;
 
+import br.com.locadoraPBD.model.beans.Endereco;
+import br.com.locadoraPBD.model.beans.PessoaFisica;
+import br.com.locadoraPBD.model.fachada.Fachada;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dayla
  */
 public class CadastroPessoaFisica extends javax.swing.JDialog {
+    
+    private Fachada fachada;
 
-    public CadastroPessoaFisica(java.awt.Frame parent, boolean modal) {
+    public CadastroPessoaFisica(java.awt.Frame parent, boolean modal, Fachada fachada) {
         super(parent, modal);
         initComponents();
+        this.fachada=fachada;
     }
 
     @SuppressWarnings("unchecked")
@@ -393,7 +406,48 @@ public class CadastroPessoaFisica extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
+         Endereco endereco = new Endereco();
         
+        endereco.setLogradouro(lograField.getText().toUpperCase());
+        endereco.setNumero(numField.getText().toUpperCase());
+        endereco.setBairro(bairroField.getText().toUpperCase());
+        endereco.setCep(cepField.getText().toUpperCase());
+        endereco.setEstado(estadoCombo.getSelectedItem().toString().toUpperCase());
+        endereco.setCidade(cidadeField.getText().toUpperCase());
+        
+        fachada.SalvarEndereco(endereco);
+        
+        PessoaFisica pessoaFisica = new PessoaFisica();
+        
+        pessoaFisica.setNome(nomeField.getText().toUpperCase());
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        
+        try {
+            Date data = format.parse(dtNascField.getText());
+            pessoaFisica.setData_nasc(data);
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroPessoaFisica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        pessoaFisica.setCpf(cpfField.getText().toUpperCase());
+        pessoaFisica.setSexo(sexoCombo.getSelectedItem().toString().toUpperCase());
+        pessoaFisica.setNum_hab(numHabField.getText().toUpperCase());
+        
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+         try {
+            Date data = format.parse(dtVencHabField.getText());
+            pessoaFisica.setData_venc(data);
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroPessoaFisica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         pessoaFisica.setEmail(emailField.getText().toUpperCase());
+         pessoaFisica.setTelefone(telField.getText().toUpperCase());
+         pessoaFisica.setCelular(celField.getText().toUpperCase());
+         pessoaFisica.setEndereco(endereco);
+         
+         fachada.SalvarPessoaFis(pessoaFisica);
+         
+         JOptionPane.showConfirmDialog(this, "Salvo com sucesso!");
+         this.dispose();
     }//GEN-LAST:event_salvarButtonActionPerformed
 
 

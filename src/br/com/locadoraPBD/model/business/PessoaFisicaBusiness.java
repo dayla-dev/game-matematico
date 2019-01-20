@@ -1,6 +1,9 @@
 
 package br.com.locadoraPBD.model.business;
 
+import br.com.locadoraPBD.JPAUtil.Conexao;
+import br.com.locadoraPBD.model.DAO.IcorePessoaFisicaDAO;
+import br.com.locadoraPBD.model.DAO.PessoaFisicaDAO;
 import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
 import br.com.locadoraPBD.model.beans.PessoaFisica;
 import java.util.List;
@@ -11,21 +14,28 @@ import java.util.List;
  */
 public class PessoaFisicaBusiness implements IcorePessoaFisBusiness{
     
+    IcorePessoaFisicaDAO pessoaFisicaDAO;
     
-
+    public PessoaFisicaBusiness(){
+        pessoaFisicaDAO = new PessoaFisicaDAO(Conexao.conexao());
+    }
+    
     @Override
     public void Salvar(PessoaFisica pessoaFisica) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        pessoaFisicaDAO.Salvar(pessoaFisica);
     }
 
     @Override
     public void Editar(PessoaFisica pessoaFisica) throws NonexistentEntityException, Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        pessoaFisicaDAO.Editar(pessoaFisica);
     }
 
     @Override
     public void Remover(PessoaFisica pessoaFisica) throws NonexistentEntityException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        pessoaFisicaDAO.Remover(pessoaFisica.getId());
     }
 
     @Override
@@ -35,17 +45,20 @@ public class PessoaFisicaBusiness implements IcorePessoaFisBusiness{
 
     @Override
     public List<PessoaFisica> getPessoaFisicaPorCPF(String cpf) throws NonexistentEntityException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        return pessoaFisicaDAO.getPessoaFisicaPorCPF(cpf);
     }
 
     @Override
     public PessoaFisica getPessoaFisicaPorId(Long id) throws NonexistentEntityException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        return pessoaFisicaDAO.getPessoaFisicaPorId(id);
     }
 
     @Override
     public List<PessoaFisica> getTodasPessoaFisica() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        return pessoaFisicaDAO.getTodasPessoaFisica();
     }
     
 }

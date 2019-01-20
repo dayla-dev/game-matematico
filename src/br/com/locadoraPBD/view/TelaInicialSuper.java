@@ -685,7 +685,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_usuariosCadActionPerformed
 
     private void pessoaFisCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pessoaFisCadActionPerformed
-        CadastroPessoaFisica cadPessoaFisica = new CadastroPessoaFisica(this, true);
+        CadastroPessoaFisica cadPessoaFisica = new CadastroPessoaFisica(this, true, fachada);
         cadPessoaFisica.setVisible(true);
     }//GEN-LAST:event_pessoaFisCadActionPerformed
 
@@ -753,7 +753,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_bPessoaJurActionPerformed
 
     private void panelCadPFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCadPFMouseClicked
-        CadastroPessoaFisica cadPF = new CadastroPessoaFisica(this, true);
+        CadastroPessoaFisica cadPF = new CadastroPessoaFisica(this, true, fachada);
         cadPF.setVisible(true);
     }//GEN-LAST:event_panelCadPFMouseClicked
 
