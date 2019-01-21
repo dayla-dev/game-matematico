@@ -713,7 +713,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_panelBusReservaMouseClicked
 
     private void panelCadReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCadReservaMouseClicked
-        CadastroReserva cr = new CadastroReserva(this, true);
+      CadastroReserva cr = new CadastroReserva(this, true, fachada);
       cr.setVisible(true);
     }//GEN-LAST:event_panelCadReservaMouseClicked
 
@@ -778,7 +778,7 @@ public class TelaInicialSuper extends javax.swing.JFrame {
     }//GEN-LAST:event_bFilialActionPerformed
 
     private void reservarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservarCategoriaActionPerformed
-        CadastroReserva  cadReserva = new CadastroReserva(this, true);
+        CadastroReserva  cadReserva = new CadastroReserva(this, true, fachada);
         cadReserva.setVisible(true);
     }//GEN-LAST:event_reservarCategoriaActionPerformed
 
