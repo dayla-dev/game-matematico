@@ -185,9 +185,7 @@ public class BuscarPessoaFisica extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void panelCadPFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelCadPFMouseClicked
-        CadastroPessoaFisica cadPessoaFisica = new CadastroPessoaFisica(new TelaInicialSuper(), true);
-        cadPessoaFisica.setVisible(true);
-        this.dispose();
+       
     }//GEN-LAST:event_panelCadPFMouseClicked
 
     

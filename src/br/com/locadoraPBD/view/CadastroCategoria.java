@@ -1,8 +1,6 @@
 
 package br.com.locadoraPBD.view;
 
-import br.com.locadoraPBD.JPAUtil.Conexao;
-import br.com.locadoraPBD.model.DAO.CategoriaDAO;
 import br.com.locadoraPBD.model.beans.Categoria;
 import br.com.locadoraPBD.model.fachada.Fachada;
 import javax.swing.JOptionPane;
