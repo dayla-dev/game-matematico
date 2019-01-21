@@ -17,7 +17,7 @@ import javax.persistence.criteria.Root;
  *
  * @author Dayla
  */
-public class PessoaDAO implements Serializable {
+public class PessoaDAO implements IcorePessoaDAO, Serializable {
 
     public PessoaDAO(EntityManagerFactory emf) {
         this.emf = emf;
@@ -28,7 +28,7 @@ public class PessoaDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Pessoa pessoa) {
+    public void salvar(Pessoa pessoa) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -42,7 +42,7 @@ public class PessoaDAO implements Serializable {
         }
     }
 
-    public void edit(Pessoa pessoa) throws NonexistentEntityException, Exception {
+    public void editar(Pessoa pessoa) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -53,7 +53,7 @@ public class PessoaDAO implements Serializable {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Long id = pessoa.getId();
-                if (findPessoa(id) == null) {
+                if (getPessoaId(id) == null) {
                     throw new NonexistentEntityException("The pessoa with id " + id + " no longer exists.");
                 }
             }
@@ -65,7 +65,7 @@ public class PessoaDAO implements Serializable {
         }
     }
 
-    public void destroy(Long id) throws NonexistentEntityException {
+    public void remover(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -105,15 +105,15 @@ public class PessoaDAO implements Serializable {
     return pessoas;
     }
 
-    public List<Pessoa> findPessoaEntities() {
-        return findPessoaEntities(true, -1, -1);
+    public List<Pessoa> getTodasPessoas() {
+        return getTodasPessoas(true, -1, -1);
     }
 
-    public List<Pessoa> findPessoaEntities(int maxResults, int firstResult) {
-        return findPessoaEntities(false, maxResults, firstResult);
+    public List<Pessoa> getTodasPessoas(int maxResults, int firstResult) {
+        return getTodasPessoas(false, maxResults, firstResult);
     }
 
-    private List<Pessoa> findPessoaEntities(boolean all, int maxResults, int firstResult) {
+    private List<Pessoa> getTodasPessoas(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
@@ -129,10 +129,11 @@ public class PessoaDAO implements Serializable {
         }
     }
 
-    public Pessoa findPessoa(Long id) {
+    public Pessoa getPessoaId(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Pessoa.class, id);
+            Pessoa pessoa = em.find(Pessoa.class, id);
+            return pessoa;
         } finally {
             em.close();
         }

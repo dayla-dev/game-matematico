@@ -6,6 +6,7 @@ import br.com.locadoraPBD.model.beans.CamionetePassageiros;
 import br.com.locadoraPBD.model.beans.Categoria;
 import br.com.locadoraPBD.model.beans.Endereco;
 import br.com.locadoraPBD.model.beans.Filial;
+import br.com.locadoraPBD.model.beans.Pessoa;
 import br.com.locadoraPBD.model.beans.PessoaFisica;
 import br.com.locadoraPBD.model.beans.PessoaJuridica;
 import br.com.locadoraPBD.model.beans.Reserva;
@@ -21,12 +22,14 @@ import br.com.locadoraPBD.model.business.IcoreCamionetePassBusiness;
 import br.com.locadoraPBD.model.business.IcoreCategoriaBusiness;
 import br.com.locadoraPBD.model.business.IcoreEnderecoBusiness;
 import br.com.locadoraPBD.model.business.IcoreFilialBusiness;
+import br.com.locadoraPBD.model.business.IcorePessoaBusiness;
 import br.com.locadoraPBD.model.business.IcorePessoaFisBusiness;
 import br.com.locadoraPBD.model.business.IcorePessoaJurBusiness;
 import br.com.locadoraPBD.model.business.IcoreReservaBusiness;
 import br.com.locadoraPBD.model.business.IcoreUsuarioBusiness;
 import br.com.locadoraPBD.model.business.IcoreValidacaoBusiness;
 import br.com.locadoraPBD.model.business.IcoreVeiculoBusiness;
+import br.com.locadoraPBD.model.business.PessoaBusiness;
 import br.com.locadoraPBD.model.business.PessoaFisicaBusiness;
 import br.com.locadoraPBD.model.business.PessoaJurBusiness;
 import br.com.locadoraPBD.model.business.ReservaBusiness;
@@ -41,6 +44,7 @@ import java.util.List;
  */
 public class Fachada implements IcoreFachada{
     
+    IcorePessoaBusiness pessoaBusiness;
     IcorePessoaFisBusiness pessoaFisBusiness;
     IcorePessoaJurBusiness pessoaJurBusiness;
     IcoreUsuarioBusiness usuarioBusiness;
@@ -52,8 +56,10 @@ public class Fachada implements IcoreFachada{
     IcoreCamionetePassBusiness camionetePassBusiness;
     IcoreReservaBusiness reservaBusiness;
     IcoreValidacaoBusiness validacaoBusiness;
+    
 
     public Fachada(){
+        this.pessoaBusiness = new PessoaBusiness();
         this.pessoaFisBusiness = new PessoaFisicaBusiness();
         this.pessoaJurBusiness = new PessoaJurBusiness();
         this.usuarioBusiness = new UsuarioBusiness();
@@ -401,6 +407,42 @@ public class Fachada implements IcoreFachada{
     public List<Usuario> ValidarLogin(String login, String senha) {
 
         return validacaoBusiness.ValidarLogin(login, senha);
+    }
+
+    @Override
+    public void salvar(Pessoa pessoa) {
+
+        pessoaBusiness.salvar(pessoa);
+    }
+
+    @Override
+    public void editar(Pessoa pessoa) throws NonexistentEntityException, Exception {
+
+        pessoaBusiness.editar(pessoa);
+    }
+
+    @Override
+    public void remover(Long id) throws NonexistentEntityException {
+    
+        pessoaBusiness.remover(id);
+    }
+
+    @Override
+    public List<Pessoa> getPessoaPorNome(String nome) {
+    
+        return pessoaBusiness.getPessoaPorNome(nome);
+    }
+
+    @Override
+    public Pessoa getPessoaId(Long id) {
+
+        return pessoaBusiness.getPessoaId(id);
+    }
+
+    @Override
+    public List<Pessoa> getTodasPessoas() {
+
+        return pessoaBusiness.getTodasPessoas();
     }
 
    

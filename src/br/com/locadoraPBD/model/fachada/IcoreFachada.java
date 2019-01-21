@@ -1,4 +1,3 @@
-
 package br.com.locadoraPBD.model.fachada;
 
 import br.com.locadoraPBD.model.DAO.exceptions.NonexistentEntityException;
@@ -7,6 +6,7 @@ import br.com.locadoraPBD.model.beans.CamionetePassageiros;
 import br.com.locadoraPBD.model.beans.Categoria;
 import br.com.locadoraPBD.model.beans.Endereco;
 import br.com.locadoraPBD.model.beans.Filial;
+import br.com.locadoraPBD.model.beans.Pessoa;
 import br.com.locadoraPBD.model.beans.PessoaFisica;
 import br.com.locadoraPBD.model.beans.PessoaJuridica;
 import br.com.locadoraPBD.model.beans.Reserva;
@@ -23,6 +23,13 @@ public interface IcoreFachada {
     public void SalvarUsuario(Usuario usuario);
     public void EditarUsuario(Usuario usuario) throws  NonexistentEntityException, Exception ;
     public void RemoverUsuario(Usuario usuario) throws  NonexistentEntityException;
+    
+    public void salvar(Pessoa pessoa);
+    public void editar(Pessoa pessoa) throws NonexistentEntityException, Exception;
+    public void remover(Long id)  throws NonexistentEntityException;
+    public List<Pessoa> getPessoaPorNome(String nome);
+    public Pessoa getPessoaId(Long id);
+    public List<Pessoa> getTodasPessoas();
     
     public void SalvarPessoaFis(PessoaFisica pessoaFisica);
     public void EditarPessoaFis(PessoaFisica pessoaFisica) throws  NonexistentEntityException,Exception;
