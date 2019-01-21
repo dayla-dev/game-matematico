@@ -1,6 +1,13 @@
 package br.com.locadoraPBD.view;
 
+import br.com.locadoraPBD.model.beans.Categoria;
+import br.com.locadoraPBD.model.beans.Pessoa;
+import br.com.locadoraPBD.model.beans.PessoaFisica;
+import br.com.locadoraPBD.model.business.ModeloTabela;
 import br.com.locadoraPBD.model.fachada.Fachada;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -9,6 +16,10 @@ import br.com.locadoraPBD.model.fachada.Fachada;
 public class CadastroReserva extends javax.swing.JDialog {
 
     private Fachada fachada;
+    private Pessoa pessoaReservante;
+    private PessoaFisica motorista;
+    private Categoria categoria;
+    private int linha;
     
     public CadastroReserva(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -19,6 +30,8 @@ public class CadastroReserva extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.fachada=fachada;
+        preencherTabelaMotorista();
+        preencherCategoria();
     }
 
     @SuppressWarnings("unchecked")
@@ -37,22 +50,22 @@ public class CadastroReserva extends javax.swing.JDialog {
         motoristaField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaMotorista = new javax.swing.JTable();
-        dataReserva = new javax.swing.JLabel();
+        dataResLabel = new javax.swing.JLabel();
         dataHoraReserva = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
+        horaResLabel = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
+        dataLocLabel = new javax.swing.JLabel();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
+        horaLocLabel = new javax.swing.JLabel();
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        jLabel4 = new javax.swing.JLabel();
+        categoriaLabel = new javax.swing.JLabel();
         panelCategoria = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelaCategoria = new javax.swing.JTable();
         categoriaField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        valorLabel = new javax.swing.JLabel();
         valorResField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        statusLabel = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         salvarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
@@ -70,7 +83,7 @@ public class CadastroReserva extends javax.swing.JDialog {
         motoristaLabel.setText("Motorista:");
 
         panelNome.setBackground(new java.awt.Color(255, 255, 255));
-        panelNome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelNome.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tabelaNome.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,7 +114,7 @@ public class CadastroReserva extends javax.swing.JDialog {
         );
 
         panelMotorista.setBackground(new java.awt.Color(255, 255, 255));
-        panelMotorista.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelMotorista.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tabelaMotorista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,7 +144,7 @@ public class CadastroReserva extends javax.swing.JDialog {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        dataReserva.setText("Data da reserva:");
+        dataResLabel.setText("Data da reserva:");
 
         try {
             dataHoraReserva.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -139,7 +152,7 @@ public class CadastroReserva extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
-        jLabel1.setText("Horário da reserva:");
+        horaResLabel.setText("Horário da reserva:");
 
         try {
             jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
@@ -147,7 +160,7 @@ public class CadastroReserva extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
-        jLabel2.setText("Data da locação:");
+        dataLocLabel.setText("Data da locação:");
 
         try {
             jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -155,7 +168,7 @@ public class CadastroReserva extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
-        jLabel3.setText("Horário da locação:");
+        horaLocLabel.setText("Horário da locação:");
 
         try {
             jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
@@ -163,10 +176,10 @@ public class CadastroReserva extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
-        jLabel4.setText("Categoria:");
+        categoriaLabel.setText("Categoria:");
 
         panelCategoria.setBackground(new java.awt.Color(255, 255, 255));
-        panelCategoria.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelCategoria.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tabelaCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,9 +209,9 @@ public class CadastroReserva extends javax.swing.JDialog {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLabel5.setText("Valor:");
+        valorLabel.setText("Valor:");
 
-        jLabel6.setText("Status:");
+        statusLabel.setText("Status:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativada", "Desativada" }));
 
@@ -218,31 +231,31 @@ public class CadastroReserva extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelMotorista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelDeDadosLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(categoriaLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel5)
+                        .addComponent(valorLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(valorResField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel6)
+                        .addComponent(statusLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelDeDadosLayout.createSequentialGroup()
                         .addGroup(panelDeDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDeDadosLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(dataLocLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jFormattedTextField2))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelDeDadosLayout.createSequentialGroup()
-                                .addComponent(dataReserva)
+                                .addComponent(dataResLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dataHoraReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(49, 49, 49)
                         .addGroup(panelDeDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
+                            .addComponent(horaResLabel)
+                            .addComponent(horaLocLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelDeDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,29 +274,29 @@ public class CadastroReserva extends javax.swing.JDialog {
                     .addComponent(panelMotorista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(panelDeDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dataReserva)
+                    .addComponent(dataResLabel)
                     .addComponent(dataHoraReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
+                    .addComponent(horaResLabel)
                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelDeDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(dataLocLabel)
                     .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(horaLocLabel)
                     .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panelDeDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDeDadosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4))
+                        .addComponent(categoriaLabel))
                     .addGroup(panelDeDadosLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(panelCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelDeDadosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(panelDeDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
+                            .addComponent(valorLabel)
                             .addComponent(valorResField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
+                            .addComponent(statusLabel)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -323,7 +336,7 @@ public class CadastroReserva extends javax.swing.JDialog {
                 .addGroup(fundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salvarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -348,19 +361,17 @@ public class CadastroReserva extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarButton;
     private javax.swing.JTextField categoriaField;
+    private javax.swing.JLabel categoriaLabel;
     private javax.swing.JFormattedTextField dataHoraReserva;
-    private javax.swing.JLabel dataReserva;
+    private javax.swing.JLabel dataLocLabel;
+    private javax.swing.JLabel dataResLabel;
     private javax.swing.JPanel fundo;
+    private javax.swing.JLabel horaLocLabel;
+    private javax.swing.JLabel horaResLabel;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -373,9 +384,64 @@ public class CadastroReserva extends javax.swing.JDialog {
     private javax.swing.JPanel panelMotorista;
     private javax.swing.JPanel panelNome;
     private javax.swing.JButton salvarButton;
+    private javax.swing.JLabel statusLabel;
     private javax.swing.JTable tabelaCategoria;
     private javax.swing.JTable tabelaMotorista;
     private javax.swing.JTable tabelaNome;
+    private javax.swing.JLabel valorLabel;
     private javax.swing.JTextField valorResField;
     // End of variables declaration//GEN-END:variables
+
+
+    public void preencherTabelaMotorista(){
+        
+        List<PessoaFisica> motoristas = new ArrayList<>();
+        ArrayList dados = new ArrayList();
+        String[] coluna = new String[]{"COD.","NOME"};
+        
+        try{
+            motoristas = fachada.getTodasPessoaFisica();
+            for(PessoaFisica mot: motoristas){
+                dados.add(new Object[]{mot.getId(), mot.getNome()});
+            }
+        }
+        catch(Exception ex){
+            
+        }
+        ModeloTabela modelo = new ModeloTabela(dados, coluna);
+        tabelaMotorista.setModel(modelo);
+        tabelaMotorista.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tabelaMotorista.getColumnModel().getColumn(0).setResizable(false);
+        tabelaMotorista.getColumnModel().getColumn(1).setPreferredWidth(180);
+        tabelaMotorista.getColumnModel().getColumn(1).setResizable(false);
+        tabelaMotorista.setAutoResizeMode(tabelaMotorista.AUTO_RESIZE_OFF);
+        tabelaMotorista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+    
+    public void preencherCategoria(){
+        
+        List<Categoria> categorias = new ArrayList<>();
+        ArrayList dados = new ArrayList();
+        String[] coluna = new String[]{"Cód.", "Nome"};
+        
+        try{
+            categorias = fachada.getTodasCategorias();
+            for(Categoria cat: categorias){
+                dados.add(new Object[]{cat.getId(), cat.getNomeCategoria()});
+            }
+        }
+        catch(Exception ex){
+            
+        }
+                 
+        ModeloTabela modelo = new ModeloTabela(dados, coluna);
+        tabelaCategoria.setModel(modelo);
+        tabelaCategoria.getColumnModel().getColumn(0).setPreferredWidth(40);
+        tabelaCategoria.getColumnModel().getColumn(0).setResizable(false);
+        tabelaCategoria.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tabelaCategoria.getColumnModel().getColumn(1).setResizable(false);
+        tabelaCategoria.setAutoResizeMode(tabelaCategoria.AUTO_RESIZE_OFF);
+        tabelaCategoria.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+    
 }
