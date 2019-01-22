@@ -1,6 +1,7 @@
 package br.com.locadoraPBD.model.beans;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Dayla
@@ -23,10 +25,14 @@ public class Reserva implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Temporal(TemporalType.DATE)
     @Column(name = "data_hr_locacao")    
-    private String dataHrLocacao;
+    private Date dataHrLocacao;
+    @Temporal(TemporalType.DATE)
     @Column(name = "data_hr_reserva")
-    private String dataHrReserva;
+    private Date dataHrReserva;
+    @Temporal(TemporalType.TIME)
+    private Date hr_locacao;
     @Column(nullable=false,length=30)
     private String status;
     @Column(name = "valor_entrada")
@@ -37,11 +43,13 @@ public class Reserva implements Serializable {
     private Pessoa pessoa;
     @OneToOne
     private Categoria categoria;
+    @OneToOne
+    private Filial filial;
 
     public Reserva() {
     }
 
-    public Reserva(String dataHrLocacao, String dataHrReserva, String status, Double valorEntrada) {
+    public Reserva(Date dataHrLocacao, Date dataHrReserva, String status, Double valorEntrada) {
         this.dataHrLocacao = dataHrLocacao;
         this.dataHrReserva = dataHrReserva;
         this.status = status;
@@ -114,21 +122,39 @@ public class Reserva implements Serializable {
         this.id = id;
     }
 
-    public String getDataHrLocacao() {
+    
+
+    public void setHr_locacao(Time hr_locacao) {
+        this.hr_locacao = hr_locacao;
+    }
+    
+
+    public Date getDataHrLocacao() {
         return dataHrLocacao;
     }
 
-    public void setDataHrLocacao(String dataHrLocacao) {
+    public void setDataHrLocacao(Date dataHrLocacao) {
         this.dataHrLocacao = dataHrLocacao;
     }
 
-    public String getDataHrReserva() {
+    public Date getDataHrReserva() {
         return dataHrReserva;
     }
 
-    public void setDataHrReserva(String dataHrReserva) {
+    public void setDataHrReserva(Date dataHrReserva) {
         this.dataHrReserva = dataHrReserva;
     }
+
+    public Date getHr_locacao() {
+        return hr_locacao;
+    }
+
+    public void setHr_locacao(Date hr_locacao) {
+        this.hr_locacao = hr_locacao;
+    }
+    
+    
+    
 
     public String getStatus() {
         return status;
@@ -170,5 +196,12 @@ public class Reserva implements Serializable {
         this.categoria = categoria;
     }
 
-      
+    public Filial getFilial() {
+        return filial;
+    }
+
+    public void setFilial(Filial filial) {
+        this.filial = filial;
+    }
+     
 }

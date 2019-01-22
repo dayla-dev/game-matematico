@@ -689,8 +689,7 @@ public class CadastroVeiculo extends javax.swing.JDialog {
     }//GEN-LAST:event_tabelaCategoriaMouseClicked
 
     private void salvarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarButtonActionPerformed
-        
-//        String letraCategoria = categoria.getNomeCategoria().substring(0, 1);
+
             Veiculo veiculo = new Veiculo();
             
             veiculo.setModelo(modeloFD.getText().toUpperCase());
